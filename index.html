@@ -30,6 +30,7 @@
     <meta name="twitter:title" content="IGEE - Institut de Génie Électrique et Électronique">
     <meta name="twitter:description" content="Pôle d'excellence en génie électrique et électronique.">
     <meta name="twitter:image" content="entree.jpg">
+    <meta name="twitter:site" content="@IGEECommunicat1">
 
     <!-- ===== POLICES ===== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,6 +81,116 @@
             box-shadow: 0 2px 8px rgba(0, 168, 232, 0.5);
         }
 
+        /* ===== BOUTONS DE PARTAGE FLOTTANTS ===== */
+        .share-sidebar {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 998;
+            animation: slideInLeft 0.8s ease;
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translate(-100%, -50%); }
+            to { opacity: 1; transform: translate(0, -50%); }
+        }
+        .share-btn {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+            position: relative;
+        }
+        .share-btn:hover {
+            transform: scale(1.15) translateX(5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        .share-btn.facebook { background: #1877f2; }
+        .share-btn.twitter { background: #000000; }
+        .share-btn.linkedin { background: #0077b5; }
+        .share-btn.whatsapp { background: #25d366; }
+        .share-btn.email { background: #ea4335; }
+        .share-btn::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            left: calc(100% + 12px);
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: var(--white);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .share-btn::after {
+            content: '';
+            position: absolute;
+            left: calc(100% + 5px);
+            top: 50%;
+            transform: translateY(-50%);
+            border: 5px solid transparent;
+            border-right-color: var(--primary);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .share-btn:hover::before,
+        .share-btn:hover::after {
+            opacity: 1;
+        }
+
+        /* ===== BOUTONS DE PARTAGE DANS LES ACTUALITÉS ===== */
+        .news-share {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed rgba(0, 0, 0, 0.08);
+        }
+        .news-share span {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        .news-share-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+        .news-share-btn:hover {
+            transform: translateY(-3px) scale(1.15);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        .news-share-btn.fb { background: #1877f2; }
+        .news-share-btn.tw { background: #000000; }
+        .news-share-btn.li { background: #0077b5; }
+        .news-share-btn.wa { background: #25d366; }
+
         .btn {
             display: inline-flex; align-items: center; gap: 8px;
             padding: 12px 28px; border-radius: 50px;
@@ -109,68 +220,161 @@
 
         header {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-            background: rgba(10, 43, 94, 0.85);
-            backdrop-filter: blur(12px);
-            box-shadow: var(--shadow);
+            background: rgba(10, 43, 94, 0.92);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
             transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
         header.scrolled {
             background: rgba(10, 43, 94, 0.98);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
         }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; }
-        .logo { display: flex; align-items: center; gap: 12px; color: var(--white); }
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 10px 0;
+            gap: 20px;
+        }
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            color: var(--white);
+            flex-shrink: 0;
+            text-decoration: none;
+        }
         .logo-img {
-            width: 55px; height: 55px;
-            object-fit: contain; border-radius: 8px;
-            background: var(--white); padding: 3px;
+            width: 48px; 
+            height: 48px;
+            object-fit: contain; 
+            border-radius: 10px;
+            background: var(--white); 
+            padding: 3px;
             transition: var(--transition);
-            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
+        .logo:hover .logo-img { 
+            transform: scale(1.08) rotate(-3deg);
+            box-shadow: 0 6px 18px rgba(0, 168, 232, 0.4);
         }
-        .logo:hover .logo-img { transform: scale(1.1) rotate(3deg); }
-        .logo-text { display: flex; flex-direction: column; }
-        .logo-text span:first-child { font-weight: 700; font-size: 1.2rem; line-height: 1.2; }
-        .logo-text span:last-child { font-size: 0.72rem; opacity: 0.8; font-weight: 300; }
-        .nav-links { display: flex; gap: 12px; align-items: center; }
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.85);
-            font-weight: 400; font-size: 0.76rem;
-            transition: var(--transition); position: relative;
-            padding: 5px 0;
+        .logo-text { 
+            display: flex; 
+            flex-direction: column;
+            line-height: 1.1;
         }
-        .nav-links a:hover, .nav-links a.active { color: var(--white); }
-        .nav-links a::after {
-            content: ''; position: absolute; bottom: 0; left: 0;
-            width: 0; height: 2px; background: var(--accent); transition: var(--transition);
+        .logo-text span:first-child { 
+            font-weight: 700; 
+            font-size: 1.25rem; 
+            letter-spacing: 1px;
+            line-height: 1;
         }
-        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .logo-text span:last-child { 
+            font-size: 0.65rem; 
+            opacity: 0.75; 
+            font-weight: 300;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+        }
 
-        .nav-actions { display: flex; align-items: center; gap: 10px; }
+        .nav-links { 
+            display: flex; 
+            gap: 4px; 
+            align-items: center;
+            flex-wrap: nowrap;
+            flex: 1;
+            justify-content: center;
+        }
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.82);
+            font-weight: 500; 
+            font-size: 0.75rem;
+            transition: all 0.3s ease; 
+            position: relative;
+            padding: 8px 10px;
+            border-radius: 8px;
+            white-space: nowrap;
+            letter-spacing: 0.2px;
+        }
+        .nav-links a:hover {
+            color: var(--white);
+            background: rgba(0, 168, 232, 0.18);
+            transform: translateY(-2px);
+        }
+        .nav-links a.active { 
+            color: var(--white);
+            background: rgba(0, 168, 232, 0.25);
+            box-shadow: 0 4px 12px rgba(0, 168, 232, 0.3);
+        }
+        .nav-links a::after {
+            content: ''; 
+            position: absolute; 
+            bottom: 2px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0; 
+            height: 2px; 
+            background: var(--accent); 
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after { 
+            width: 30%;
+        }
+
+        .nav-actions { 
+            display: flex; 
+            align-items: center; 
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
         .theme-toggle {
             background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             color: var(--white);
-            width: 40px; height: 40px;
-            border-radius: 50%; cursor: pointer;
-            font-size: 1rem; transition: var(--transition);
-            display: flex; align-items: center; justify-content: center;
+            width: 38px; 
+            height: 38px;
+            border-radius: 50%; 
+            cursor: pointer;
+            font-size: 0.9rem; 
+            transition: var(--transition);
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
         }
         .theme-toggle:hover {
             background: var(--accent);
-            transform: rotate(20deg) scale(1.1);
+            border-color: var(--accent);
+            transform: rotate(20deg) scale(1.08);
+            box-shadow: 0 4px 15px rgba(0, 168, 232, 0.5);
         }
+
         .menu-toggle {
-            display: none; background: none; border: none;
-            color: var(--white); font-size: 1.5rem; cursor: pointer;
+            display: none; 
+            background: rgba(255, 255, 255, 0.1); 
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: var(--white); 
+            font-size: 1.1rem; 
+            cursor: pointer;
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        .menu-toggle:hover {
+            background: var(--accent);
+            border-color: var(--accent);
         }
 
         .hero {
             min-height: 100vh; display: flex; align-items: center;
-            color: var(--white); padding: 140px 0 80px;
+            color: var(--white); padding: 120px 0 80px;
             position: relative; overflow: hidden;
             background: linear-gradient(135deg, rgba(10, 43, 94, 0.85) 0%, rgba(26, 74, 138, 0.75) 100%),
                         url('entree.jpg') center/cover no-repeat;
@@ -718,7 +922,7 @@
         .club-activity i { color: var(--accent); font-size: 1.2rem; margin-top: 3px; }
         .club-activity h4 { font-size: 0.95rem; color: var(--primary); margin-bottom: 2px; }
         .club-activity p { font-size: 0.85rem; color: var(--text-light); margin: 0; }
-        .club-social { margin-top: 25px; display: flex; gap: 15px; }
+        .club-social { margin-top: 25px; display: flex; gap: 15px; flex-wrap: wrap; }
         .club-social a {
             display: inline-flex; align-items: center; gap: 8px;
             background: var(--accent); color: var(--white);
@@ -731,6 +935,8 @@
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 10px 25px rgba(0, 168, 232, 0.4);
         }
+        .club-social a.fb { background: #1877f2; }
+        .club-social a.fb:hover { background: #145dbf; }
 
         .news-grid {
             display: grid;
@@ -924,7 +1130,9 @@
             transform: rotate(-8deg) scale(1.05);
         }
         .contact-item h4 { font-size: 1rem; color: var(--primary); margin-bottom: 4px; }
-        .contact-item p { font-size: 0.9rem; color: var(--text-light); }
+        .contact-item p { font-size: 0.9rem; color: var(--text-light); word-break: break-all; }
+        .contact-item p a { color: var(--accent); }
+        .contact-item p a:hover { text-decoration: underline; }
         .contact-form {
             background: var(--white); padding: 35px;
             border-radius: var(--radius); box-shadow: var(--shadow);
@@ -963,7 +1171,7 @@
             background-size: 200% auto;
             animation: shine 3s linear infinite;
         }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 40px; }
         .footer-brand p { opacity: 0.8; font-size: 0.9rem; margin-top: 15px; max-width: 300px; }
         .footer-brand .logo-img { background: var(--white); padding: 4px; }
         .footer-col h4 { font-size: 1rem; margin-bottom: 20px; color: var(--accent); }
@@ -976,10 +1184,139 @@
             opacity: 1; color: var(--accent);
             transform: translateX(4px);
         }
+
+        /* ===== RÉSEAUX SOCIAUX DANS LE FOOTER ===== */
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .social-links a {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.15rem;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+        }
+        .social-links a.facebook:hover { background: #1877f2; border-color: #1877f2; }
+        .social-links a.twitter:hover { background: #000000; border-color: #000000; }
+        .social-links a.linkedin:hover { background: #0077b5; border-color: #0077b5; }
+        .social-links a.youtube:hover { background: #ff0000; border-color: #ff0000; }
+        .social-links a.email:hover { background: #ea4335; border-color: #ea4335; }
+
+        .footer-share-title {
+            font-size: 0.85rem;
+            opacity: 0.75;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .footer-contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 12px;
+            font-size: 0.85rem;
+        }
+        .footer-contact-list a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.85;
+            transition: var(--transition);
+        }
+        .footer-contact-list a:hover {
+            opacity: 1;
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        /* ===== FOOTER BOTTOM AVEC SIGNATURE ===== */
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 25px; text-align: center;
-            font-size: 0.85rem; opacity: 0.7;
+            padding-top: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+
+        .footer-copyright {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-signature {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(0, 168, 232, 0.12);
+            border: 1px solid rgba(0, 168, 232, 0.3);
+            border-radius: 50px;
+            color: var(--accent);
+            font-weight: 500;
+            font-size: 0.82rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-signature::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 168, 232, 0.25), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .footer-signature:hover::before {
+            left: 100%;
+        }
+
+        .footer-signature:hover {
+            background: rgba(0, 168, 232, 0.2);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 168, 232, 0.3);
+        }
+
+        .footer-signature i {
+            font-size: 0.9rem;
+            color: var(--accent);
+        }
+
+        .footer-signature .signature-name {
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+            font-style: italic;
+            font-weight: 600;
+            background: linear-gradient(90deg, var(--accent), #4dd0e1, var(--accent));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shine 3s linear infinite;
         }
 
         .scroll-top {
@@ -1077,6 +1414,10 @@
         .stagger-5 { transition-delay: 0.5s; }
         .stagger-6 { transition-delay: 0.6s; }
 
+        @media (max-width: 1200px) {
+            .nav-links a { font-size: 0.72rem; padding: 8px 8px; }
+            .logo-text span:last-child { font-size: 0.6rem; }
+        }
         @media (max-width: 992px) {
             .about-grid, .research-grid, .contact-grid, .director-grid,
             .csi-grid, .library-grid, .info-grid, .club-grid,
@@ -1084,18 +1425,46 @@
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .hero-stats { grid-template-columns: repeat(2, 1fr); }
             .flag-wrapper { width: 140px; height: 95px; }
+
+            .share-sidebar {
+                left: auto;
+                right: 15px;
+                top: auto;
+                bottom: 100px;
+                transform: none;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .share-btn { width: 42px; height: 42px; font-size: 1rem; }
+            .share-btn::before, .share-btn::after { display: none; }
         }
         @media (max-width: 768px) {
+            nav { padding: 8px 0; gap: 10px; }
             .nav-links {
-                position: fixed; top: 79px; left: 0; width: 100%;
+                position: fixed; top: 68px; left: 0; width: 100%;
                 background: var(--primary); flex-direction: column;
-                padding: 30px; gap: 20px;
-                transform: translateY(-150%); transition: var(--transition);
-                box-shadow: var(--shadow-lg); z-index: 999;
+                padding: 25px 20px; gap: 8px;
+                transform: translateY(-150%); 
+                transition: var(--transition);
+                box-shadow: var(--shadow-lg); 
+                z-index: 999;
+                max-height: calc(100vh - 68px);
+                overflow-y: auto;
+                align-items: stretch;
             }
             .nav-links.active { transform: translateY(0); }
-            .menu-toggle { display: block; }
-            .hero { padding: 120px 0 60px; min-height: auto; background-attachment: scroll; }
+            .nav-links a {
+                font-size: 0.9rem;
+                padding: 12px 16px;
+                text-align: left;
+                border-radius: 8px;
+            }
+            .nav-links a::after { display: none; }
+            .menu-toggle { display: flex; }
+            .logo-img { width: 42px; height: 42px; }
+            .logo-text span:first-child { font-size: 1.1rem; }
+            .logo-text span:last-child { font-size: 0.6rem; }
+            .hero { padding: 100px 0 60px; min-height: auto; background-attachment: scroll; }
             .hero-buttons { flex-direction: column; align-items: flex-start; }
             .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 15px; }
             .stat-item h3 { font-size: 1.6rem; }
@@ -1107,17 +1476,42 @@
         }
         @media (max-width: 480px) {
             .logo-text span:last-child { display: none; }
-            .logo-img { width: 45px; height: 45px; }
+            .logo-img { width: 40px; height: 40px; }
             .hero-stats { grid-template-columns: 1fr 1fr; }
             .stat-item h3 { font-size: 1.3rem; }
             .csi-member { flex-direction: column; text-align: center; }
             .csi-photo { width: 80px; height: 80px; }
+            .share-sidebar { bottom: 80px; right: 10px; }
+            .share-btn { width: 38px; height: 38px; font-size: 0.9rem; }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- ===== BARRE DE PARTAGE FLOTTANTE ===== -->
+    <div class="share-sidebar">
+        <button class="share-btn facebook" data-tooltip="Partager sur Facebook" onclick="shareFacebook()" aria-label="Partager sur Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </button>
+        <button class="share-btn twitter" data-tooltip="Partager sur Twitter / X" onclick="shareTwitter()" aria-label="Partager sur Twitter">
+            <i class="fab fa-twitter"></i>
+        </button>
+        <button class="share-btn linkedin" data-tooltip="Partager sur LinkedIn" onclick="shareLinkedIn()" aria-label="Partager sur LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </button>
+        <button class="share-btn whatsapp" data-tooltip="Partager sur WhatsApp" onclick="shareWhatsApp()" aria-label="Partager sur WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+        <button class="share-btn email" data-tooltip="Partager par Email" onclick="shareEmail()" aria-label="Partager par Email">
+            <i class="fas fa-envelope"></i>
+        </button>
+    </div>
 
     <header id="header">
         <div class="container">
@@ -1126,7 +1520,7 @@
                     <img src="logo.jpg" alt="Logo Université de Boumerdès" class="logo-img">
                     <div class="logo-text">
                         <span>IGEE</span>
-                        <span>Institut de Génie Électrique et Électronique</span>
+                        <span>Institut de Génie Électrique & Électronique</span>
                     </div>
                 </a>
                 <ul class="nav-links" id="navLinks">
@@ -1626,7 +2020,7 @@
                         <ul>
                             <li><i class="fas fa-user"></i> Responsable : Mr. Karim TIDJEDAM</li>
                             <li><i class="fas fa-phone"></i> Tél : 024 79 57 63</li>
-                            <li><i class="fas fa-envelope"></i> Email : bibliotheque@igee.univ-boumerdes.dz</li>
+                            <li><i class="fas fa-envelope"></i> Email : <a href="mailto:h.zidane@univ-boumerdes.dz">h.zidane@univ-boumerdes.dz</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1659,7 +2053,8 @@
                         <div class="club-activity"><i class="fas fa-newspaper"></i><div><h4>INELECTRONICS Magazine</h4><p>Publication bimestrielle d'un magazine étudiant.</p></div></div>
                     </div>
                     <div class="club-social">
-                        <a href="https://www.facebook.com/InelectronicsStudentClub" target="_blank" rel="noopener"><i class="fab fa-facebook"></i> Suivez le club</a>
+                        <a href="https://www.facebook.com/umbb.igee/" target="_blank" rel="noopener" class="fb"><i class="fab fa-facebook"></i> Suivez l'IGEE</a>
+                        <a href="https://www.facebook.com/InelectronicsStudentClub" target="_blank" rel="noopener"><i class="fab fa-facebook"></i> Club INELECTRONICS</a>
                     </div>
                 </div>
                 <div class="gallery-grid slide-right">
@@ -1690,6 +2085,13 @@
                             <a href="#international" class="news-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
                             <span class="news-badge">À venir</span>
                         </div>
+                        <div class="news-share">
+                            <span><i class="fas fa-share-alt"></i> Partager :</span>
+                            <button class="news-share-btn fb" onclick="shareFacebook()" aria-label="Facebook"><i class="fab fa-facebook-f"></i></button>
+                            <button class="news-share-btn tw" onclick="shareTwitter()" aria-label="Twitter"><i class="fab fa-twitter"></i></button>
+                            <button class="news-share-btn li" onclick="shareLinkedIn()" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                            <button class="news-share-btn wa" onclick="shareWhatsApp()" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                        </div>
                     </div>
                 </div>
                 <div class="news-card fade-in stagger-2">
@@ -1701,6 +2103,13 @@
                         <div class="news-card-footer">
                             <a href="https://igee.univ-boumerdes.dz/ncaeee26/" target="_blank" rel="noopener" class="news-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
                             <span class="news-badge">À venir</span>
+                        </div>
+                        <div class="news-share">
+                            <span><i class="fas fa-share-alt"></i> Partager :</span>
+                            <button class="news-share-btn fb" onclick="shareFacebook()" aria-label="Facebook"><i class="fab fa-facebook-f"></i></button>
+                            <button class="news-share-btn tw" onclick="shareTwitter()" aria-label="Twitter"><i class="fab fa-twitter"></i></button>
+                            <button class="news-share-btn li" onclick="shareLinkedIn()" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                            <button class="news-share-btn wa" onclick="shareWhatsApp()" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></button>
                         </div>
                     </div>
                 </div>
@@ -1714,6 +2123,13 @@
                             <a href="https://igee.univ-boumerdes.dz/" target="_blank" rel="noopener" class="news-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
                             <span class="news-badge">Partenariat</span>
                         </div>
+                        <div class="news-share">
+                            <span><i class="fas fa-share-alt"></i> Partager :</span>
+                            <button class="news-share-btn fb" onclick="shareFacebook()" aria-label="Facebook"><i class="fab fa-facebook-f"></i></button>
+                            <button class="news-share-btn tw" onclick="shareTwitter()" aria-label="Twitter"><i class="fab fa-twitter"></i></button>
+                            <button class="news-share-btn li" onclick="shareLinkedIn()" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                            <button class="news-share-btn wa" onclick="shareWhatsApp()" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                        </div>
                     </div>
                 </div>
                 <div class="news-card fade-in stagger-4">
@@ -1725,6 +2141,13 @@
                         <div class="news-card-footer">
                             <a href="https://igee.univ-boumerdes.dz/ncaeee25/" target="_blank" rel="noopener" class="news-link">Voir le programme <i class="fas fa-arrow-right"></i></a>
                             <span class="news-badge">Passé</span>
+                        </div>
+                        <div class="news-share">
+                            <span><i class="fas fa-share-alt"></i> Partager :</span>
+                            <button class="news-share-btn fb" onclick="shareFacebook()" aria-label="Facebook"><i class="fab fa-facebook-f"></i></button>
+                            <button class="news-share-btn tw" onclick="shareTwitter()" aria-label="Twitter"><i class="fab fa-twitter"></i></button>
+                            <button class="news-share-btn li" onclick="shareLinkedIn()" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                            <button class="news-share-btn wa" onclick="shareWhatsApp()" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></button>
                         </div>
                     </div>
                 </div>
@@ -1738,6 +2161,13 @@
                             <a href="https://igee.univ-boumerdes.dz/" target="_blank" rel="noopener" class="news-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
                             <span class="news-badge">Événement</span>
                         </div>
+                        <div class="news-share">
+                            <span><i class="fas fa-share-alt"></i> Partager :</span>
+                            <button class="news-share-btn fb" onclick="shareFacebook()" aria-label="Facebook"><i class="fab fa-facebook-f"></i></button>
+                            <button class="news-share-btn tw" onclick="shareTwitter()" aria-label="Twitter"><i class="fab fa-twitter"></i></button>
+                            <button class="news-share-btn li" onclick="shareLinkedIn()" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                            <button class="news-share-btn wa" onclick="shareWhatsApp()" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                        </div>
                     </div>
                 </div>
                 <div class="news-card fade-in stagger-6">
@@ -1749,6 +2179,13 @@
                         <div class="news-card-footer">
                             <a href="https://igee.univ-boumerdes.dz/Note2.html" target="_blank" rel="noopener" class="news-link">Lire l'article <i class="fas fa-arrow-right"></i></a>
                             <span class="news-badge">Réussite</span>
+                        </div>
+                        <div class="news-share">
+                            <span><i class="fas fa-share-alt"></i> Partager :</span>
+                            <button class="news-share-btn fb" onclick="shareFacebook()" aria-label="Facebook"><i class="fab fa-facebook-f"></i></button>
+                            <button class="news-share-btn tw" onclick="shareTwitter()" aria-label="Twitter"><i class="fab fa-twitter"></i></button>
+                            <button class="news-share-btn li" onclick="shareLinkedIn()" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                            <button class="news-share-btn wa" onclick="shareWhatsApp()" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></button>
                         </div>
                     </div>
                 </div>
@@ -1885,8 +2322,9 @@
                 <div class="contact-info slide-left">
                     <div class="contact-item"><div class="icon"><i class="fas fa-map-marker-alt"></i></div><div><h4>Adresse</h4><p>Boulevard de l'Indépendance, Boumerdès 35000, Algérie</p></div></div>
                     <div class="contact-item"><div class="icon"><i class="fas fa-phone-alt"></i></div><div><h4>Téléphone</h4><p>+213 (0)24 79 55 55</p></div></div>
-                    <div class="contact-item"><div class="icon"><i class="fas fa-envelope"></i></div><div><h4>Email</h4><p>contact@igee.univ-boumerdes.dz</p></div></div>
+                    <div class="contact-item"><div class="icon"><i class="fas fa-envelope"></i></div><div><h4>Email</h4><p><a href="mailto:h.zidane@univ-boumerdes.dz">h.zidane@univ-boumerdes.dz</a></p></div></div>
                     <div class="contact-item"><div class="icon"><i class="fas fa-clock"></i></div><div><h4>Horaires</h4><p>Dimanche - Jeudi : 8h00 - 16h30</p></div></div>
+                    <div class="contact-item"><div class="icon"><i class="fas fa-share-alt"></i></div><div><h4>Réseaux sociaux</h4><p>Suivez-nous sur Facebook, X, LinkedIn et YouTube</p></div></div>
                 </div>
                 <div class="contact-form slide-right">
                     <h3>Envoyez-nous un message</h3>
@@ -1911,9 +2349,15 @@
                 <div class="footer-brand">
                     <div class="logo">
                         <img src="logo.jpg" alt="Logo Université de Boumerdès" class="logo-img" loading="lazy">
-                        <div class="logo-text"><span>IGEE</span><span>Institut de Génie Électrique et Électronique</span></div>
+                        <div class="logo-text"><span>IGEE</span><span>Institut de Génie Électrique & Électronique</span></div>
                     </div>
                     <p>Institut de Génie Électrique et Électronique de l'Université M'Hamed Bougara de Boumerdès. Formation, recherche et innovation au service de la société.</p>
+                    <div class="footer-contact-list">
+                        <a href="mailto:h.zidane@univ-boumerdes.dz">
+                            <i class="fas fa-envelope" style="color: var(--accent);"></i>
+                            h.zidane@univ-boumerdes.dz
+                        </a>
+                    </div>
                 </div>
                 <div class="footer-col">
                     <h4>Liens rapides</h4>
@@ -1940,16 +2384,41 @@
                 </div>
                 <div class="footer-col">
                     <h4>Suivez-nous</h4>
-                    <ul>
-                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
-                        <li><a href="#"><i class="fab fa-researchgate"></i> ResearchGate</a></li>
-                    </ul>
+                    <p class="footer-share-title">
+                        <i class="fas fa-share-alt"></i> Rejoignez notre communauté
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/umbb.igee/" target="_blank" rel="noopener" class="facebook" aria-label="Facebook IGEE" title="Facebook officiel IGEE">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://x.com/IGEECommunicat1" target="_blank" rel="noopener" class="twitter" aria-label="Twitter IGEE" title="Twitter / X officiel IGEE">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/school/igee-ex-inelec/" target="_blank" rel="noopener" class="linkedin" aria-label="LinkedIn IGEE" title="LinkedIn officiel IGEE">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCTaZP20Mb4c_JkzmH3XvbGA" target="_blank" rel="noopener" class="youtube" aria-label="YouTube IGEE" title="Chaîne YouTube officielle IGEE">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="mailto:h.zidane@univ-boumerdes.dz" class="email" aria-label="Email IGEE" title="Email IGEE">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                    <p style="opacity: 0.7; font-size: 0.8rem; margin-top: 10px; line-height: 1.5;">
+                        <i class="fas fa-hands-helping" style="color: var(--accent);"></i>
+                        Aidez-nous à faire connaître l'IGEE en partageant notre site !
+                    </p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 IGEE - Université M'Hamed Bougara de Boumerdès. Tous droits réservés.</p>
+                <span class="footer-copyright">
+                    &copy; 2026 IGEE - M'Hamed Bougara University of Boumerdès. All rights reserved.
+                </span>
+                <a href="mailto:h.zidane@univ-boumerdes.dz?subject=Site%20IGEE" class="footer-signature" title="Site conçu par Ouramdane Ali">
+                    <i class="fas fa-code"></i>
+                    <span>Conçu par</span>
+                    <span class="signature-name">Ouramdane Ali</span>
+                </a>
             </div>
         </div>
     </footer>
@@ -2107,6 +2576,30 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closePdfModal();
         });
+
+        // ===== PARTAGE SOCIAL =====
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open('https://www.facebook.com/sharer/sharer.php?u=' + url, '_blank', 'width=600,height=400,noopener,noreferrer');
+        }
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('Découvrez l\'IGEE - Institut de Génie Électrique et Électronique de l\'Université de Boumerdès');
+            window.open('https://twitter.com/intent/tweet?url=' + url + '&text=' + text + '&via=IGEECommunicat1', '_blank', 'width=600,height=400,noopener,noreferrer');
+        }
+        function shareLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url, '_blank', 'width=600,height=400,noopener,noreferrer');
+        }
+        function shareWhatsApp() {
+            const text = encodeURIComponent('Découvrez l\'IGEE - Institut de Génie Électrique et Électronique de l\'Université de Boumerdès : ' + window.location.href);
+            window.open('https://wa.me/?text=' + text, '_blank', 'noopener,noreferrer');
+        }
+        function shareEmail() {
+            const subject = encodeURIComponent('Découvrez l\'IGEE - Institut de Génie Électrique et Électronique');
+            const body = encodeURIComponent('Bonjour,\n\nJe vous invite à découvrir le site officiel de l\'IGEE (Institut de Génie Électrique et Électronique) de l\'Université de Boumerdès :\n\n' + window.location.href + '\n\nCordialement.');
+            window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+        }
     </script>
 </body>
 </html>
