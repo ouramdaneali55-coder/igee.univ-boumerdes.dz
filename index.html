@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IGEE - Institut de Génie Électrique et Électronique | Université de Boumerdès</title>
+    <title>IGEE - Institute of Electrical and Electronic Engineering | University of Boumerdès</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
     <meta name="theme-color" content="#0a2b5e">
-    <meta name="description" content="Institut de Génie Électrique et Électronique (IGEE) - Université M'Hamed Bougara de Boumerdès. Plus de 1500 étudiants et 160 enseignants.">
-    <meta name="keywords" content="IGEE, Boumerdès, génie électrique, électronique, université algérienne, UMBB">
-    <meta name="author" content="IGEE - Université M'Hamed Bougara de Boumerdès">
+    <meta name="description" content="Institute of Electrical and Electronic Engineering (IGEE) - M'Hamed Bougara University of Boumerdès. E-Learning platform for students and teachers.">
+    <meta name="keywords" content="IGEE, Boumerdès, electrical engineering, electronics, e-learning, Moodle, Algerian university, UMBB">
+    <meta name="author" content="IGEE - M'Hamed Bougara University of Boumerdès">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="IGEE - Institut de Génie Électrique et Électronique">
-    <meta property="og:description" content="Pôle d'excellence en génie électrique et électronique à l'Université de Boumerdès.">
+    <meta property="og:title" content="IGEE - Institute of Electrical and Electronic Engineering">
+    <meta property="og:description" content="Center of excellence in electrical and electronic engineering at the University of Boumerdès.">
     <meta property="og:image" content="entree.jpg">
     <meta property="og:url" content="https://igee.univ-boumerdes.dz/">
     <meta name="twitter:card" content="summary_large_image">
@@ -34,6 +34,9 @@
             --white: #ffffff;
             --usa-blue: #3c3b6e;
             --usa-red: #b22234;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --radius: 12px;
@@ -77,7 +80,13 @@
         .btn-primary:hover { background: var(--accent-hover); transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 25px rgba(0, 168, 232, 0.4); }
         .btn-outline { background: transparent; color: var(--white); border: 2px solid var(--white); }
         .btn-outline:hover { background: var(--white); color: var(--primary); transform: translateY(-3px) scale(1.03); }
+        .btn-success { background: var(--success); color: var(--white); }
+        .btn-success:hover { background: #059669; transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 25px rgba(16, 185, 129, 0.4); }
+        .btn-warning { background: var(--warning); color: var(--white); }
+        .btn-warning:hover { background: #d97706; transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 25px rgba(245, 158, 11, 0.4); }
+        .btn-sm { padding: 8px 18px; font-size: 0.85rem; }
 
+        /* ===== HEADER ===== */
         header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(10, 43, 94, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15); transition: var(--transition); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
         header.scrolled { background: rgba(10, 43, 94, 0.99); box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25); }
         nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; gap: 16px; }
@@ -112,6 +121,30 @@
             color: var(--white);
             background: rgba(0, 168, 232, 0.2);
         }
+
+        .nav-links > .nav-item > a.nav-elearn {
+            background: linear-gradient(135deg, rgba(0, 168, 232, 0.35), rgba(0, 168, 232, 0.15));
+            border: 1px solid rgba(0, 168, 232, 0.5);
+            color: var(--white) !important;
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-links > .nav-item > a.nav-elearn::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        .nav-links > .nav-item > a.nav-elearn:hover::after { left: 100%; }
+        .nav-links > .nav-item > a.nav-elearn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 168, 232, 0.5);
+        }
+        .nav-links > .nav-item > a.nav-elearn i { font-size: 0.85rem; }
 
         .dropdown-toggle i { font-size: 0.6rem; transition: transform 0.3s ease; margin-left: 2px; }
         .nav-item:hover .dropdown-toggle i { transform: rotate(180deg); }
@@ -209,6 +242,7 @@
         }
         .menu-toggle:hover { background: var(--accent); border-color: var(--accent); }
 
+        /* ===== HERO ===== */
         .hero { min-height: 100vh; display: flex; align-items: center; color: var(--white); padding: 120px 0 80px; position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(10, 43, 94, 0.85) 0%, rgba(26, 74, 138, 0.75) 100%), url('entree.jpg') center/cover no-repeat; background-attachment: fixed; }
         .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 30%, rgba(0, 168, 232, 0.15) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(0, 168, 232, 0.1) 0%, transparent 40%); animation: pulse-bg 8s ease-in-out infinite; }
         @keyframes pulse-bg { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
@@ -285,6 +319,118 @@
         .formation-card ul { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
         .formation-card ul li { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--text-light); }
         .formation-card ul li i { color: var(--accent); font-size: 0.8rem; }
+
+        /* ===== E-LEARNING PLATFORM ===== */
+        .elearning-section { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); position: relative; overflow: hidden; }
+
+        .elearn-hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 45px; align-items: center; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); border-radius: var(--radius); padding: 50px; color: var(--white); position: relative; overflow: hidden; box-shadow: var(--shadow-lg); margin-bottom: 60px; }
+        .elearn-hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(0, 168, 232, 0.25) 0%, transparent 70%); border-radius: 50%; animation: pulse-bg 6s ease-in-out infinite; }
+        .elearn-hero-content { position: relative; z-index: 2; }
+        .elearn-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0, 168, 232, 0.25); border: 1px solid rgba(0, 168, 232, 0.5); padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; margin-bottom: 18px; letter-spacing: 0.5px; backdrop-filter: blur(5px); }
+        .elearn-badge i { color: var(--accent); }
+        .elearn-hero h3 { font-size: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: 15px; line-height: 1.3; }
+        .elearn-hero h3 span { color: var(--accent); }
+        .elearn-hero p { font-size: 1rem; opacity: 0.9; margin-bottom: 25px; max-width: 550px; }
+        .elearn-hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+        .elearn-hero-image { position: relative; z-index: 2; display: flex; justify-content: center; align-items: center; }
+        .moodle-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 16px; padding: 25px; width: 100%; max-width: 340px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25); }
+        .moodle-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; padding-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.15); }
+        .moodle-card-header i { font-size: 2rem; color: var(--accent); }
+        .moodle-card-header h4 { font-size: 1.1rem; margin-bottom: 2px; }
+        .moodle-card-header p { font-size: 0.72rem; opacity: 0.7; margin: 0; }
+        .moodle-card-features { display: flex; flex-direction: column; gap: 12px; }
+        .moodle-feature { display: flex; align-items: center; gap: 12px; font-size: 0.88rem; }
+        .moodle-feature i { width: 32px; height: 32px; background: rgba(0, 168, 232, 0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 0.85rem; flex-shrink: 0; }
+
+        .elearn-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 60px; }
+        .elearn-stat { background: var(--white); border-radius: var(--radius); padding: 28px 20px; text-align: center; box-shadow: var(--shadow); border-top: 4px solid var(--accent); transition: var(--transition); }
+        .elearn-stat:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+        .elearn-stat i { font-size: 2rem; color: var(--accent); margin-bottom: 12px; display: inline-block; transition: var(--transition); }
+        .elearn-stat:hover i { transform: scale(1.2) rotate(-10deg); }
+        .elearn-stat h4 { font-size: 1.9rem; color: var(--primary); margin-bottom: 5px; font-family: 'Poppins', sans-serif; }
+        .elearn-stat p { font-size: 0.85rem; color: var(--text-light); margin: 0; }
+
+        .elearn-search { display: flex; align-items: center; gap: 10px; max-width: 720px; margin: 0 auto 30px; background: var(--white); border-radius: 50px; padding: 8px 8px 8px 25px; box-shadow: var(--shadow-lg); border: 2px solid transparent; transition: var(--transition); }
+        .elearn-search:focus-within { border-color: var(--accent); box-shadow: 0 10px 30px rgba(0, 168, 232, 0.25); }
+        .elearn-search > i.fa-search { color: var(--text-light); font-size: 1rem; }
+        .elearn-search input { flex: 1; border: none; background: none; padding: 12px 10px; font-family: inherit; font-size: 0.95rem; color: var(--text); outline: none; min-width: 0; }
+        .elearn-search select { border: none; background: none; padding: 12px 5px; font-family: inherit; font-size: 0.9rem; color: var(--text-light); cursor: pointer; outline: none; border-left: 1px solid #e2e8f0; }
+        .elearn-search button { background: var(--accent); color: var(--white); border: none; padding: 12px 25px; border-radius: 50px; font-family: inherit; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: var(--transition); display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+        .elearn-search button:hover { background: var(--accent-hover); transform: translateX(3px); }
+
+        .elearn-filters { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 45px; }
+        .elearn-filter { background: var(--white); border: 2px solid rgba(0, 0, 0, 0.06); color: var(--text-light); padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: var(--transition); font-family: inherit; }
+        .elearn-filter:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+        .elearn-filter.active { background: var(--accent); border-color: var(--accent); color: var(--white); box-shadow: 0 6px 20px rgba(0, 168, 232, 0.4); }
+
+        .elearn-categories-title { display: flex; align-items: center; gap: 12px; font-size: 1.4rem; color: var(--primary); margin-bottom: 25px; font-family: 'Poppins', sans-serif; font-weight: 600; }
+        .elearn-categories-title i { color: var(--accent); }
+        .elearn-categories-title .title-badge { font-size: 0.75rem; background: rgba(0, 168, 232, 0.1); color: var(--accent); padding: 3px 12px; border-radius: 50px; font-weight: 600; margin-left: auto; }
+        .elearn-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 60px; }
+        .elearn-category { background: var(--white); border-radius: var(--radius); padding: 28px 25px; box-shadow: var(--shadow); transition: var(--transition); position: relative; overflow: hidden; cursor: pointer; border-left: 4px solid var(--accent); text-decoration: none; color: inherit; display: block; }
+        .elearn-category:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-left-color: var(--primary); }
+        .elearn-category-icon { width: 60px; height: 60px; background: rgba(0, 168, 232, 0.1); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: var(--accent); margin-bottom: 18px; transition: var(--transition); }
+        .elearn-category:hover .elearn-category-icon { background: var(--accent); color: var(--white); transform: rotate(-8deg) scale(1.1); }
+        .elearn-category h4 { font-size: 1.1rem; color: var(--primary); margin-bottom: 8px; }
+        .elearn-category p { font-size: 0.88rem; color: var(--text-light); margin-bottom: 15px; }
+        .elearn-category-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid rgba(0, 0, 0, 0.06); }
+        .elearn-category-count { font-size: 0.8rem; color: var(--accent); font-weight: 600; }
+        .elearn-category-arrow { color: var(--accent); transition: var(--transition); }
+        .elearn-category:hover .elearn-category-arrow { transform: translateX(5px); }
+
+        .elearn-courses { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .elearn-course { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); display: flex; flex-direction: column; }
+        .elearn-course:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+        .elearn-course-header { padding: 22px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: var(--white); position: relative; overflow: hidden; }
+        .elearn-course-header::before { content: ''; position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: rgba(0, 168, 232, 0.18); border-radius: 50%; }
+        .elearn-course-code { display: inline-block; background: rgba(0, 168, 232, 0.3); border: 1px solid rgba(0, 168, 232, 0.5); padding: 3px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 10px; position: relative; z-index: 1; }
+        .elearn-course-header h4 { font-size: 1.05rem; position: relative; z-index: 1; line-height: 1.4; }
+        .elearn-course-body { padding: 22px; flex-grow: 1; display: flex; flex-direction: column; }
+        .elearn-course-body p { font-size: 0.88rem; color: var(--text-light); margin-bottom: 18px; flex-grow: 1; }
+        .elearn-course-meta { display: flex; gap: 15px; padding-top: 15px; border-top: 1px solid rgba(0, 0, 0, 0.06); flex-wrap: wrap; margin-bottom: 15px; }
+        .elearn-course-meta span { font-size: 0.78rem; color: var(--text-light); display: inline-flex; align-items: center; gap: 5px; }
+        .elearn-course-meta span i { color: var(--accent); }
+        .elearn-course-actions { display: flex; gap: 10px; }
+        .elearn-course-actions .btn { flex: 1; justify-content: center; padding: 10px 14px; font-size: 0.82rem; }
+
+        .elearn-corner { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 60px; }
+        .corner-card { border-radius: var(--radius); padding: 40px 35px; color: var(--white); position: relative; overflow: hidden; box-shadow: var(--shadow-lg); transition: var(--transition); }
+        .corner-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2); }
+        .corner-card.student { background: linear-gradient(135deg, #0a2b5e 0%, #1a4a8a 100%); }
+        .corner-card.teacher { background: linear-gradient(135deg, #005f8a 0%, #00a8e8 100%); }
+        .corner-card::before { content: ''; position: absolute; top: -50%; right: -30%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%); border-radius: 50%; animation: pulse-bg 6s ease-in-out infinite; }
+        .corner-card > * { position: relative; z-index: 1; }
+        .corner-icon { width: 70px; height: 70px; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--white); margin-bottom: 20px; }
+        .corner-card h3 { font-size: 1.4rem; margin-bottom: 12px; }
+        .corner-card p { font-size: 0.95rem; opacity: 0.9; margin-bottom: 20px; }
+        .corner-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; }
+        .corner-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; opacity: 0.95; }
+        .corner-list li i { color: #4dd0e1; margin-top: 3px; flex-shrink: 0; }
+        .corner-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        .elearn-quick-access { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 60px; }
+        .quick-access-card { background: var(--white); border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow); display: flex; align-items: center; gap: 20px; transition: var(--transition); border: 2px solid transparent; }
+        .quick-access-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
+        .quick-access-icon { width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: var(--white); flex-shrink: 0; }
+        .quick-access-icon.login { background: linear-gradient(135deg, var(--primary), var(--primary-light)); }
+        .quick-access-icon.register { background: linear-gradient(135deg, var(--accent), #4dd0e1); }
+        .quick-access-content { flex: 1; }
+        .quick-access-content h4 { font-size: 1.05rem; color: var(--primary); margin-bottom: 4px; }
+        .quick-access-content p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 12px; }
+        .quick-access-content .btn { padding: 8px 18px; font-size: 0.85rem; }
+
+        .elearn-resources { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .resource-card { background: var(--white); border-radius: var(--radius); padding: 25px; box-shadow: var(--shadow); transition: var(--transition); display: flex; align-items: flex-start; gap: 18px; border-left: 4px solid var(--accent); }
+        .resource-card:hover { transform: translateX(8px); box-shadow: var(--shadow-lg); }
+        .resource-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; color: var(--white); }
+        .resource-icon.pdf { background: #e74c3c; }
+        .resource-icon.video { background: #9b59b6; }
+        .resource-icon.doc { background: #3498db; }
+        .resource-icon.zip { background: #f39c12; }
+        .resource-content h4 { font-size: 1rem; color: var(--primary); margin-bottom: 5px; }
+        .resource-content p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 8px; }
+        .resource-content .resource-meta { font-size: 0.75rem; color: var(--text-light); display: flex; gap: 12px; }
+        .resource-content .resource-meta i { color: var(--accent); }
 
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
         .info-card { background: var(--white); border-radius: var(--radius); padding: 35px 30px; box-shadow: var(--shadow); border-left: 5px solid var(--accent); transition: var(--transition); }
@@ -420,175 +566,6 @@
         .news-link:hover { gap: 12px; }
         .news-badge { background: rgba(0, 168, 232, 0.1); color: var(--accent); padding: 3px 10px; border-radius: 50px; font-size: 0.72rem; font-weight: 600; }
 
-        /* ===== E-LEARNING SECTION ===== */
-        .elearning-toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-        .year-filter {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--bg);
-            padding: 12px 22px;
-            border-radius: 50px;
-            border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: var(--shadow);
-        }
-        .year-filter i { color: var(--accent); font-size: 1rem; }
-        .year-filter select {
-            border: none;
-            background: transparent;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            color: var(--primary);
-            font-size: 0.95rem;
-            cursor: pointer;
-            outline: none;
-        }
-        .search-bar {
-            display: flex;
-            align-items: center;
-            background: var(--white);
-            border-radius: 50px;
-            border: 1px solid rgba(0,0,0,0.05);
-            overflow: hidden;
-            flex: 1;
-            max-width: 400px;
-            box-shadow: var(--shadow);
-        }
-        .search-bar input {
-            flex: 1;
-            padding: 12px 20px;
-            border: none;
-            background: transparent;
-            font-family: inherit;
-            font-size: 0.95rem;
-            outline: none;
-            color: var(--text);
-        }
-        .search-bar button {
-            padding: 12px 22px;
-            background: var(--accent);
-            color: var(--white);
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .search-bar button:hover { background: var(--accent-hover); }
-
-        .department-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            margin-bottom: 20px;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-        .department-card:hover { box-shadow: var(--shadow-lg); }
-        .department-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 22px 28px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: var(--white);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .department-header:hover { background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent) 100%); }
-        .department-header h3 { font-size: 1.1rem; display: flex; align-items: center; gap: 12px; }
-        .department-header .toggle-icon { font-size: 1.2rem; transition: transform 0.3s ease; }
-        .department-card.active .toggle-icon { transform: rotate(180deg); }
-        .department-body {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-        }
-        .department-card.active .department-body { max-height: 2000px; }
-
-        .course-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            padding: 25px;
-        }
-        .course-card {
-            background: var(--bg);
-            border-radius: 10px;
-            padding: 20px;
-            transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-        .course-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-            border-color: var(--accent);
-        }
-        .course-card .course-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 168, 232, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-        .course-card h4 { font-size: 1rem; color: var(--primary); margin-bottom: 8px; }
-        .course-card .course-meta {
-            display: flex;
-            gap: 15px;
-            font-size: 0.8rem;
-            color: var(--text-light);
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-        .course-card .course-meta span { display: flex; align-items: center; gap: 5px; }
-        .course-card .progress-bar {
-            height: 6px;
-            background: rgba(0,0,0,0.08);
-            border-radius: 3px;
-            overflow: hidden;
-            margin-bottom: 15px;
-        }
-        .course-card .progress-bar .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent), #4dd0e1);
-            border-radius: 3px;
-            transition: width 0.5s ease;
-        }
-        .course-card .btn-access {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 18px;
-            background: var(--accent);
-            color: var(--white);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        .course-card .btn-access:hover { background: var(--accent-hover); gap: 12px; }
-
-        body.dark-mode .department-card,
-        body.dark-mode .course-card,
-        body.dark-mode .year-filter,
-        body.dark-mode .search-bar {
-            background: #1e293b;
-            border-color: rgba(255,255,255,0.1);
-        }
-        body.dark-mode .course-card h4 { color: #e2e8f0; }
-        body.dark-mode .year-filter select { color: #e2e8f0; }
-        body.dark-mode .search-bar input { color: #e2e8f0; }
-
         .faq-grid { max-width: 850px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
         .faq-item { background: var(--white); border-radius: 10px; box-shadow: var(--shadow); overflow: hidden; border-left: 4px solid var(--accent); transition: var(--transition); }
         .faq-item:hover { box-shadow: var(--shadow-lg); }
@@ -649,8 +626,8 @@
         .contact-form h3 { font-size: 1.3rem; color: var(--primary); margin-bottom: 25px; }
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; font-size: 0.9rem; font-weight: 500; margin-bottom: 8px; color: var(--text); }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px 16px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: inherit; font-size: 0.95rem; transition: var(--transition); background: var(--bg); }
-        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0, 168, 232, 0.15); background: var(--white); }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px 16px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: inherit; font-size: 0.95rem; transition: var(--transition); background: var(--bg); }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0, 168, 232, 0.15); background: var(--white); }
         .form-group textarea { resize: vertical; min-height: 120px; }
 
         .map-container { margin-top: 60px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
@@ -693,15 +670,17 @@
         .scroll-top:hover { transform: translateY(-5px) scale(1.1) rotate(360deg); box-shadow: 0 15px 35px rgba(0, 168, 232, 0.6); }
 
         body.dark-mode { --bg: #0f172a; --white: #1e293b; --text: #e2e8f0; --text-light: #94a3b8; --primary: #1e40af; --primary-light: #3b82f6; }
-        body.dark-mode .card, body.dark-mode .info-card, body.dark-mode .csi-member, body.dark-mode .news-card, body.dark-mode .document-card, body.dark-mode .life-card, body.dark-mode .club-activity, body.dark-mode .research-item, body.dark-mode .library-space, body.dark-mode .library-hours, body.dark-mode .program-highlight, body.dark-mode .faq-item, body.dark-mode .contact-form, body.dark-mode .dropdown-menu, body.dark-mode .department-card, body.dark-mode .course-card, body.dark-mode .year-filter, body.dark-mode .search-bar { background: #1e293b; border-color: rgba(255, 255, 255, 0.1); }
+        body.dark-mode .card, body.dark-mode .info-card, body.dark-mode .csi-member, body.dark-mode .news-card, body.dark-mode .document-card, body.dark-mode .life-card, body.dark-mode .club-activity, body.dark-mode .research-item, body.dark-mode .library-space, body.dark-mode .library-hours, body.dark-mode .program-highlight, body.dark-mode .faq-item, body.dark-mode .contact-form, body.dark-mode .dropdown-menu, body.dark-mode .elearn-stat, body.dark-mode .elearn-category, body.dark-mode .elearn-course, body.dark-mode .elearn-search, body.dark-mode .resource-card, body.dark-mode .quick-access-card { background: #1e293b; border-color: rgba(255, 255, 255, 0.1); }
         body.dark-mode .dropdown-menu::before { background: #1e293b; }
         body.dark-mode .dropdown-menu a { color: #e2e8f0; }
         body.dark-mode .dropdown-menu a:hover { background: rgba(0, 168, 232, 0.15); }
-        body.dark-mode .section-header h2, body.dark-mode .card h3, body.dark-mode .info-card h3, body.dark-mode .csi-member h4, body.dark-mode .news-card-body h3, body.dark-mode .contact-item h4, body.dark-mode .life-card h4, body.dark-mode .faq-question, body.dark-mode .international-text h3, body.dark-mode .course-card h4 { color: #e2e8f0; }
-        body.dark-mode .international-section { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        body.dark-mode .section-header h2, body.dark-mode .card h3, body.dark-mode .info-card h3, body.dark-mode .csi-member h4, body.dark-mode .news-card-body h3, body.dark-mode .contact-item h4, body.dark-mode .life-card h4, body.dark-mode .faq-question, body.dark-mode .international-text h3, body.dark-mode .elearn-stat h4, body.dark-mode .elearn-category h4, body.dark-mode .elearn-categories-title, body.dark-mode .resource-content h4, body.dark-mode .quick-access-content h4 { color: #e2e8f0; }
+        body.dark-mode .international-section, body.dark-mode .elearning-section { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
         body.dark-mode .about-image { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); }
-        body.dark-mode .year-filter select { color: #e2e8f0; }
-        body.dark-mode .search-bar input { color: #e2e8f0; }
+        body.dark-mode .elearn-search input, body.dark-mode .elearn-search select { color: #e2e8f0; }
+        body.dark-mode .elearn-search select { border-left-color: rgba(255, 255, 255, 0.1); }
+        body.dark-mode .elearn-course-meta, body.dark-mode .elearn-category-footer { border-top-color: rgba(255, 255, 255, 0.1); }
+        body.dark-mode .elearn-filter { border-color: rgba(255, 255, 255, 0.1); }
 
         .fade-in { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -724,13 +703,15 @@
             .theme-toggle { padding: 0 12px; font-size: 0.75rem; }
         }
         @media (max-width: 992px) {
-            .about-grid, .research-grid, .contact-grid, .director-grid, .csi-grid, .library-grid, .info-grid, .club-grid, .international-content { grid-template-columns: 1fr; gap: 40px; }
+            .about-grid, .research-grid, .contact-grid, .director-grid, .csi-grid, .library-grid, .info-grid, .club-grid, .international-content, .elearn-hero, .elearn-corner, .elearn-quick-access { grid-template-columns: 1fr; gap: 40px; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .hero-stats { grid-template-columns: repeat(2, 1fr); }
             .flag-wrapper { width: 140px; height: 95px; }
             .share-sidebar { left: auto; right: 15px; top: auto; bottom: 100px; transform: none; }
             .share-btn { width: 42px; height: 42px; font-size: 1rem; }
             .share-btn::before { display: none; }
+            .elearn-stats { grid-template-columns: repeat(2, 1fr); }
+            .elearning-hero { padding: 35px; }
         }
         @media (max-width: 768px) {
             nav { padding: 8px 0; gap: 10px; }
@@ -792,8 +773,10 @@
             .contact-form { padding: 25px; }
             .flags-container { gap: 15px; }
             .flag-wrapper { width: 120px; height: 80px; }
-            .elearning-toolbar { flex-direction: column; align-items: stretch; }
-            .search-bar { max-width: 100%; }
+            .elearn-search { padding: 6px 6px 6px 18px; flex-wrap: wrap; border-radius: 20px; }
+            .elearn-search input { width: 100%; }
+            .elearn-search select { border-left: none; border-top: 1px solid #e2e8f0; width: 100%; }
+            .elearn-search button { width: 100%; justify-content: center; }
         }
         @media (max-width: 480px) {
             .logo-text span:last-child { display: none; }
@@ -805,6 +788,11 @@
             .share-sidebar { bottom: 80px; right: 10px; }
             .share-btn { width: 38px; height: 38px; font-size: 0.9rem; }
             .footer-bottom { flex-direction: column; gap: 10px; }
+            .elearn-stats { grid-template-columns: 1fr; }
+            .elearn-hero-buttons { flex-direction: column; }
+            .elearn-hero-buttons .btn { justify-content: center; }
+            .elearn-course-actions { flex-direction: column; }
+            .elearn-course-actions .btn { width: 100%; }
         }
     </style>
 </head>
@@ -813,11 +801,11 @@
     <div class="scroll-progress" id="scrollProgress"></div>
 
     <div class="share-sidebar">
-        <button class="share-btn facebook" data-tooltip="Partager sur Facebook" onclick="shareFacebook()" aria-label="Facebook"><i class="fab fa-facebook-f"></i></button>
-        <button class="share-btn twitter" data-tooltip="Partager sur Twitter / X" onclick="shareTwitter()" aria-label="Twitter"><i class="fab fa-twitter"></i></button>
-        <button class="share-btn linkedin" data-tooltip="Partager sur LinkedIn" onclick="shareLinkedIn()" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
-        <button class="share-btn whatsapp" data-tooltip="Partager sur WhatsApp" onclick="shareWhatsApp()" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></button>
-        <button class="share-btn email" data-tooltip="Partager par Email" onclick="shareEmail()" aria-label="Email"><i class="fas fa-envelope"></i></button>
+        <button class="share-btn facebook" data-tooltip="Share on Facebook" onclick="shareFacebook()" aria-label="Facebook"><i class="fab fa-facebook-f"></i></button>
+        <button class="share-btn twitter" data-tooltip="Share on Twitter / X" onclick="shareTwitter()" aria-label="Twitter"><i class="fab fa-twitter"></i></button>
+        <button class="share-btn linkedin" data-tooltip="Share on LinkedIn" onclick="shareLinkedIn()" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+        <button class="share-btn whatsapp" data-tooltip="Share on WhatsApp" onclick="shareWhatsApp()" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+        <button class="share-btn email" data-tooltip="Share by Email" onclick="shareEmail()" aria-label="Email"><i class="fas fa-envelope"></i></button>
     </div>
 
     <header id="header">
@@ -827,50 +815,54 @@
                     <img src="logo.jpg" alt="Logo" class="logo-img">
                     <div class="logo-text">
                         <span>IGEE</span>
-                        <span>Institut de Génie Électrique & Électronique</span>
+                        <span>Institute of Electrical & Electronic Engineering</span>
                     </div>
                 </a>
                 <ul class="nav-links" id="navLinks">
-                    <li class="nav-item"><a href="#accueil" class="active">Accueil</a></li>
+                    <li class="nav-item"><a href="#accueil" class="active">Home</a></li>
                     <li class="nav-item">
-                        <button class="dropdown-toggle">Institut <i class="fas fa-chevron-down"></i></button>
+                        <button class="dropdown-toggle">Institute <i class="fas fa-chevron-down"></i></button>
                         <div class="dropdown-menu">
-                            <a href="#institut"><i class="fas fa-info-circle"></i> À propos</a>
-                            <a href="#directeur"><i class="fas fa-user-tie"></i> Mot du Directeur</a>
-                            <a href="#departements"><i class="fas fa-sitemap"></i> Départements</a>
+                            <a href="#institut"><i class="fas fa-info-circle"></i> About</a>
+                            <a href="#directeur"><i class="fas fa-user-tie"></i> Director's Message</a>
+                            <a href="#departements"><i class="fas fa-sitemap"></i> Departments</a>
                             <a href="#csi"><i class="fas fa-gavel"></i> CSI</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <button class="dropdown-toggle">Formations <i class="fas fa-chevron-down"></i></button>
+                        <button class="dropdown-toggle">Programs <i class="fas fa-chevron-down"></i></button>
                         <div class="dropdown-menu">
-                            <a href="#formations"><i class="fas fa-graduation-cap"></i> Licence & Master</a>
+                            <a href="#formations"><i class="fas fa-graduation-cap"></i> Bachelor & Master</a>
                             <a href="#graduation"><i class="fas fa-scroll"></i> Graduation</a>
-                            <a href="#post-graduation"><i class="fas fa-flask"></i> Post-Graduation</a>
-                            <a href="#infrastructures"><i class="fas fa-building"></i> Infrastructures</a>
+                            <a href="#post-graduation"><i class="fas fa-flask"></i> Postgraduate</a>
+                            <a href="#infrastructures"><i class="fas fa-building"></i> Facilities</a>
                         </div>
                     </li>
-                    <li class="nav-item"><a href="#elearning">E-learning</a></li>
-                    <li class="nav-item"><a href="#recherche">Recherche</a></li>
+                    <li class="nav-item">
+                        <a href="#elearning" class="nav-elearn">
+                            <i class="fas fa-laptop-code"></i> E-Learning
+                        </a>
+                    </li>
+                    <li class="nav-item"><a href="#recherche">Research</a></li>
                     <li class="nav-item"><a href="#international">International</a></li>
                     <li class="nav-item">
-                        <button class="dropdown-toggle">Vie Institut <i class="fas fa-chevron-down"></i></button>
+                        <button class="dropdown-toggle">Institute Life <i class="fas fa-chevron-down"></i></button>
                         <div class="dropdown-menu">
-                            <a href="#bibliotheque"><i class="fas fa-book"></i> Bibliothèque</a>
-                            <a href="#activites"><i class="fas fa-users-cog"></i> Activités</a>
-                            <a href="#vie-etudiante"><i class="fas fa-heart"></i> Vie étudiante</a>
-                            <a href="#galerie"><i class="fas fa-images"></i> Galerie</a>
+                            <a href="#bibliotheque"><i class="fas fa-book"></i> Library</a>
+                            <a href="#activites"><i class="fas fa-users-cog"></i> Activities</a>
+                            <a href="#vie-etudiante"><i class="fas fa-heart"></i> Student Life</a>
+                            <a href="#galerie"><i class="fas fa-images"></i> Gallery</a>
                         </div>
                     </li>
-                    <li class="nav-item"><a href="#actualites">Actualités</a></li>
+                    <li class="nav-item"><a href="#actualites">News</a></li>
                     <li class="nav-item"><a href="#documents">Documents</a></li>
                     <li class="nav-item"><a href="#faq">FAQ</a></li>
                     <li class="nav-item"><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="nav-actions">
-                    <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Change theme">
                         <i class="fas fa-moon"></i>
-                        <span class="toggle-text">Mode sombre</span>
+                        <span class="toggle-text">Dark mode</span>
                     </button>
                     <button class="menu-toggle" id="menuToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
                 </div>
@@ -882,18 +874,433 @@
         <div class="particles" id="particles"></div>
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge"><i class="fas fa-university"></i> Université M'Hamed Bougara de Boumerdès</div>
-                <h1>L'excellence en <span>génie électrique</span> et <span>électronique</span></h1>
-                <p>L'IGEE forme les ingénieurs et chercheurs de demain dans les domaines de l'électronique, des télécommunications, de l'automatique et de l'électrotechnique.</p>
+                <div class="hero-badge"><i class="fas fa-university"></i> M'Hamed Bougara University of Boumerdès</div>
+                <h1>Excellence in <span>electrical engineering</span> and <span>electronics</span></h1>
+                <p>IGEE trains tomorrow's engineers and researchers in the fields of electronics, telecommunications, automatic control and electrical engineering. All courses are taught entirely in English.</p>
                 <div class="hero-buttons">
-                    <a href="#formations" class="btn btn-primary"><i class="fas fa-graduation-cap"></i> Découvrir nos formations</a>
-                    <a href="#elearning" class="btn btn-outline"><i class="fas fa-laptop"></i> E-learning Platform</a>
+                    <a href="#elearning" class="btn btn-primary"><i class="fas fa-laptop-code"></i> Access E-Learning Platform</a>
+                    <a href="#formations" class="btn btn-outline"><i class="fas fa-graduation-cap"></i> Discover our programs</a>
                 </div>
                 <div class="hero-stats">
-                    <div class="stat-item"><h3><span class="counter" data-target="3">0</span></h3><p>Départements</p></div>
-                    <div class="stat-item"><h3><span class="counter" data-target="5">0</span>+</h3><p>Laboratoires</p></div>
-                    <div class="stat-item"><h3><span class="counter" data-target="1500">0</span>+</h3><p>Étudiants</p></div>
-                    <div class="stat-item"><h3><span class="counter" data-target="160">0</span>+</h3><p>Enseignants</p></div>
+                    <div class="stat-item"><h3><span class="counter" data-target="3">0</span></h3><p>Departments</p></div>
+                    <div class="stat-item"><h3><span class="counter" data-target="5">0</span>+</h3><p>Laboratories</p></div>
+                    <div class="stat-item"><h3><span class="counter" data-target="1500">0</span>+</h3><p>Students</p></div>
+                    <div class="stat-item"><h3><span class="counter" data-target="160">0</span>+</h3><p>Faculty Members</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== E-LEARNING PLATFORM SECTION (ENGLISH ONLY) ===== -->
+    <section id="elearning" class="elearning-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>IGEE E-Learning Platform</h2>
+                <div class="underline"></div>
+                <p>A fast, stable and fully English-taught learning environment for IGEE students and teachers.</p>
+            </div>
+
+            <!-- Hero Banner -->
+            <div class="elearn-hero fade-in">
+                <div class="elearn-hero-content">
+                    <div class="elearn-badge"><i class="fas fa-graduation-cap"></i> Powered by Moodle LMS</div>
+                    <h3>Your <span>English-taught</span> online learning space, available 24/7</h3>
+                    <p>Access your courses, assignments, quizzes, resources and grades from any device. Built for performance and stability — designed for the English-only curriculum of IGEE.</p>
+                    <div class="elearn-hero-buttons">
+                        <a href="https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700" target="_blank" rel="noopener" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i> Access Platform
+                        </a>
+                        <a href="https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700" target="_blank" rel="noopener" class="btn btn-outline">
+                            <i class="fas fa-book-open"></i> Browse Courses
+                        </a>
+                    </div>
+                </div>
+                <div class="elearn-hero-image">
+                    <div class="moodle-card">
+                        <div class="moodle-card-header">
+                            <i class="fas fa-laptop-code"></i>
+                            <div>
+                                <h4>Moodle Platform</h4>
+                                <p>elearning.univ-boumerdes.dz</p>
+                            </div>
+                        </div>
+                        <div class="moodle-card-features">
+                            <div class="moodle-feature"><i class="fas fa-book"></i><span>Course materials & resources</span></div>
+                            <div class="moodle-feature"><i class="fas fa-tasks"></i><span>Assignments & quizzes</span></div>
+                            <div class="moodle-feature"><i class="fas fa-comments"></i><span>Forums & discussions</span></div>
+                            <div class="moodle-feature"><i class="fas fa-chart-line"></i><span>Grades & progress tracking</span></div>
+                            <div class="moodle-feature"><i class="fas fa-mobile-alt"></i><span>Mobile app available</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Access: Login / Register -->
+            <div class="elearn-quick-access fade-in">
+                <div class="quick-access-card">
+                    <div class="quick-access-icon login"><i class="fas fa-sign-in-alt"></i></div>
+                    <div class="quick-access-content">
+                        <h4>Student & Teacher Login</h4>
+                        <p>Already have an account? Sign in to access your courses.</p>
+                        <a href="https://elearning.univ-boumerdes.dz/login/index.php" target="_blank" rel="noopener" class="btn btn-primary btn-sm"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                    </div>
+                </div>
+                <div class="quick-access-card">
+                    <div class="quick-access-icon register"><i class="fas fa-user-plus"></i></div>
+                    <div class="quick-access-content">
+                        <h4>New Account Request</h4>
+                        <p>New student or teacher? Request your Moodle account via the administration.</p>
+                        <a href="#contact" class="btn btn-success btn-sm"><i class="fas fa-envelope"></i> Request Access</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="elearn-stats">
+                <div class="elearn-stat fade-in stagger-1">
+                    <i class="fas fa-book-open"></i>
+                    <h4><span class="counter" data-target="120">0</span>+</h4>
+                    <p>Online Courses</p>
+                </div>
+                <div class="elearn-stat fade-in stagger-2">
+                    <i class="fas fa-users"></i>
+                    <h4><span class="counter" data-target="1500">0</span>+</h4>
+                    <p>Active Students</p>
+                </div>
+                <div class="elearn-stat fade-in stagger-3">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h4><span class="counter" data-target="160">0</span>+</h4>
+                    <p>Teachers</p>
+                </div>
+                <div class="elearn-stat fade-in stagger-4">
+                    <i class="fas fa-file-alt"></i>
+                    <h4><span class="counter" data-target="850">0</span>+</h4>
+                    <p>Learning Resources</p>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="elearn-search fade-in">
+                <i class="fas fa-search"></i>
+                <input type="text" id="elearnSearchInput" placeholder="Search for a course, a module, a teacher..." aria-label="Search courses">
+                <select id="elearnSearchLevel" aria-label="Filter by level">
+                    <option value="">All Levels</option>
+                    <option value="L1">L1 - First Year</option>
+                    <option value="L2">L2 - Second Year</option>
+                    <option value="L3">L3 - Third Year</option>
+                    <option value="M1">M1 - Master 1</option>
+                    <option value="M2">M2 - Master 2</option>
+                    <option value="DOC">Doctorate</option>
+                </select>
+                <button onclick="searchCourses()"><i class="fas fa-arrow-right"></i> <span>Search</span></button>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="elearn-filters fade-in">
+                <button class="elearn-filter active" onclick="filterCourses('all', this)">All Courses</button>
+                <button class="elearn-filter" onclick="filterCourses('L1', this)">L1</button>
+                <button class="elearn-filter" onclick="filterCourses('L2', this)">L2</button>
+                <button class="elearn-filter" onclick="filterCourses('L3', this)">L3</button>
+                <button class="elearn-filter" onclick="filterCourses('M1', this)">M1</button>
+                <button class="elearn-filter" onclick="filterCourses('M2', this)">M2</button>
+                <button class="elearn-filter" onclick="filterCourses('DOC', this)">Doctorate</button>
+            </div>
+
+            <!-- Categories -->
+            <h3 class="elearn-categories-title fade-in" id="elearn-categories">
+                <i class="fas fa-layer-group"></i> Course Categories
+                <span class="title-badge">6 Departments</span>
+            </h3>
+            <div class="elearn-categories">
+                <a href="https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700" target="_blank" rel="noopener" class="elearn-category fade-in stagger-1">
+                    <div class="elearn-category-icon"><i class="fas fa-bolt"></i></div>
+                    <h4>Electrical Engineering</h4>
+                    <p>Circuits, machines, power systems and electrical networks.</p>
+                    <div class="elearn-category-footer">
+                        <span class="elearn-category-count">24 courses</span>
+                        <i class="fas fa-arrow-right elearn-category-arrow"></i>
+                    </div>
+                </a>
+                <a href="https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700" target="_blank" rel="noopener" class="elearn-category fade-in stagger-2">
+                    <div class="elearn-category-icon"><i class="fas fa-microchip"></i></div>
+                    <h4>Electronics</h4>
+                    <p>Analog & digital electronics, microprocessors, embedded systems.</p>
+                    <div class="elearn-category-footer">
+                        <span class="elearn-category-count">32 courses</span>
+                        <i class="fas fa-arrow-right elearn-category-arrow"></i>
+                    </div>
+                </a>
+                <a href="https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700" target="_blank" rel="noopener" class="elearn-category fade-in stagger-3">
+                    <div class="elearn-category-icon"><i class="fas fa-satellite-dish"></i></div>
+                    <h4>Telecommunications</h4>
+                    <p>Networks, 5G, optical communications and signal processing.</p>
+                    <div class="elearn-category-footer">
+                        <span class="elearn-category-count">28 courses</span>
+                        <i class="fas fa-arrow-right elearn-category-arrow"></i>
+                    </div>
+                </a>
+                <a href="https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700" target="_blank" rel="noopener" class="elearn-category fade-in stagger-4">
+                    <div class="elearn-category-icon"><i class="fas fa-robot"></i></div>
+                    <h4>Automatic Control</h4>
+                    <p>Control systems, robotics, industrial automation and AI.</p>
+                    <div class="elearn-category-footer">
+                        <span class="elearn-category-count">20 courses</span>
+                        <i class="fas fa-arrow-right elearn-category-arrow"></i>
+                    </div>
+                </a>
+                <a href="https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700" target="_blank" rel="noopener" class="elearn-category fade-in stagger-5">
+                    <div class="elearn-category-icon"><i class="fas fa-solar-panel"></i></div>
+                    <h4>Renewable Energy</h4>
+                    <p>Photovoltaics, wind energy, smart grids and storage.</p>
+                    <div class="elearn-category-footer">
+                        <span class="elearn-category-count">16 courses</span>
+                        <i class="fas fa-arrow-right elearn-category-arrow"></i>
+                    </div>
+                </a>
+                <a href="https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700" target="_blank" rel="noopener" class="elearn-category fade-in stagger-6">
+                    <div class="elearn-category-icon"><i class="fas fa-book-open"></i></div>
+                    <h4>Basic Education</h4>
+                    <p>Mathematics, physics, computer science and engineering sciences.</p>
+                    <div class="elearn-category-footer">
+                        <span class="elearn-category-count">18 courses</span>
+                        <i class="fas fa-arrow-right elearn-category-arrow"></i>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Featured Courses -->
+            <h3 class="elearn-categories-title fade-in" id="elearn-courses">
+                <i class="fas fa-star"></i> Featured Courses
+                <span class="title-badge">English-taught</span>
+            </h3>
+            <div class="elearn-courses" id="elearnCoursesGrid">
+                <div class="elearn-course fade-in stagger-1" data-level="L3">
+                    <div class="elearn-course-header">
+                        <span class="elearn-course-code">ELEC 301 · L3</span>
+                        <h4>Analog & Digital Electronics</h4>
+                    </div>
+                    <div class="elearn-course-body">
+                        <p>Master the fundamentals of semiconductor devices, amplifiers and digital logic design.</p>
+                        <div class="elearn-course-meta">
+                            <span><i class="fas fa-user-tie"></i> Dr. AMMAR</span>
+                            <span><i class="fas fa-clock"></i> 12 weeks</span>
+                            <span><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                        <div class="elearn-course-actions">
+                            <a href="https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700" target="_blank" rel="noopener" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Open in Moodle</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="elearn-course fade-in stagger-2" data-level="M1">
+                    <div class="elearn-course-header">
+                        <span class="elearn-course-code">TEL 402 · M1</span>
+                        <h4>Wireless & Mobile Networks</h4>
+                    </div>
+                    <div class="elearn-course-body">
+                        <p>From 4G LTE to 5G NR: architecture, protocols and radio resource management.</p>
+                        <div class="elearn-course-meta">
+                            <span><i class="fas fa-user-tie"></i> Prof. MERAIHI</span>
+                            <span><i class="fas fa-clock"></i> 14 weeks</span>
+                            <span><i class="fas fa-star"></i> 4.9</span>
+                        </div>
+                        <div class="elearn-course-actions">
+                            <a href="https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700" target="_blank" rel="noopener" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Open in Moodle</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="elearn-course fade-in stagger-3" data-level="M1">
+                    <div class="elearn-course-header">
+                        <span class="elearn-course-code">AUTO 305 · M1</span>
+                        <h4>Modern Control Systems</h4>
+                    </div>
+                    <div class="elearn-course-body">
+                        <p>State-space representation, observers, optimal control and robotic applications.</p>
+                        <div class="elearn-course-meta">
+                            <span><i class="fas fa-user-tie"></i> Dr. TABET</span>
+                            <span><i class="fas fa-clock"></i> 12 weeks</span>
+                            <span><i class="fas fa-star"></i> 4.7</span>
+                        </div>
+                        <div class="elearn-course-actions">
+                            <a href="https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700" target="_blank" rel="noopener" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Open in Moodle</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="elearn-course fade-in stagger-4" data-level="M2">
+                    <div class="elearn-course-header">
+                        <span class="elearn-course-code">ENR 501 · M2</span>
+                        <h4>Photovoltaic Energy Systems</h4>
+                    </div>
+                    <div class="elearn-course-body">
+                        <p>Solar cell modeling, MPPT algorithms, grid-connected PV systems and storage.</p>
+                        <div class="elearn-course-meta">
+                            <span><i class="fas fa-user-tie"></i> Prof. CHALLAL</span>
+                            <span><i class="fas fa-clock"></i> 10 weeks</span>
+                            <span><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                        <div class="elearn-course-actions">
+                            <a href="https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700" target="_blank" rel="noopener" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Open in Moodle</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="elearn-course fade-in stagger-5" data-level="L3">
+                    <div class="elearn-course-header">
+                        <span class="elearn-course-code">SIG 401 · L3</span>
+                        <h4>Digital Signal Processing</h4>
+                    </div>
+                    <div class="elearn-course-body">
+                        <p>Sampling, Z-transform, FIR/IIR filters, FFT and real-time implementations.</p>
+                        <div class="elearn-course-meta">
+                            <span><i class="fas fa-user-tie"></i> Prof. AOUAROUN</span>
+                            <span><i class="fas fa-clock"></i> 12 weeks</span>
+                            <span><i class="fas fa-star"></i> 4.6</span>
+                        </div>
+                        <div class="elearn-course-actions">
+                            <a href="https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700" target="_blank" rel="noopener" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Open in Moodle</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="elearn-course fade-in stagger-6" data-level="M2">
+                    <div class="elearn-course-header">
+                        <span class="elearn-course-code">IA 601 · M2</span>
+                        <h4>Artificial Intelligence & Machine Learning</h4>
+                    </div>
+                    <div class="elearn-course-body">
+                        <p>Supervised & unsupervised learning, neural networks, computer vision and applications.</p>
+                        <div class="elearn-course-meta">
+                            <span><i class="fas fa-user-tie"></i> Dr. MERAIHI</span>
+                            <span><i class="fas fa-clock"></i> 14 weeks</span>
+                            <span><i class="fas fa-star"></i> 4.9</span>
+                        </div>
+                        <div class="elearn-course-actions">
+                            <a href="https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700" target="_blank" rel="noopener" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Open in Moodle</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student & Teacher Corners -->
+            <div class="elearn-corner" style="margin-top: 60px;">
+                <div class="corner-card student fade-in slide-left">
+                    <div class="corner-icon"><i class="fas fa-user-graduate"></i></div>
+                    <h3>Student Corner</h3>
+                    <p>Everything you need to succeed in your English-taught courses at IGEE.</p>
+                    <ul class="corner-list">
+                        <li><i class="fas fa-check-circle"></i> Access course materials and lecture notes</li>
+                        <li><i class="fas fa-check-circle"></i> Submit assignments and take online quizzes</li>
+                        <li><i class="fas fa-check-circle"></i> Track your grades and progress in real time</li>
+                        <li><i class="fas fa-check-circle"></i> Participate in discussion forums with peers</li>
+                        <li><i class="fas fa-check-circle"></i> Download the Moodle mobile app</li>
+                    </ul>
+                    <div class="corner-buttons">
+                        <a href="https://elearning.univ-boumerdes.dz/login/index.php" target="_blank" rel="noopener" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Student Login</a>
+                        <a href="#faq-elearning" class="btn btn-outline"><i class="fas fa-question-circle"></i> Student FAQ</a>
+                    </div>
+                </div>
+                <div class="corner-card teacher fade-in slide-right">
+                    <div class="corner-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h3>Teacher Corner</h3>
+                    <p>Powerful tools to create, manage and deliver your English-taught courses.</p>
+                    <ul class="corner-list">
+                        <li><i class="fas fa-check-circle"></i> Create and organize your courses easily</li>
+                        <li><i class="fas fa-check-circle"></i> Upload resources (PDF, video, slides)</li>
+                        <li><i class="fas fa-check-circle"></i> Design quizzes with automatic grading</li>
+                        <li><i class="fas fa-check-circle"></i> Track student performance and engagement</li>
+                        <li><i class="fas fa-check-circle"></i> Communicate via announcements and forums</li>
+                    </ul>
+                    <div class="corner-buttons">
+                        <a href="https://elearning.univ-boumerdes.dz/login/index.php" target="_blank" rel="noopener" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Teacher Login</a>
+                        <a href="#contact" class="btn btn-outline"><i class="fas fa-headset"></i> Request Training</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Platform Features -->
+            <h3 class="elearn-categories-title fade-in">
+                <i class="fas fa-cogs"></i> Platform Features
+                <span class="title-badge">Built for performance</span>
+            </h3>
+            <div class="elearn-features">
+                <div class="elearn-feature-card fade-in stagger-1">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h4>Fast & Reliable</h4>
+                    <p>Optimized infrastructure with Redis cache and CDN for instant page loads.</p>
+                </div>
+                <div class="elearn-feature-card fade-in stagger-2">
+                    <div class="feature-icon"><i class="fas fa-language"></i></div>
+                    <h4>100% English</h4>
+                    <p>All courses, interfaces and resources are exclusively in English — no translation needed.</p>
+                </div>
+                <div class="elearn-feature-card fade-in stagger-3">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h4>Mobile Ready</h4>
+                    <p>Official Moodle app for iOS and Android — study anywhere, anytime.</p>
+                </div>
+                <div class="elearn-feature-card fade-in stagger-4">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4>Secure & Private</h4>
+                    <p>HTTPS encryption and secure authentication protect your data.</p>
+                </div>
+            </div>
+
+            <!-- Resources Library -->
+            <h3 class="elearn-categories-title fade-in" style="margin-top: 60px;">
+                <i class="fas fa-download"></i> Downloadable Resources
+                <span class="title-badge">Free access</span>
+            </h3>
+            <div class="elearn-resources">
+                <div class="resource-card fade-in stagger-1">
+                    <div class="resource-icon pdf"><i class="fas fa-file-pdf"></i></div>
+                    <div class="resource-content">
+                        <h4>Student Guide 2026</h4>
+                        <p>Complete guide to using the Moodle platform, in English.</p>
+                        <div class="resource-meta"><span><i class="fas fa-file"></i> PDF · 2.4 MB</span><span><i class="fas fa-download"></i> 1,240</span></div>
+                    </div>
+                </div>
+                <div class="resource-card fade-in stagger-2">
+                    <div class="resource-icon pdf"><i class="fas fa-file-pdf"></i></div>
+                    <div class="resource-content">
+                        <h4>Teacher Guide 2026</h4>
+                        <p>How to create courses, quizzes and manage students on Moodle.</p>
+                        <div class="resource-meta"><span><i class="fas fa-file"></i> PDF · 3.1 MB</span><span><i class="fas fa-download"></i> 680</span></div>
+                    </div>
+                </div>
+                <div class="resource-card fade-in stagger-3">
+                    <div class="resource-icon video"><i class="fas fa-video"></i></div>
+                    <div class="resource-content">
+                        <h4>Video Tutorial: First Login</h4>
+                        <p>Step-by-step guide to log in and navigate the platform.</p>
+                        <div class="resource-meta"><span><i class="fas fa-clock"></i> 4 min</span><span><i class="fas fa-eye"></i> 3,500</span></div>
+                    </div>
+                </div>
+                <div class="resource-card fade-in stagger-4">
+                    <div class="resource-icon doc"><i class="fas fa-file-word"></i></div>
+                    <div class="resource-content">
+                        <h4>Course Template</h4>
+                        <p>Ready-to-use template for teachers to structure their courses.</p>
+                        <div class="resource-meta"><span><i class="fas fa-file"></i> DOCX · 480 KB</span><span><i class="fas fa-download"></i> 320</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- E-Learning FAQ -->
+            <h3 class="elearn-categories-title fade-in" id="faq-elearning" style="margin-top: 60px;">
+                <i class="fas fa-question-circle"></i> E-Learning FAQ
+            </h3>
+            <div class="faq-grid">
+                <div class="faq-item fade-in stagger-1"><button class="faq-question"><span>How do I log in to the E-Learning platform?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Use your university credentials (the same as your email) on the Moodle login page. If you don't have an account, contact the administration to request one.</p></div></div>
+                <div class="faq-item fade-in stagger-2"><button class="faq-question"><span>Are all courses taught in English?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Yes. Following the IGEE policy, all courses, materials and interactions on the E-Learning platform are exclusively in English.</p></div></div>
+                <div class="faq-item fade-in stagger-3"><button class="faq-question"><span>Is there a mobile app for the platform?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Yes. The official Moodle Mobile app is available for free on the Google Play Store and the Apple App Store. Search for "Moodle" and enter the platform URL: elearning.univ-boumerdes.dz</p></div></div>
+                <div class="faq-item fade-in stagger-4"><button class="faq-question"><span>How do I submit an assignment?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Navigate to your course, click on the assignment, and use the "Add submission" button to upload your file. You can upload PDF, DOCX, ZIP or image files depending on the teacher's settings.</p></div></div>
+                <div class="faq-item fade-in stagger-5"><button class="faq-question"><span>I forgot my password. What should I do?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Click on "Forgotten your username or password?" on the login page, enter your email address, and follow the instructions sent to your inbox. If the issue persists, contact the E-Learning support team.</p></div></div>
+            </div>
+
+            <!-- CTA -->
+            <div class="elearn-cta fade-in" style="margin-top: 60px;">
+                <h3><i class="fas fa-rocket"></i> Ready to start learning?</h3>
+                <p>Join over 1,500 IGEE students and 160 teachers already using the English-taught E-Learning platform. Access your courses now.</p>
+                <div class="elearn-cta-buttons">
+                    <a href="https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700" target="_blank" rel="noopener" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Access Platform Now</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-headset"></i> Contact Support</a>
                 </div>
             </div>
         </div>
@@ -902,27 +1309,27 @@
     <section id="institut">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>À propos de l'IGEE</h2>
+                <h2>About IGEE</h2>
                 <div class="underline"></div>
-                <p>Un institut tourné vers l'avenir, alliant formation de qualité et recherche de pointe.</p>
+                <p>An institute looking to the future, combining quality education and cutting-edge research.</p>
             </div>
             <div class="about-grid">
                 <div class="about-text slide-left">
-                    <h3>Notre histoire, notre mission</h3>
-                    <p>Héritier de l'INELEC, l'Institut de Génie Électrique et Électronique (IGEE) est devenu un établissement universitaire à part entière en 2010.</p>
-                    <p>Notre mission est de former des ingénieurs et des chercheurs hautement qualifiés dans les domaines de l'électronique, des télécommunications, de l'automatique et de l'électrotechnique.</p>
+                    <h3>Our history, our mission</h3>
+                    <p>Heir to INELEC, the Institute of Electrical and Electronic Engineering (IGEE) became a full-fledged university institution in 2010.</p>
+                    <p>Our mission is to train highly qualified engineers and researchers in the fields of electronics, telecommunications, automatic control and electrical engineering. All our programs are taught entirely in English.</p>
                     <ul class="about-list">
-                        <li><i class="fas fa-check-circle"></i> Formation d'excellence reconnue nationalement</li>
-                        <li><i class="fas fa-check-circle"></i> Corps enseignant hautement qualifié</li>
-                        <li><i class="fas fa-check-circle"></i> Laboratoires de recherche équipés</li>
-                        <li><i class="fas fa-check-circle"></i> Partenariats industriels et internationaux</li>
+                        <li><i class="fas fa-check-circle"></i> Nationally recognized excellence in education</li>
+                        <li><i class="fas fa-check-circle"></i> Highly qualified teaching staff</li>
+                        <li><i class="fas fa-check-circle"></i> Well-equipped research laboratories</li>
+                        <li><i class="fas fa-check-circle"></i> Industrial and international partnerships</li>
                     </ul>
                 </div>
                 <div class="about-image slide-right">
-                    <div class="icon-box"><i class="fas fa-microchip"></i><div><h4>Électronique</h4><p>Systèmes embarqués, IoT</p></div></div>
-                    <div class="icon-box"><i class="fas fa-satellite-dish"></i><div><h4>Télécommunications</h4><p>Réseaux, 5G</p></div></div>
-                    <div class="icon-box"><i class="fas fa-robot"></i><div><h4>Automatique</h4><p>Contrôle, robotique</p></div></div>
-                    <div class="icon-box"><i class="fas fa-bolt"></i><div><h4>Électrotechnique</h4><p>Énergies renouvelables</p></div></div>
+                    <div class="icon-box"><i class="fas fa-microchip"></i><div><h4>Electronics</h4><p>Embedded systems, IoT</p></div></div>
+                    <div class="icon-box"><i class="fas fa-satellite-dish"></i><div><h4>Telecommunications</h4><p>Networks, 5G</p></div></div>
+                    <div class="icon-box"><i class="fas fa-robot"></i><div><h4>Automatic Control</h4><p>Control, robotics</p></div></div>
+                    <div class="icon-box"><i class="fas fa-bolt"></i><div><h4>Electrical Engineering</h4><p>Renewable energy</p></div></div>
                 </div>
             </div>
         </div>
@@ -931,17 +1338,17 @@
     <section id="directeur" style="background: var(--white);">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Mot du Directeur</h2>
+                <h2>Director's Message</h2>
                 <div class="underline"></div>
             </div>
             <div class="director-grid">
-                <div class="director-image zoom-in"><img src="directeur.jpg" alt="Directeur" loading="lazy"></div>
+                <div class="director-image zoom-in"><img src="directeur.jpg" alt="Director" loading="lazy"></div>
                 <div class="director-text slide-right">
-                    <h3>Pr. Karim BAICHE</h3>
-                    <span class="title">Directeur de l'Institut de Génie Électrique et Électronique</span>
-                    <p>"Chers étudiants, chers collègues, chers visiteurs,</p>
-                    <p>C'est avec un immense plaisir que je vous accueille sur le site officiel de l'IGEE. Notre institut est un pôle d'excellence dédié à la formation d'ingénieurs et de chercheurs de haut niveau.</p>
-                    <p>À travers nos formations et nos laboratoires, nous nous engageons à offrir un environnement propice à l'innovation et à la réussite."</p>
+                    <h3>Prof. Karim BAICHE</h3>
+                    <span class="title">Director of the Institute of Electrical and Electronic Engineering</span>
+                    <p>"Dear students, dear colleagues, dear visitors,</p>
+                    <p>It is with great pleasure that I welcome you to the official website of IGEE. Our institute is a center of excellence dedicated to training high-level engineers and researchers.</p>
+                    <p>Through our English-taught programs and laboratories, we are committed to providing an environment conducive to innovation and success."</p>
                 </div>
             </div>
         </div>
@@ -950,28 +1357,28 @@
     <section id="departements">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Nos départements</h2>
+                <h2>Our Departments</h2>
                 <div class="underline"></div>
-                <p>Trois départements pour couvrir l'ensemble des domaines du génie électrique et électronique.</p>
+                <p>Three departments covering all fields of electrical and electronic engineering.</p>
             </div>
             <div class="cards-grid">
                 <div class="card fade-in stagger-1">
                     <div class="card-icon"><i class="fas fa-book-open"></i></div>
-                    <h3>Enseignement de Base</h3>
-                    <p>Formation fondamentale en mathématiques, physique, informatique et sciences de l'ingénieur.</p>
-                    <a href="#contact" class="card-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    <h3>Basic Education</h3>
+                    <p>Fundamental training in mathematics, physics, computer science and engineering sciences.</p>
+                    <a href="#elearning" class="card-link">Access courses <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="card fade-in stagger-2">
                     <div class="card-icon"><i class="fas fa-microchip"></i></div>
-                    <h3>Électronique</h3>
-                    <p>Conception de circuits intégrés, systèmes embarqués, traitement du signal et télécommunications.</p>
-                    <a href="#contact" class="card-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    <h3>Electronics</h3>
+                    <p>Integrated circuit design, embedded systems, signal processing and telecommunications.</p>
+                    <a href="#elearning" class="card-link">Access courses <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="card fade-in stagger-3">
                     <div class="card-icon"><i class="fas fa-cogs"></i></div>
-                    <h3>Automatique et Electrotechnique</h3>
-                    <p>Automatique, robotique, contrôle des systèmes, machines électriques et énergies renouvelables.</p>
-                    <a href="#contact" class="card-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                    <h3>Automatic Control and Electrical Engineering</h3>
+                    <p>Automatic control, robotics, system control, electrical machines and renewable energy.</p>
+                    <a href="#elearning" class="card-link">Access courses <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -980,42 +1387,42 @@
     <section id="formations" style="background: var(--white);">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Nos formations</h2>
+                <h2>Our Programs</h2>
                 <div class="underline"></div>
-                <p>Des parcours Licence, Master et Doctorat vers l'excellence.</p>
+                <p>Bachelor's, Master's and Doctorate paths to excellence — all taught in English.</p>
             </div>
             <div class="formations-grid">
                 <div class="formation-card fade-in stagger-1">
-                    <span class="level">Licence</span>
-                    <h3>Licence en Génie Électrique</h3>
-                    <p>Formation de 3 ans pour acquérir les bases fondamentales et techniques.</p>
+                    <span class="level">Bachelor's</span>
+                    <h3>Bachelor's in Electrical Engineering</h3>
+                    <p>A 3-year program to acquire fundamental and technical foundations.</p>
                     <ul>
-                        <li><i class="fas fa-circle"></i> Électronique</li>
-                        <li><i class="fas fa-circle"></i> Télécommunications</li>
-                        <li><i class="fas fa-circle"></i> Automatique</li>
-                        <li><i class="fas fa-circle"></i> Électrotechnique</li>
+                        <li><i class="fas fa-circle"></i> Electronics</li>
+                        <li><i class="fas fa-circle"></i> Telecommunications</li>
+                        <li><i class="fas fa-circle"></i> Automatic Control</li>
+                        <li><i class="fas fa-circle"></i> Electrical Engineering</li>
                     </ul>
                 </div>
                 <div class="formation-card fade-in stagger-2">
-                    <span class="level">Master</span>
-                    <h3>Master en Génie Électrique</h3>
-                    <p>Spécialisation de 2 ans pour devenir expert dans votre domaine.</p>
+                    <span class="level">Master's</span>
+                    <h3>Master's in Electrical Engineering</h3>
+                    <p>A 2-year specialization to become an expert in your field.</p>
                     <ul>
-                        <li><i class="fas fa-circle"></i> Systèmes Embarqués</li>
-                        <li><i class="fas fa-circle"></i> Réseaux et Télécoms</li>
-                        <li><i class="fas fa-circle"></i> Automatique et Robotique</li>
-                        <li><i class="fas fa-circle"></i> Énergies Renouvelables</li>
+                        <li><i class="fas fa-circle"></i> Embedded Systems</li>
+                        <li><i class="fas fa-circle"></i> Networks and Telecommunications</li>
+                        <li><i class="fas fa-circle"></i> Automatic Control and Robotics</li>
+                        <li><i class="fas fa-circle"></i> Renewable Energy</li>
                     </ul>
                 </div>
                 <div class="formation-card fade-in stagger-3">
-                    <span class="level">Doctorat</span>
-                    <h3>Doctorat en Génie Électrique</h3>
-                    <p>Formation à la recherche pour contribuer à l'innovation scientifique.</p>
+                    <span class="level">Doctorate</span>
+                    <h3>Doctorate in Electrical Engineering</h3>
+                    <p>Research training to contribute to scientific innovation.</p>
                     <ul>
-                        <li><i class="fas fa-circle"></i> Traitement du Signal</li>
-                        <li><i class="fas fa-circle"></i> Microélectronique</li>
-                        <li><i class="fas fa-circle"></i> Contrôle des Systèmes</li>
-                        <li><i class="fas fa-circle"></i> Télécommunications</li>
+                        <li><i class="fas fa-circle"></i> Signal Processing</li>
+                        <li><i class="fas fa-circle"></i> Microelectronics</li>
+                        <li><i class="fas fa-circle"></i> Control Systems</li>
+                        <li><i class="fas fa-circle"></i> Telecommunications</li>
                     </ul>
                 </div>
             </div>
@@ -1025,17 +1432,17 @@
     <section id="infrastructures">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Infrastructures Modernes</h2>
+                <h2>Modern Facilities</h2>
                 <div class="underline"></div>
-                <p>Des équipements de pointe et des installations modernes.</p>
+                <p>State-of-the-art equipment and modern facilities.</p>
             </div>
             <div class="infra-grid">
-                <div class="infra-card zoom-in stagger-1"><img src="labo_elec.jpg" alt="Labo" loading="lazy"><div class="infra-overlay"><h4><i class="fas fa-bolt"></i> Électrotechnique</h4><p>Machines électriques, moteurs et bancs d'essai.</p></div></div>
-                <div class="infra-card zoom-in stagger-2"><img src="robot.jpg" alt="Robotique" loading="lazy"><div class="infra-overlay"><h4><i class="fas fa-robot"></i> Robotique 4.0</h4><p>Bras robotisés et systèmes automatisés.</p></div></div>
-                <div class="infra-card zoom-in stagger-3"><img src="simulation.jpg" alt="Simulation" loading="lazy"><div class="infra-overlay"><h4><i class="fas fa-laptop-code"></i> Salles Informatiques</h4><p>Postes équipés pour la simulation.</p></div></div>
-                <div class="infra-card zoom-in stagger-4"><img src="circuit.jpg" alt="Électronique" loading="lazy"><div class="infra-overlay"><h4><i class="fas fa-microchip"></i> Électronique</h4><p>Conception et test de circuits.</p></div></div>
-                <div class="infra-card zoom-in stagger-5"><img src="telecom.jpg" alt="Télécom" loading="lazy"><div class="infra-overlay"><h4><i class="fas fa-satellite-dish"></i> Télécommunications</h4><p>Infrastructures de réseaux et antennes.</p></div></div>
-                <div class="infra-card zoom-in stagger-6"><img src="ia.jpg" alt="IA" loading="lazy"><div class="infra-overlay"><h4><i class="fas fa-brain"></i> Intelligence Artificielle</h4><p>Recherche en IA et apprentissage automatique.</p></div></div>
+                <div class="infra-card zoom-in stagger-1"><img src="labo_elec.jpg" alt="Lab" loading="lazy"><div class="infra-overlay"><h4><i class="fas fa-bolt"></i> Electrical Engineering</h4><p>Electrical machines, motors and test benches.</p></div></div>
+                <div class="infra-card zoom-in stagger-2"><img src="robot.jpg" alt="Robotics" loading="lazy"><div class="infra-overlay"><h4><i class="fas fa-robot"></i> Robotics 4.0</h4><p>Robotic arms and automated systems.</p></div></div>
+                <div class="infra-card zoom-in stagger-3"><img src="simulation.jpg" alt="Simulation" loading="lazy"><div class="infra-overlay"><h4><i class="fas fa-laptop-code"></i> Computer Rooms</h4><p>Workstations equipped for simulation.</p></div></div>
+                <div class="infra-card zoom-in stagger-4"><img src="circuit.jpg" alt="Electronics" loading="lazy"><div class="infra-overlay"><h4><i class="fas fa-microchip"></i> Electronics</h4><p>Circuit design and testing.</p></div></div>
+                <div class="infra-card zoom-in stagger-5"><img src="telecom.jpg" alt="Telecom" loading="lazy"><div class="infra-overlay"><h4><i class="fas fa-satellite-dish"></i> Telecommunications</h4><p>Network and antenna infrastructure.</p></div></div>
+                <div class="infra-card zoom-in stagger-6"><img src="ia.jpg" alt="AI" loading="lazy"><div class="infra-overlay"><h4><i class="fas fa-brain"></i> Artificial Intelligence</h4><p>Research in AI and machine learning.</p></div></div>
             </div>
         </div>
     </section>
@@ -1045,22 +1452,22 @@
             <div class="section-header fade-in">
                 <h2>Graduation</h2>
                 <div class="underline"></div>
-                <p>Formations de premier cycle : Licence et Master.</p>
+                <p>First-cycle programs: Bachelor's and Master's.</p>
             </div>
             <div class="gallery-item zoom-in" style="max-width: 900px; margin: 0 auto 50px;">
-                <img src="directeurs2025.png" alt="Cérémonie" style="width: 100%; height: auto; object-fit: contain;" loading="lazy">
-                <div class="gallery-caption" style="transform: translateY(0); background: linear-gradient(to top, rgba(10, 43, 94, 0.95), transparent);">Cérémonie de graduation 2025 — Promotion de l'IGEE</div>
+                <img src="directeurs2025.png" alt="Ceremony" style="width: 100%; height: auto; object-fit: contain;" loading="lazy">
+                <div class="gallery-caption" style="transform: translateY(0); background: linear-gradient(to top, rgba(10, 43, 94, 0.95), transparent);">Graduation Ceremony 2025 — IGEE Class</div>
             </div>
             <div class="info-grid">
                 <div class="info-card slide-left">
-                    <h3><i class="fas fa-graduation-cap"></i> Licence</h3>
-                    <p>Le Bachelor en Génie Électrique et Électronique est un diplôme généraliste qui vise à assurer une formation de base solide.</p>
-                    <p>À la fin de ce cursus, les étudiants auront suivi les cours fondamentaux en circuits électriques, électronique et informatique.</p>
+                    <h3><i class="fas fa-graduation-cap"></i> Bachelor's</h3>
+                    <p>The Bachelor's in Electrical and Electronic Engineering is a generalist degree designed to provide a solid basic education.</p>
+                    <p>At the end of this program, students will have followed fundamental courses in electrical circuits, electronics and computer science.</p>
                 </div>
                 <div class="info-card slide-right">
-                    <h3><i class="fas fa-user-graduate"></i> Master</h3>
-                    <p>Le cycle de graduation offre deux cycles de formation : Licence et Master.</p>
-                    <p>Les diplômés en Master peuvent accéder à la formation Doctorale après réussite au concours national.</p>
+                    <h3><i class="fas fa-user-graduate"></i> Master's</h3>
+                    <p>The graduation cycle offers two cycles of study: Bachelor's and Master's.</p>
+                    <p>Master's graduates can access doctoral training after passing the national exam.</p>
                 </div>
             </div>
         </div>
@@ -1069,58 +1476,29 @@
     <section id="post-graduation">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Post-Graduation</h2>
+                <h2>Postgraduate Studies</h2>
                 <div class="underline"></div>
-                <p>Formations de troisième cycle : Magister, DPGS et Doctorat.</p>
+                <p>Third-cycle programs: Magister, DPGS and Doctorate.</p>
             </div>
             <div class="info-grid">
                 <div class="info-card slide-left">
-                    <h3><i class="fas fa-flask"></i> Conditions d'ouverture</h3>
-                    <p>Pour ouvrir une formation de post-graduation :</p>
+                    <h3><i class="fas fa-flask"></i> Opening Conditions</h3>
+                    <p>To open a postgraduate program:</p>
                     <ul>
-                        <li><i class="fas fa-check-circle"></i> Avoir une filière de diplôme fonctionnelle</li>
-                        <li><i class="fas fa-check-circle"></i> Avoir trois (03) enseignants du plus haut rang</li>
-                        <li><i class="fas fa-check-circle"></i> Avoir deux (02) équipes de recherche</li>
-                        <li><i class="fas fa-check-circle"></i> Un minimum de six postes ouverts</li>
+                        <li><i class="fas fa-check-circle"></i> Have a functional diploma program</li>
+                        <li><i class="fas fa-check-circle"></i> Have three (03) senior-ranked teachers</li>
+                        <li><i class="fas fa-check-circle"></i> Have two (02) research teams</li>
+                        <li><i class="fas fa-check-circle"></i> A minimum of six open positions</li>
                     </ul>
                 </div>
                 <div class="info-card slide-right">
-                    <h3><i class="fas fa-scroll"></i> Systèmes et diplômes</h3>
-                    <p>Le cycle de post-graduation est divisé en deux systèmes :</p>
+                    <h3><i class="fas fa-scroll"></i> Systems and Degrees</h3>
+                    <p>The postgraduate cycle is divided into two systems:</p>
                     <ul>
-                        <li><i class="fas fa-check-circle"></i> <strong>Le système LMD</strong></li>
-                        <li><i class="fas fa-check-circle"></i> <strong>Le système classique</strong> : MAGISTER ou DPGS, puis DOCTORAT</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>The LMD system</strong></li>
+                        <li><i class="fas fa-check-circle"></i> <strong>The classical system</strong>: MAGISTER or DPGS, then DOCTORATE</li>
                     </ul>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== SECTION E-LEARNING (EN ANGLAIS) ===== -->
-    <section id="elearning" style="background: var(--white);">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Distance Learning Platform</h2>
-                <div class="underline"></div>
-                <p>Access your courses, resources and online assessments, wherever you are.</p>
-            </div>
-
-            <div class="elearning-toolbar fade-in">
-                <div class="year-filter">
-                    <i class="fas fa-calendar-alt"></i>
-                    <select id="yearSelect">
-                        <option value="2025-2026">Academic Year 2025-2026</option>
-                        <option value="2024-2025">Academic Year 2024-2025</option>
-                    </select>
-                </div>
-                <div class="search-bar">
-                    <input type="text" id="courseSearch" placeholder="Search for a course or a teacher...">
-                    <button id="searchBtn" aria-label="Search"><i class="fas fa-search"></i></button>
-                </div>
-            </div>
-
-            <div class="elearning-content" id="elearningContent">
-                <!-- Departments and courses are injected here by JavaScript -->
             </div>
         </div>
     </section>
@@ -1128,38 +1506,38 @@
     <section id="international" class="international-section">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Relations Internationales</h2>
+                <h2>International Relations</h2>
                 <div class="underline"></div>
-                <p>L'IGEE s'ouvre au monde à travers des partenariats internationaux.</p>
+                <p>IGEE opens up to the world through international partnerships.</p>
             </div>
             <div class="flags-container fade-in">
                 <div class="flag-pair">
-                    <div class="flag-wrapper"><img src="https://flagcdn.com/w320/us.png" alt="USA"><div class="flag-label">ÉTATS-UNIS</div></div>
+                    <div class="flag-wrapper"><img src="https://flagcdn.com/w320/us.png" alt="USA"><div class="flag-label">UNITED STATES</div></div>
                     <i class="fas fa-handshake" style="color: var(--accent); font-size: 2.5rem; animation: pulse 2s ease-in-out infinite;"></i>
-                    <div class="flag-wrapper"><img src="https://flagcdn.com/w320/dz.png" alt="Algérie"><div class="flag-label">ALGÉRIE</div></div>
+                    <div class="flag-wrapper"><img src="https://flagcdn.com/w320/dz.png" alt="Algeria"><div class="flag-label">ALGERIA</div></div>
                 </div>
             </div>
             <div class="international-content">
                 <div class="embassy-image zoom-in">
-                    <img src="ambassade.jpg" alt="Ambassade US" loading="lazy">
-                    <div class="embassy-caption"><i class="fas fa-landmark"></i> Ambassade des États-Unis d'Amérique en Algérie</div>
+                    <img src="ambassade.jpg" alt="US Embassy" loading="lazy">
+                    <div class="embassy-caption"><i class="fas fa-landmark"></i> Embassy of the United States of America in Algeria</div>
                 </div>
                 <div class="international-text slide-right">
-                    <h3><i class="fas fa-globe-americas"></i> Coopération scientifique avec les États-Unis</h3>
-                    <p>L'IGEE entretient des relations scientifiques et académiques avec l'Ambassade des États-Unis en Algérie.</p>
+                    <h3><i class="fas fa-globe-americas"></i> Scientific Cooperation with the United States</h3>
+                    <p>IGEE maintains scientific and academic relations with the U.S. Embassy in Algeria.</p>
                     <div class="program-highlight">
                         <h4><i class="fas fa-flag-usa"></i> U.S. Government International Exchange Program</h4>
-                        <p>Des vidéoconférences sur les programmes d'échange internationaux américains.</p>
-                        <p>Animées par <strong>M. Adam Siegelem</strong>, Attaché Culturel à l'Ambassade.</p>
+                        <p>Videoconferences on U.S. international exchange programs.</p>
+                        <p>Led by <strong>Mr. Adam Siegelem</strong>, Cultural Attaché at the Embassy.</p>
                     </div>
                     <div class="event-details">
-                        <h4><i class="fas fa-video"></i> Détails de la vidéoconférence</h4>
+                        <h4><i class="fas fa-video"></i> Videoconference Details</h4>
                         <ul>
-                            <li><i class="fas fa-calendar-alt"></i> <strong>Date :</strong> Jeudi 25 Mars à 10h00</li>
-                            <li><i class="fas fa-map-marker-alt"></i> <strong>Lieu :</strong> En ligne (Zoom)</li>
-                            <li><i class="fas fa-link"></i> <strong>Lien :</strong> <a href="https://zoom.us/j/94965863903?pwd=OHJBbDFhN2lSQ2JaY2lyU2VQWGwvZz09" target="_blank" rel="noopener">Zoom Link</a></li>
-                            <li><i class="fas fa-hashtag"></i> <strong>Meeting ID :</strong> 949 6586 3903</li>
-                            <li><i class="fas fa-key"></i> <strong>Passcode :</strong> 554740</li>
+                            <li><i class="fas fa-calendar-alt"></i> <strong>Date:</strong> Thursday, March 25 at 10:00 AM</li>
+                            <li><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Online (Zoom)</li>
+                            <li><i class="fas fa-link"></i> <strong>Link:</strong> <a href="https://zoom.us/j/94965863903?pwd=OHJBbDFhN2lSQ2JaY2lyU2VQWGwvZz09" target="_blank" rel="noopener">Zoom Link</a></li>
+                            <li><i class="fas fa-hashtag"></i> <strong>Meeting ID:</strong> 949 6586 3903</li>
+                            <li><i class="fas fa-key"></i> <strong>Passcode:</strong> 554740</li>
                         </ul>
                     </div>
                 </div>
@@ -1170,22 +1548,22 @@
     <section id="recherche">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Recherche et Innovation</h2>
+                <h2>Research and Innovation</h2>
                 <div class="underline"></div>
-                <p>Des laboratoires actifs et des axes de recherche porteurs pour l'avenir.</p>
+                <p>Active laboratories and promising research areas for the future.</p>
             </div>
             <div class="research-grid">
                 <div class="research-col slide-left">
-                    <h3><i class="fas fa-flask"></i> Laboratoires</h3>
-                    <div class="research-item"><i class="fas fa-wave-square"></i><div><h4>Signaux et Systèmes</h4><p>Traitement du signal, communications numériques.</p></div></div>
-                    <div class="research-item"><i class="fas fa-microchip"></i><div><h4>Microélectronique</h4><p>Circuits intégrés, nanotechnologies, capteurs.</p></div></div>
-                    <div class="research-item"><i class="fas fa-robot"></i><div><h4>Automatique</h4><p>Contrôle intelligent, robotique, systèmes multi-agents.</p></div></div>
+                    <h3><i class="fas fa-flask"></i> Laboratories</h3>
+                    <div class="research-item"><i class="fas fa-wave-square"></i><div><h4>Signals and Systems</h4><p>Signal processing, digital communications.</p></div></div>
+                    <div class="research-item"><i class="fas fa-microchip"></i><div><h4>Microelectronics</h4><p>Integrated circuits, nanotechnologies, sensors.</p></div></div>
+                    <div class="research-item"><i class="fas fa-robot"></i><div><h4>Automatic Control</h4><p>Intelligent control, robotics, multi-agent systems.</p></div></div>
                 </div>
                 <div class="research-col slide-right">
-                    <h3><i class="fas fa-bullseye"></i> Axes de recherche</h3>
-                    <div class="research-item"><i class="fas fa-satellite"></i><div><h4>Télécommunications</h4><p>Réseaux 5G, IoT, communications optiques.</p></div></div>
-                    <div class="research-item"><i class="fas fa-solar-panel"></i><div><h4>Énergies Renouvelables</h4><p>Photovoltaïque, éolien, smart grids.</p></div></div>
-                    <div class="research-item"><i class="fas fa-brain"></i><div><h4>Intelligence Artificielle</h4><p>Apprentissage automatique, vision par ordinateur.</p></div></div>
+                    <h3><i class="fas fa-bullseye"></i> Research Areas</h3>
+                    <div class="research-item"><i class="fas fa-satellite"></i><div><h4>Telecommunications</h4><p>5G networks, IoT, optical communications.</p></div></div>
+                    <div class="research-item"><i class="fas fa-solar-panel"></i><div><h4>Renewable Energy</h4><p>Photovoltaics, wind, smart grids.</p></div></div>
+                    <div class="research-item"><i class="fas fa-brain"></i><div><h4>Artificial Intelligence</h4><p>Machine learning, computer vision.</p></div></div>
                 </div>
             </div>
         </div>
@@ -1194,25 +1572,25 @@
     <section id="csi" style="background: var(--white);">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Conseil Scientifique de l'Institut (CSI)</h2>
+                <h2>Institute Scientific Council (CSI)</h2>
                 <div class="underline"></div>
-                <p>Organe consultatif chargé d'orienter la recherche et les formations.</p>
+                <p>Advisory body responsible for guiding research and programs.</p>
             </div>
             <div class="csi-grid">
                 <div class="csi-info slide-left">
-                    <h3><i class="fas fa-gavel"></i> Missions et attributions</h3>
-                    <p>L'IGEE est doté d'un Conseil Scientifique régi par le décret exécutif n° 03-279 du 23 août 2003.</p>
-                    <p>Le Conseil Scientifique donne son avis sur les orientations liées à la recherche scientifique et aux programmes de formation supérieure.</p>
+                    <h3><i class="fas fa-gavel"></i> Missions and Responsibilities</h3>
+                    <p>IGEE has a Scientific Council governed by Executive Decree No. 03-279 of August 23, 2003.</p>
+                    <p>The Scientific Council gives its opinion on orientations related to scientific research and higher education programs.</p>
                 </div>
                 <div class="csi-members slide-right">
-                    <h3><i class="fas fa-users"></i> Membres du Conseil</h3>
-                    <div class="csi-member"><img src="challal.jpg" alt="CHALLAL" class="csi-photo" loading="lazy"><div><h4>Pr. CHALLAL Mouloud</h4><p>Président du Conseil</p></div></div>
-                    <div class="csi-member"><img src="baiche.jpg" alt="BAICHE" class="csi-photo" loading="lazy"><div><h4>Pr. Karim BAICHE</h4><p>Directeur de l'Institut</p></div></div>
-                    <div class="csi-member"><i class="fas fa-user-tie"></i><div><h4>Pr. Yassine MERAIHI</h4><p>Directeur Adjoint Post-Graduation</p></div></div>
-                    <div class="csi-member"><i class="fas fa-user-tie"></i><div><h4>Dr. Youcef TABET</h4><p>Chef Département Énergie</p></div></div>
-                    <div class="csi-member"><i class="fas fa-user-tie"></i><div><h4>Dr. Abdelkarim AMMAR</h4><p>Chef Département Électronique</p></div></div>
-                    <div class="csi-member"><i class="fas fa-user-tie"></i><div><h4>Pr. Tahar AOUAROUN</h4><p>Chef Département Enseignement de Base</p></div></div>
-                    <div class="csi-member"><i class="fas fa-user-tie"></i><div><h4>Mr. Karim TIDJEDAM</h4><p>Responsable Bibliothèque</p></div></div>
+                    <h3><i class="fas fa-users"></i> Council Members</h3>
+                    <div class="csi-member"><img src="challal.jpg" alt="CHALLAL" class="csi-photo" loading="lazy"><div><h4>Prof. CHALLAL Mouloud</h4><p>Council President</p></div></div>
+                    <div class="csi-member"><img src="baiche.jpg" alt="BAICHE" class="csi-photo" loading="lazy"><div><h4>Prof. Karim BAICHE</h4><p>Director of the Institute</p></div></div>
+                    <div class="csi-member"><i class="fas fa-user-tie"></i><div><h4>Prof. Yassine MERAIHI</h4><p>Deputy Director of Postgraduate Studies</p></div></div>
+                    <div class="csi-member"><i class="fas fa-user-tie"></i><div><h4>Dr. Youcef TABET</h4><p>Head of Energy Department</p></div></div>
+                    <div class="csi-member"><i class="fas fa-user-tie"></i><div><h4>Dr. Abdelkarim AMMAR</h4><p>Head of Electronics Department</p></div></div>
+                    <div class="csi-member"><i class="fas fa-user-tie"></i><div><h4>Prof. Tahar AOUAROUN</h4><p>Head of Basic Education Department</p></div></div>
+                    <div class="csi-member"><i class="fas fa-user-tie"></i><div><h4>Mr. Karim TIDJEDAM</h4><p>Library Manager</p></div></div>
                 </div>
             </div>
         </div>
@@ -1221,54 +1599,54 @@
     <section id="bibliotheque">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Bibliothèque de l'Institut</h2>
+                <h2>Institute Library</h2>
                 <div class="underline"></div>
-                <p>Un espace documentaire dédié aux étudiants, enseignants et chercheurs.</p>
+                <p>A documentary space dedicated to students, teachers and researchers.</p>
             </div>
             <div class="library-grid">
                 <div class="library-info slide-left">
-                    <h3><i class="fas fa-book"></i> Présentation</h3>
-                    <p>La bibliothèque met en œuvre la politique documentaire à destination des étudiants, des enseignants et des chercheurs.</p>
-                    <p>En plus des collections papier, la bibliothèque propose des bases de données en ligne et en libre accès.</p>
-                    <h3 style="margin-top: 25px;"><i class="fas fa-layer-group"></i> Espaces</h3>
+                    <h3><i class="fas fa-book"></i> Overview</h3>
+                    <p>The library implements the documentary policy for students, teachers and researchers.</p>
+                    <p>In addition to print collections, the library offers online and open-access databases.</p>
+                    <h3 style="margin-top: 25px;"><i class="fas fa-layer-group"></i> Spaces</h3>
                     <div class="library-spaces">
-                        <div class="library-space"><i class="fas fa-bookmark"></i><div><h4>Espace Texte-book</h4><p>Bloc B, 1er étage — Prêt longue durée.</p></div></div>
-                        <div class="library-space"><i class="fas fa-book-open"></i><div><h4>Espace Extra-book</h4><p>Bloc C, 1er étage — Prêt 7 à 20 jours.</p></div></div>
-                        <div class="library-space"><i class="fas fa-file-alt"></i><div><h4>Espace Référence-book</h4><p>Bloc C, 1er étage — Consultation sur place.</p></div></div>
-                        <div class="library-space"><i class="fas fa-wifi"></i><div><h4>Salle Internet</h4><p>Deux espaces : PC et PC portables.</p></div></div>
+                        <div class="library-space"><i class="fas fa-bookmark"></i><div><h4>Text-book Area</h4><p>Block B, 1st floor — Long-term loan.</p></div></div>
+                        <div class="library-space"><i class="fas fa-book-open"></i><div><h4>Extra-book Area</h4><p>Block C, 1st floor — 7- to 20-day loan.</p></div></div>
+                        <div class="library-space"><i class="fas fa-file-alt"></i><div><h4>Reference-book Area</h4><p>Block C, 1st floor — On-site consultation.</p></div></div>
+                        <div class="library-space"><i class="fas fa-wifi"></i><div><h4>Internet Room</h4><p>Two areas: desktops and laptops.</p></div></div>
                     </div>
                 </div>
                 <div class="library-info slide-right">
-                    <h3><i class="fas fa-clock"></i> Accès et horaires</h3>
+                    <h3><i class="fas fa-clock"></i> Access and Hours</h3>
                     <div class="library-hours">
-                        <h4><i class="fas fa-id-card"></i> Conditions d'accès</h4>
+                        <h4><i class="fas fa-id-card"></i> Access Conditions</h4>
                         <ul>
-                            <li><i class="fas fa-check-circle"></i> Accès réservé aux utilisateurs inscrits et munis de leur carte.</li>
-                            <li><i class="fas fa-check-circle"></i> La carte est à usage personnel.</li>
+                            <li><i class="fas fa-check-circle"></i> Access reserved for registered users with their card.</li>
+                            <li><i class="fas fa-check-circle"></i> The card is for personal use.</li>
                         </ul>
                     </div>
                     <div class="library-hours">
-                        <h4><i class="fas fa-calendar-alt"></i> Horaires d'ouverture</h4>
+                        <h4><i class="fas fa-calendar-alt"></i> Opening Hours</h4>
                         <ul>
-                            <li><i class="fas fa-clock"></i> Dimanche - Jeudi : 8h00 - 16h30</li>
-                            <li><i class="fas fa-clock"></i> Samedi : 8h00 - 12h00</li>
+                            <li><i class="fas fa-clock"></i> Sunday - Thursday: 8:00 AM - 4:30 PM</li>
+                            <li><i class="fas fa-clock"></i> Saturday: 8:00 AM - 12:00 PM</li>
                         </ul>
                     </div>
                     <div class="library-hours">
                         <h4><i class="fas fa-phone"></i> Contact</h4>
                         <ul>
-                            <li><i class="fas fa-user"></i> Responsable : Mr. Karim TIDJEDAM</li>
-                            <li><i class="fas fa-phone"></i> Tél : 024 79 57 63</li>
-                            <li><i class="fas fa-envelope"></i> Email : <a href="mailto:h.zidane@univ-boumerdes.dz">h.zidane@univ-boumerdes.dz</a></li>
+                            <li><i class="fas fa-user"></i> Manager: Mr. Karim TIDJEDAM</li>
+                            <li><i class="fas fa-phone"></i> Tel: 024 79 57 63</li>
+                            <li><i class="fas fa-envelope"></i> Email: <a href="mailto:h.zidane@univ-boumerdes.dz">h.zidane@univ-boumerdes.dz</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="library-gallery">
-                <div class="library-gallery-item zoom-in stagger-1"><img src="biblio1.jpg" alt="Bibliothèque" loading="lazy"><div class="library-gallery-caption">Accueil et rayonnages</div></div>
-                <div class="library-gallery-item zoom-in stagger-2"><img src="biblio2.jpg" alt="Rayonnages" loading="lazy"><div class="library-gallery-caption">Collections spécialisées</div></div>
-                <div class="library-gallery-item zoom-in stagger-3"><img src="biblio3.jpg" alt="Salle de lecture" loading="lazy"><div class="library-gallery-caption">Salle de lecture</div></div>
-                <div class="library-gallery-item zoom-in stagger-4"><img src="biblio4.jpg" alt="Section Thesis" loading="lazy"><div class="library-gallery-caption">Section THESIS et ED Computer</div></div>
+                <div class="library-gallery-item zoom-in stagger-1"><img src="biblio1.jpg" alt="Library" loading="lazy"><div class="library-gallery-caption">Reception and shelves</div></div>
+                <div class="library-gallery-item zoom-in stagger-2"><img src="biblio2.jpg" alt="Shelves" loading="lazy"><div class="library-gallery-caption">Specialized collections</div></div>
+                <div class="library-gallery-item zoom-in stagger-3"><img src="biblio3.jpg" alt="Reading room" loading="lazy"><div class="library-gallery-caption">Reading room</div></div>
+                <div class="library-gallery-item zoom-in stagger-4"><img src="biblio4.jpg" alt="Thesis section" loading="lazy"><div class="library-gallery-caption">THESIS and ED Computer Section</div></div>
             </div>
         </div>
     </section>
@@ -1276,31 +1654,31 @@
     <section id="activites" style="background: var(--white);">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Activités Scientifiques et Culturelles</h2>
+                <h2>Scientific and Cultural Activities</h2>
                 <div class="underline"></div>
-                <p>Le club INELECTRONICS, un acteur dynamique de la vie estudiantine.</p>
+                <p>The INELECTRONICS club, a dynamic player in student life.</p>
             </div>
             <div class="club-grid">
                 <div class="club-text slide-left">
-                    <h3><i class="fas fa-users-cog"></i> Le Club INELECTRONICS</h3>
-                    <p>Le club scientifique <strong>INELECTRONICS</strong> est le club étudiant de l'IGEE. Sa vision est de construire un pont entre l'université et le monde de l'industrie.</p>
-                    <p>Les activités promeuvent un environnement dynamique au sein de notre institut.</p>
+                    <h3><i class="fas fa-users-cog"></i> The INELECTRONICS Club</h3>
+                    <p>The <strong>INELECTRONICS</strong> scientific club is IGEE's student club. Its vision is to build a bridge between the university and the industrial world.</p>
+                    <p>Its activities promote a dynamic environment within our institute.</p>
                     <div class="club-activities">
-                        <div class="club-activity"><i class="fas fa-microphone-alt"></i><div><h4>Conférences et séminaires</h4><p>Conférences avec des experts et des entreprises.</p></div></div>
-                        <div class="club-activity"><i class="fas fa-laptop-code"></i><div><h4>Ateliers pratiques</h4><p>Workshops robotique, électronique, programmation.</p></div></div>
-                        <div class="club-activity"><i class="fas fa-trophy"></i><div><h4>Compétitions</h4><p>Participation à des compétitions comme l'Imagine Cup.</p></div></div>
-                        <div class="club-activity"><i class="fas fa-newspaper"></i><div><h4>INELECTRONICS Magazine</h4><p>Publication bimestrielle d'un magazine étudiant.</p></div></div>
+                        <div class="club-activity"><i class="fas fa-microphone-alt"></i><div><h4>Conferences and Seminars</h4><p>Conferences with experts and companies.</p></div></div>
+                        <div class="club-activity"><i class="fas fa-laptop-code"></i><div><h4>Practical Workshops</h4><p>Robotics, electronics and programming workshops.</p></div></div>
+                        <div class="club-activity"><i class="fas fa-trophy"></i><div><h4>Competitions</h4><p>Participation in competitions such as Imagine Cup.</p></div></div>
+                        <div class="club-activity"><i class="fas fa-newspaper"></i><div><h4>INELECTRONICS Magazine</h4><p>Bimonthly publication of a student magazine.</p></div></div>
                     </div>
                     <div class="club-social">
-                        <a href="https://www.facebook.com/umbb.igee/" target="_blank" rel="noopener" class="fb"><i class="fab fa-facebook"></i> Suivez l'IGEE</a>
-                        <a href="https://www.facebook.com/InelectronicsStudentClub" target="_blank" rel="noopener"><i class="fab fa-facebook"></i> Club INELECTRONICS</a>
+                        <a href="https://www.facebook.com/umbb.igee/" target="_blank" rel="noopener" class="fb"><i class="fab fa-facebook"></i> Follow IGEE</a>
+                        <a href="https://www.facebook.com/InelectronicsStudentClub" target="_blank" rel="noopener"><i class="fab fa-facebook"></i> INELECTRONICS Club</a>
                     </div>
                 </div>
                 <div class="gallery-grid slide-right">
-                    <div class="gallery-item"><img src="activite1.jpg" alt="Atelier" loading="lazy"><div class="gallery-caption">Atelier du club</div></div>
-                    <div class="gallery-item"><img src="activite2.jpg" alt="TP" loading="lazy"><div class="gallery-caption">Travaux pratiques</div></div>
-                    <div class="gallery-item"><img src="activite3.jpg" alt="Google" loading="lazy"><div class="gallery-caption">Ambassadeurs Google</div></div>
-                    <div class="gallery-item"><img src="conference_ms.jpg" alt="Microsoft" loading="lazy"><div class="gallery-caption">Conférence Microsoft</div></div>
+                    <div class="gallery-item"><img src="activite1.jpg" alt="Workshop" loading="lazy"><div class="gallery-caption">Club Workshop</div></div>
+                    <div class="gallery-item"><img src="activite2.jpg" alt="Lab work" loading="lazy"><div class="gallery-caption">Practical Work</div></div>
+                    <div class="gallery-item"><img src="activite3.jpg" alt="Google" loading="lazy"><div class="gallery-caption">Google Ambassadors</div></div>
+                    <div class="gallery-item"><img src="conference_ms.jpg" alt="Microsoft" loading="lazy"><div class="gallery-caption">Microsoft Conference</div></div>
                 </div>
             </div>
         </div>
@@ -1309,69 +1687,45 @@
     <section id="actualites">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Actualités de l'IGEE</h2>
+                <h2>IGEE News</h2>
                 <div class="underline"></div>
-                <p>Restez informé des derniers événements, conférences et partenariats.</p>
+                <p>Stay informed about the latest events, conferences and partnerships.</p>
             </div>
             <div class="news-grid">
                 <div class="news-card fade-in stagger-1">
-                    <div class="news-card-image"><i class="fas fa-flag-usa"></i><span class="news-category">International</span></div>
+                    <div class="news-card-image"><i class="fas fa-laptop-code"></i><span class="news-category">E-Learning</span></div>
                     <div class="news-card-body">
-                        <div class="news-date"><i class="fas fa-calendar-alt"></i><span>25 Mars</span></div>
-                        <h3>Vidéoconférence sur les programmes d'échange américains</h3>
-                        <p>L'Ambassade des États-Unis organise une session d'information sur les programmes d'échange avec M. Adam Siegelem.</p>
-                        <div class="news-card-footer"><a href="#international" class="news-link">En savoir plus <i class="fas fa-arrow-right"></i></a><span class="news-badge">À venir</span></div>
-                        <div class="news-share"><span><i class="fas fa-share-alt"></i> Partager :</span><button class="news-share-btn fb" onclick="shareFacebook()"><i class="fab fa-facebook-f"></i></button><button class="news-share-btn tw" onclick="shareTwitter()"><i class="fab fa-twitter"></i></button><button class="news-share-btn li" onclick="shareLinkedIn()"><i class="fab fa-linkedin-in"></i></button><button class="news-share-btn wa" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i></button></div>
+                        <div class="news-date"><i class="fas fa-calendar-alt"></i><span>September 2026</span></div>
+                        <h3>New E-Learning Platform Now Live</h3>
+                        <p>The English-taught Moodle platform is now accessible to all IGEE students and teachers.</p>
+                        <div class="news-card-footer"><a href="#elearning" class="news-link">Access Platform <i class="fas fa-arrow-right"></i></a><span class="news-badge">New</span></div>
                     </div>
                 </div>
                 <div class="news-card fade-in stagger-2">
-                    <div class="news-card-image"><i class="fas fa-microphone-alt"></i><span class="news-category">Conférence</span></div>
+                    <div class="news-card-image"><i class="fas fa-flag-usa"></i><span class="news-category">International</span></div>
                     <div class="news-card-body">
-                        <div class="news-date"><i class="fas fa-calendar-alt"></i><span>25 Octobre 2026</span></div>
-                        <h3>NCAEEE 2026 : Deuxième Conférence Nationale</h3>
-                        <p>Après le succès de la première édition, l'IGEE organise la deuxième Conférence Nationale sur le Génie Électrique et Électronique.</p>
-                        <div class="news-card-footer"><a href="https://igee.univ-boumerdes.dz/ncaeee26/" target="_blank" rel="noopener" class="news-link">En savoir plus <i class="fas fa-arrow-right"></i></a><span class="news-badge">À venir</span></div>
-                        <div class="news-share"><span><i class="fas fa-share-alt"></i> Partager :</span><button class="news-share-btn fb" onclick="shareFacebook()"><i class="fab fa-facebook-f"></i></button><button class="news-share-btn tw" onclick="shareTwitter()"><i class="fab fa-twitter"></i></button><button class="news-share-btn li" onclick="shareLinkedIn()"><i class="fab fa-linkedin-in"></i></button><button class="news-share-btn wa" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i></button></div>
+                        <div class="news-date"><i class="fas fa-calendar-alt"></i><span>March 25</span></div>
+                        <h3>Videoconference on U.S. Exchange Programs</h3>
+                        <p>The U.S. Embassy is organizing an information session on exchange programs with Mr. Adam Siegelem.</p>
+                        <div class="news-card-footer"><a href="#international" class="news-link">Learn more <i class="fas fa-arrow-right"></i></a><span class="news-badge">Upcoming</span></div>
                     </div>
                 </div>
                 <div class="news-card fade-in stagger-3">
-                    <div class="news-card-image"><i class="fas fa-handshake"></i><span class="news-category">Partenariat</span></div>
+                    <div class="news-card-image"><i class="fas fa-microphone-alt"></i><span class="news-category">Conference</span></div>
                     <div class="news-card-body">
-                        <div class="news-date"><i class="fas fa-calendar-alt"></i><span>Mai 2024</span></div>
-                        <h3>Protocole d'accord avec Elsewedy Electric Algérie</h3>
-                        <p>L'IGEE renforce les liens entre le monde académique et le secteur industriel.</p>
-                        <div class="news-card-footer"><a href="https://igee.univ-boumerdes.dz/" target="_blank" rel="noopener" class="news-link">En savoir plus <i class="fas fa-arrow-right"></i></a><span class="news-badge">Partenariat</span></div>
-                        <div class="news-share"><span><i class="fas fa-share-alt"></i> Partager :</span><button class="news-share-btn fb" onclick="shareFacebook()"><i class="fab fa-facebook-f"></i></button><button class="news-share-btn tw" onclick="shareTwitter()"><i class="fab fa-twitter"></i></button><button class="news-share-btn li" onclick="shareLinkedIn()"><i class="fab fa-linkedin-in"></i></button><button class="news-share-btn wa" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i></button></div>
+                        <div class="news-date"><i class="fas fa-calendar-alt"></i><span>October 25, 2026</span></div>
+                        <h3>NCAEEE 2026: Second National Conference</h3>
+                        <p>After the success of the first edition, IGEE is organizing the second National Conference on Electrical and Electronic Engineering.</p>
+                        <div class="news-card-footer"><a href="https://igee.univ-boumerdes.dz/ncaeee26/" target="_blank" rel="noopener" class="news-link">Learn more <i class="fas fa-arrow-right"></i></a><span class="news-badge">Upcoming</span></div>
                     </div>
                 </div>
                 <div class="news-card fade-in stagger-4">
-                    <div class="news-card-image"><i class="fas fa-award"></i><span class="news-category">Conférence</span></div>
+                    <div class="news-card-image"><i class="fas fa-handshake"></i><span class="news-category">Partnership</span></div>
                     <div class="news-card-body">
-                        <div class="news-date"><i class="fas fa-calendar-alt"></i><span>30 Novembre 2025</span></div>
-                        <h3>Succès de la 1ère Conférence Nationale NCAEEE 2025</h3>
-                        <p>La première édition a réuni chercheurs et académiques autour de thématiques avancées.</p>
-                        <div class="news-card-footer"><a href="https://igee.univ-boumerdes.dz/ncaeee25/" target="_blank" rel="noopener" class="news-link">Voir le programme <i class="fas fa-arrow-right"></i></a><span class="news-badge">Passé</span></div>
-                        <div class="news-share"><span><i class="fas fa-share-alt"></i> Partager :</span><button class="news-share-btn fb" onclick="shareFacebook()"><i class="fab fa-facebook-f"></i></button><button class="news-share-btn tw" onclick="shareTwitter()"><i class="fab fa-twitter"></i></button><button class="news-share-btn li" onclick="shareLinkedIn()"><i class="fab fa-linkedin-in"></i></button><button class="news-share-btn wa" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i></button></div>
-                    </div>
-                </div>
-                <div class="news-card fade-in stagger-5">
-                    <div class="news-card-image"><i class="fas fa-globe"></i><span class="news-category">Événement</span></div>
-                    <div class="news-card-body">
-                        <div class="news-date"><i class="fas fa-calendar-alt"></i><span>Avril 2024</span></div>
-                        <h3>Journée Mondiale de l'Ingénierie</h3>
-                        <p>Le club INELECTRONICS a organisé un événement dédié à l'innovation.</p>
-                        <div class="news-card-footer"><a href="https://igee.univ-boumerdes.dz/" target="_blank" rel="noopener" class="news-link">En savoir plus <i class="fas fa-arrow-right"></i></a><span class="news-badge">Événement</span></div>
-                        <div class="news-share"><span><i class="fas fa-share-alt"></i> Partager :</span><button class="news-share-btn fb" onclick="shareFacebook()"><i class="fab fa-facebook-f"></i></button><button class="news-share-btn tw" onclick="shareTwitter()"><i class="fab fa-twitter"></i></button><button class="news-share-btn li" onclick="shareLinkedIn()"><i class="fab fa-linkedin-in"></i></button><button class="news-share-btn wa" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i></button></div>
-                    </div>
-                </div>
-                <div class="news-card fade-in stagger-6">
-                    <div class="news-card-image"><i class="fas fa-trophy"></i><span class="news-category">Réussite</span></div>
-                    <div class="news-card-body">
-                        <div class="news-date"><i class="fas fa-calendar-alt"></i><span>2020</span></div>
-                        <h3>Cérémonie de gratification de l'équipe IT-Drops</h3>
-                        <p>L'équipe a remporté la 2ème position au concours régional INJAZ Al-Arab.</p>
-                        <div class="news-card-footer"><a href="https://igee.univ-boumerdes.dz/Note2.html" target="_blank" rel="noopener" class="news-link">Lire l'article <i class="fas fa-arrow-right"></i></a><span class="news-badge">Réussite</span></div>
-                        <div class="news-share"><span><i class="fas fa-share-alt"></i> Partager :</span><button class="news-share-btn fb" onclick="shareFacebook()"><i class="fab fa-facebook-f"></i></button><button class="news-share-btn tw" onclick="shareTwitter()"><i class="fab fa-twitter"></i></button><button class="news-share-btn li" onclick="shareLinkedIn()"><i class="fab fa-linkedin-in"></i></button><button class="news-share-btn wa" onclick="shareWhatsApp()"><i class="fab fa-whatsapp"></i></button></div>
+                        <div class="news-date"><i class="fas fa-calendar-alt"></i><span>May 2024</span></div>
+                        <h3>Memorandum of Understanding with Elsewedy Electric Algeria</h3>
+                        <p>IGEE strengthens links between academia and industry.</p>
+                        <div class="news-card-footer"><a href="https://igee.univ-boumerdes.dz/" target="_blank" rel="noopener" class="news-link">Learn more <i class="fas fa-arrow-right"></i></a><span class="news-badge">Partnership</span></div>
                     </div>
                 </div>
             </div>
@@ -1383,28 +1737,28 @@
             <div class="section-header fade-in">
                 <h2>Documents & Consultations</h2>
                 <div class="underline"></div>
-                <p>Retrouvez ici les avis de consultation et documents officiels.</p>
+                <p>Find here consultation notices and official documents.</p>
             </div>
             <div class="documents-grid">
                 <div class="document-card fade-in stagger-1">
-                    <div class="document-header"><i class="fas fa-file-pdf"></i><div><h4>Avis - 15/07/2026</h4><span>PDF</span></div></div>
-                    <p>Document officiel de consultation publié le 15 juillet 2026.</p>
-                    <div class="document-actions"><button class="btn btn-preview" onclick="openPdfModal('https://igee.univ-boumerdes.dz/document/Con_15-07-2026.pdf')"><i class="fas fa-eye"></i> Aperçu</button><a href="https://igee.univ-boumerdes.dz/document/Con_15-07-2026.pdf" class="btn btn-download" download><i class="fas fa-download"></i> Télécharger</a></div>
+                    <div class="document-header"><i class="fas fa-file-pdf"></i><div><h4>Notice - 15/07/2026</h4><span>PDF</span></div></div>
+                    <p>Official consultation document published on July 15, 2026.</p>
+                    <div class="document-actions"><button class="btn btn-preview" onclick="openPdfModal('https://igee.univ-boumerdes.dz/document/Con_15-07-2026.pdf')"><i class="fas fa-eye"></i> Preview</button><a href="https://igee.univ-boumerdes.dz/document/Con_15-07-2026.pdf" class="btn btn-download" download><i class="fas fa-download"></i> Download</a></div>
                 </div>
                 <div class="document-card fade-in stagger-2">
-                    <div class="document-header"><i class="fas fa-file-pdf"></i><div><h4>Avis - 16/07/2026</h4><span>PDF</span></div></div>
-                    <p>Document officiel de consultation publié le 16 juillet 2026.</p>
-                    <div class="document-actions"><button class="btn btn-preview" onclick="openPdfModal('https://igee.univ-boumerdes.dz/document/Con_16-07-2026.pdf')"><i class="fas fa-eye"></i> Aperçu</button><a href="https://igee.univ-boumerdes.dz/document/Con_16-07-2026.pdf" class="btn btn-download" download><i class="fas fa-download"></i> Télécharger</a></div>
+                    <div class="document-header"><i class="fas fa-file-pdf"></i><div><h4>Notice - 16/07/2026</h4><span>PDF</span></div></div>
+                    <p>Official consultation document published on July 16, 2026.</p>
+                    <div class="document-actions"><button class="btn btn-preview" onclick="openPdfModal('https://igee.univ-boumerdes.dz/document/Con_16-07-2026.pdf')"><i class="fas fa-eye"></i> Preview</button><a href="https://igee.univ-boumerdes.dz/document/Con_16-07-2026.pdf" class="btn btn-download" download><i class="fas fa-download"></i> Download</a></div>
                 </div>
                 <div class="document-card fade-in stagger-3">
-                    <div class="document-header"><i class="fas fa-file-pdf"></i><div><h4>Avis - 24/11/2025</h4><span>PDF</span></div></div>
-                    <p>Consultation n° 35/UMBB/2025 - Prestation de service.</p>
-                    <div class="document-actions"><button class="btn btn-preview" onclick="openPdfModal('https://igee.univ-boumerdes.dz/document/Con_24-11-2025_U.pdf')"><i class="fas fa-eye"></i> Aperçu</button><a href="https://igee.univ-boumerdes.dz/document/Con_24-11-2025_U.pdf" class="btn btn-download" download><i class="fas fa-download"></i> Télécharger</a></div>
+                    <div class="document-header"><i class="fas fa-file-pdf"></i><div><h4>Notice - 24/11/2025</h4><span>PDF</span></div></div>
+                    <p>Consultation No. 35/UMBB/2025 - Service provision.</p>
+                    <div class="document-actions"><button class="btn btn-preview" onclick="openPdfModal('https://igee.univ-boumerdes.dz/document/Con_24-11-2025_U.pdf')"><i class="fas fa-eye"></i> Preview</button><a href="https://igee.univ-boumerdes.dz/document/Con_24-11-2025_U.pdf" class="btn btn-download" download><i class="fas fa-download"></i> Download</a></div>
                 </div>
                 <div class="document-card fade-in stagger-4">
-                    <div class="document-header"><i class="fas fa-file-pdf"></i><div><h4>Avis - 11/11/2025</h4><span>PDF</span></div></div>
-                    <p>Document officiel de consultation publié le 11 novembre 2025.</p>
-                    <div class="document-actions"><button class="btn btn-preview" onclick="openPdfModal('https://igee.univ-boumerdes.dz/document/Con_11-11-2025_U2.pdf')"><i class="fas fa-eye"></i> Aperçu</button><a href="https://igee.univ-boumerdes.dz/document/Con_11-11-2025_U2.pdf" class="btn btn-download" download><i class="fas fa-download"></i> Télécharger</a></div>
+                    <div class="document-header"><i class="fas fa-file-pdf"></i><div><h4>Notice - 11/11/2025</h4><span>PDF</span></div></div>
+                    <p>Official consultation document published on November 11, 2025.</p>
+                    <div class="document-actions"><button class="btn btn-preview" onclick="openPdfModal('https://igee.univ-boumerdes.dz/document/Con_11-11-2025_U2.pdf')"><i class="fas fa-eye"></i> Preview</button><a href="https://igee.univ-boumerdes.dz/document/Con_11-11-2025_U2.pdf" class="btn btn-download" download><i class="fas fa-download"></i> Download</a></div>
                 </div>
             </div>
         </div>
@@ -1413,23 +1767,23 @@
     <section id="faq">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Foire Aux Questions</h2>
+                <h2>Frequently Asked Questions</h2>
                 <div class="underline"></div>
-                <p>Les réponses aux questions les plus fréquentes.</p>
+                <p>Answers to the most frequently asked questions.</p>
             </div>
             <div class="faq-grid">
-                <div class="faq-item fade-in stagger-1"><button class="faq-question"><span>Comment s'inscrire à l'IGEE ?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>L'inscription se fait via le portail national du MESRS après l'obtention du baccalauréat, selon votre moyenne et vos vœux.</p></div></div>
-                <div class="faq-item fade-in stagger-2"><button class="faq-question"><span>Quelles sont les langues d'enseignement ?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Les formations de Licence et Master sont dispensées en langue anglaise.</p></div></div>
-                <div class="faq-item fade-in stagger-3"><button class="faq-question"><span>Y a-t-il des opportunités de mobilité internationale ?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Oui, l'IGEE propose des programmes d'échange avec des universités étrangères (Tassili et programmes américains).</p></div></div>
-                <div class="faq-item fade-in stagger-4"><button class="faq-question"><span>Comment accéder à la bibliothèque ?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>La bibliothèque est ouverte du dimanche au jeudi de 8h à 16h30. L'accès est réservé aux étudiants munis de leur carte.</p></div></div>
-                <div class="faq-item fade-in stagger-5"><button class="faq-question"><span>Quels sont les débouchés après le diplôme ?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Nos diplômés travaillent dans les secteurs des télécommunications, de l'énergie, de l'automatisation industrielle, ou poursuivent en Doctorat.</p></div></div>
+                <div class="faq-item fade-in stagger-1"><button class="faq-question"><span>How do I enroll at IGEE?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Enrollment is done via the national MESRS portal after obtaining the baccalaureate, according to your average and choices.</p></div></div>
+                <div class="faq-item fade-in stagger-2"><button class="faq-question"><span>What are the teaching languages?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>All Bachelor's, Master's and Doctorate programs at IGEE are taught entirely in English.</p></div></div>
+                <div class="faq-item fade-in stagger-3"><button class="faq-question"><span>Are there international mobility opportunities?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Yes, IGEE offers exchange programs with foreign universities (Tassili and American programs).</p></div></div>
+                <div class="faq-item fade-in stagger-4"><button class="faq-question"><span>How do I access the E-Learning platform?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Go to the E-Learning section of this website, then click "Access Platform". Use your university credentials to log in. If you don't have an account, contact the administration.</p></div></div>
+                <div class="faq-item fade-in stagger-5"><button class="faq-question"><span>What are the career prospects after graduation?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Our graduates work in telecommunications, energy, industrial automation, or continue to a Doctorate.</p></div></div>
             </div>
         </div>
     </section>
 
     <div class="pdf-modal" id="pdfModal">
         <div class="pdf-modal-content">
-            <div class="pdf-modal-header"><h3><i class="fas fa-file-pdf"></i> Aperçu du document</h3><button class="pdf-modal-close" onclick="closePdfModal()"><i class="fas fa-times"></i></button></div>
+            <div class="pdf-modal-header"><h3><i class="fas fa-file-pdf"></i> Document Preview</h3><button class="pdf-modal-close" onclick="closePdfModal()"><i class="fas fa-times"></i></button></div>
             <div class="pdf-modal-body"><iframe id="pdfIframe" src="" loading="lazy"></iframe></div>
         </div>
     </div>
@@ -1437,15 +1791,15 @@
     <section id="vie-etudiante" style="background: var(--white);">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Vie étudiante</h2>
+                <h2>Student Life</h2>
                 <div class="underline"></div>
-                <p>Un environnement dynamique pour s'épanouir au-delà des cours.</p>
+                <p>A dynamic environment to thrive beyond classes.</p>
             </div>
             <div class="life-grid">
-                <div class="life-card fade-in stagger-1"><i class="fas fa-users"></i><h4>Associations</h4><p>Clubs scientifiques, culturels et sportifs.</p></div>
-                <div class="life-card fade-in stagger-2"><i class="fas fa-calendar-alt"></i><h4>Événements</h4><p>Conférences, hackathons, journées portes ouvertes.</p></div>
-                <div class="life-card fade-in stagger-3"><i class="fas fa-handshake"></i><h4>Partenariats</h4><p>Stages, projets industriels et mobilité internationale.</p></div>
-                <div class="life-card fade-in stagger-4"><i class="fas fa-trophy"></i><h4>Réussites</h4><p>Nos étudiants brillent dans les compétitions.</p></div>
+                <div class="life-card fade-in stagger-1"><i class="fas fa-users"></i><h4>Associations</h4><p>Scientific, cultural and sports clubs.</p></div>
+                <div class="life-card fade-in stagger-2"><i class="fas fa-calendar-alt"></i><h4>Events</h4><p>Conferences, hackathons, open days.</p></div>
+                <div class="life-card fade-in stagger-3"><i class="fas fa-handshake"></i><h4>Partnerships</h4><p>Internships, industrial projects and international mobility.</p></div>
+                <div class="life-card fade-in stagger-4"><i class="fas fa-trophy"></i><h4>Achievements</h4><p>Our students shine in competitions.</p></div>
             </div>
         </div>
     </section>
@@ -1453,15 +1807,15 @@
     <section id="galerie">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Découvrir notre campus</h2>
+                <h2>Discover Our Campus</h2>
                 <div class="underline"></div>
-                <p>Un aperçu de notre environnement et de nos installations.</p>
+                <p>An overview of our environment and facilities.</p>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item zoom-in stagger-1"><img src="entree.jpg" alt="Entrée" loading="lazy"><div class="gallery-caption">Entrée principale</div></div>
-                <div class="gallery-item zoom-in stagger-2"><img src="accueil.jpg" alt="Accueil" loading="lazy"><div class="gallery-caption">Espace d'accueil</div></div>
-                <div class="gallery-item zoom-in stagger-3"><img src="campus1.jpg" alt="Cour" loading="lazy"><div class="gallery-caption">Cour intérieure</div></div>
-                <div class="gallery-item zoom-in stagger-4"><img src="neige.jpg" alt="Neige" loading="lazy"><div class="gallery-caption">Le campus en hiver</div></div>
+                <div class="gallery-item zoom-in stagger-1"><img src="entree.jpg" alt="Entrance" loading="lazy"><div class="gallery-caption">Main Entrance</div></div>
+                <div class="gallery-item zoom-in stagger-2"><img src="accueil.jpg" alt="Reception" loading="lazy"><div class="gallery-caption">Reception Area</div></div>
+                <div class="gallery-item zoom-in stagger-3"><img src="campus1.jpg" alt="Courtyard" loading="lazy"><div class="gallery-caption">Inner Courtyard</div></div>
+                <div class="gallery-item zoom-in stagger-4"><img src="neige.jpg" alt="Snow" loading="lazy"><div class="gallery-caption">Campus in Winter</div></div>
             </div>
         </div>
     </section>
@@ -1469,30 +1823,31 @@
     <section id="contact" style="background: var(--white);">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Contactez-nous</h2>
+                <h2>Contact Us</h2>
                 <div class="underline"></div>
-                <p>Une question ? N'hésitez pas à nous écrire.</p>
+                <p>A question? Feel free to write to us.</p>
             </div>
             <div class="contact-grid">
                 <div class="contact-info slide-left">
-                    <div class="contact-item"><div class="icon"><i class="fas fa-map-marker-alt"></i></div><div><h4>Adresse</h4><p>Boulevard de l'Indépendance, Boumerdès 35000, Algérie</p></div></div>
-                    <div class="contact-item"><div class="icon"><i class="fas fa-phone-alt"></i></div><div><h4>Téléphone</h4><p>+213 (0)24 79 55 55</p></div></div>
+                    <div class="contact-item"><div class="icon"><i class="fas fa-map-marker-alt"></i></div><div><h4>Address</h4><p>Independence Boulevard, Boumerdès 35000, Algeria</p></div></div>
+                    <div class="contact-item"><div class="icon"><i class="fas fa-phone-alt"></i></div><div><h4>Phone</h4><p>+213 (0)24 79 55 55</p></div></div>
                     <div class="contact-item"><div class="icon"><i class="fas fa-envelope"></i></div><div><h4>Email</h4><p><a href="mailto:h.zidane@univ-boumerdes.dz">h.zidane@univ-boumerdes.dz</a></p></div></div>
-                    <div class="contact-item"><div class="icon"><i class="fas fa-clock"></i></div><div><h4>Horaires</h4><p>Dimanche - Jeudi : 8h00 - 16h30</p></div></div>
+                    <div class="contact-item"><div class="icon"><i class="fas fa-laptop-code"></i></div><div><h4>E-Learning Support</h4><p>Available Sunday to Thursday, 8 AM - 4:30 PM</p></div></div>
+                    <div class="contact-item"><div class="icon"><i class="fas fa-clock"></i></div><div><h4>Hours</h4><p>Sunday - Thursday: 8:00 AM - 4:30 PM</p></div></div>
                 </div>
                 <div class="contact-form slide-right">
-                    <h3>Envoyez-nous un message</h3>
+                    <h3>Send Us a Message</h3>
                     <form>
-                        <div class="form-group"><label for="name">Nom complet</label><input type="text" id="name" placeholder="Votre nom" required></div>
-                        <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="votre@email.com" required></div>
-                        <div class="form-group"><label for="subject">Sujet</label><input type="text" id="subject" placeholder="Objet"></div>
-                        <div class="form-group"><label for="message">Message</label><textarea id="message" placeholder="Votre message..." required></textarea></div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i> Envoyer</button>
+                        <div class="form-group"><label for="name">Full Name</label><input type="text" id="name" placeholder="Your name" required></div>
+                        <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="your@email.com" required></div>
+                        <div class="form-group"><label for="subject">Subject</label><select id="subject"><option>General Inquiry</option><option>E-Learning Platform Support</option><option>Account Request</option><option>Teacher Training Request</option><option>Partnership</option></select></div>
+                        <div class="form-group"><label for="message">Message</label><textarea id="message" placeholder="Your message..." required></textarea></div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i> Send</button>
                     </form>
                 </div>
             </div>
             <div class="map-container fade-in">
-                <iframe src="https://maps.google.com/maps?q=Boumerd%C3%A8s%20Universit%C3%A9%20M%27hamed%20Bougara&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" title="Localisation IGEE"></iframe>
+                <iframe src="https://maps.google.com/maps?q=Boumerd%C3%A8s%20Universit%C3%A9%20M%27hamed%20Bougara&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" title="IGEE Location"></iframe>
             </div>
         </div>
     </section>
@@ -1503,40 +1858,39 @@
                 <div class="footer-brand">
                     <div class="logo">
                         <img src="logo.jpg" alt="Logo" class="logo-img" loading="lazy">
-                        <div class="logo-text"><span>IGEE</span><span>Institut de Génie Électrique & Électronique</span></div>
+                        <div class="logo-text"><span>IGEE</span><span>Institute of Electrical & Electronic Engineering</span></div>
                     </div>
-                    <p>Institut de Génie Électrique et Électronique de l'Université M'Hamed Bougara de Boumerdès.</p>
+                    <p>Institute of Electrical and Electronic Engineering of M'Hamed Bougara University of Boumerdès. All programs taught in English.</p>
                     <div class="footer-contact-list">
                         <a href="mailto:h.zidane@univ-boumerdes.dz"><i class="fas fa-envelope" style="color: var(--accent);"></i> h.zidane@univ-boumerdes.dz</a>
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h4>Liens rapides</h4>
+                    <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#accueil"><i class="fas fa-angle-right"></i> Accueil</a></li>
-                        <li><a href="#institut"><i class="fas fa-angle-right"></i> Institut</a></li>
-                        <li><a href="#formations"><i class="fas fa-angle-right"></i> Formations</a></li>
-                        <li><a href="#elearning"><i class="fas fa-angle-right"></i> E-learning</a></li>
-                        <li><a href="#infrastructures"><i class="fas fa-angle-right"></i> Infrastructures</a></li>
+                        <li><a href="#accueil"><i class="fas fa-angle-right"></i> Home</a></li>
+                        <li><a href="#institut"><i class="fas fa-angle-right"></i> Institute</a></li>
+                        <li><a href="#formations"><i class="fas fa-angle-right"></i> Programs</a></li>
+                        <li><a href="#elearning"><i class="fas fa-angle-right"></i> E-Learning</a></li>
+                        <li><a href="#infrastructures"><i class="fas fa-angle-right"></i> Facilities</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Ressources</h4>
+                    <h4>Resources</h4>
                     <ul>
+                        <li><a href="https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700" target="_blank" rel="noopener"><i class="fas fa-angle-right"></i> E-Learning Platform</a></li>
                         <li><a href="#graduation"><i class="fas fa-angle-right"></i> Graduation</a></li>
-                        <li><a href="#post-graduation"><i class="fas fa-angle-right"></i> Post-Graduation</a></li>
+                        <li><a href="#post-graduation"><i class="fas fa-angle-right"></i> Postgraduate</a></li>
                         <li><a href="#international"><i class="fas fa-angle-right"></i> International</a></li>
-                        <li><a href="#recherche"><i class="fas fa-angle-right"></i> Recherche</a></li>
-                        <li><a href="#csi"><i class="fas fa-angle-right"></i> CSI</a></li>
-                        <li><a href="#bibliotheque"><i class="fas fa-angle-right"></i> Bibliothèque</a></li>
-                        <li><a href="#actualites"><i class="fas fa-angle-right"></i> Actualités</a></li>
-                        <li><a href="#faq"><i class="fas fa-angle-right"></i> FAQ</a></li>
+                        <li><a href="#recherche"><i class="fas fa-angle-right"></i> Research</a></li>
+                        <li><a href="#bibliotheque"><i class="fas fa-angle-right"></i> Library</a></li>
+                        <li><a href="#actualites"><i class="fas fa-angle-right"></i> News</a></li>
                         <li><a href="#documents"><i class="fas fa-angle-right"></i> Documents</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Suivez-nous</h4>
-                    <p class="footer-share-title"><i class="fas fa-share-alt"></i> Rejoignez notre communauté</p>
+                    <h4>Follow Us</h4>
+                    <p class="footer-share-title"><i class="fas fa-share-alt"></i> Join our community</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/umbb.igee/" target="_blank" rel="noopener" class="facebook" title="Facebook IGEE"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://x.com/IGEECommunicat1" target="_blank" rel="noopener" class="twitter" title="Twitter IGEE"><i class="fab fa-twitter"></i></a>
@@ -1548,19 +1902,26 @@
             </div>
             <div class="footer-bottom">
                 <span class="footer-copyright">&copy; 2026 IGEE - M'Hamed Bougara University of Boumerdès. All rights reserved.</span>
-                <a href="mailto:h.zidane@univ-boumerdes.dz?subject=Site%20IGEE" class="footer-signature" title="Site conçu par Ouramdane Ali">
+                <a href="mailto:h.zidane@univ-boumerdes.dz?subject=IGEE%20Website" class="footer-signature" title="Site designed by Ouramdane Ali">
                     <i class="fas fa-code"></i>
-                    <span>Conçu par</span>
+                    <span>Designed by</span>
                     <span class="signature-name">Ouramdane Ali</span>
                 </a>
             </div>
         </div>
     </footer>
 
-    <button class="scroll-top" id="scrollTop" aria-label="Haut de page"><i class="fas fa-arrow-up"></i></button>
+    <button class="scroll-top" id="scrollTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
     <script>
-        // Barre de progression
+        // ============================================================
+        // ⚙️ CONFIGURATION — MODIFIEZ UNIQUEMENT CES 2 LIGNES
+        // ============================================================
+        const MOODLE_COURSE_URL = "https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700";
+        const MOODLE_LOGIN_URL  = "https://elearning.univ-boumerdes.dz/login/index.php";
+        // ============================================================
+
+        // Scroll progress bar
         const scrollProgress = document.getElementById('scrollProgress');
         window.addEventListener('scroll', () => {
             const winScroll = document.documentElement.scrollTop;
@@ -1568,7 +1929,7 @@
             scrollProgress.style.width = (winScroll / height) * 100 + '%';
         });
 
-        // Mode sombre
+        // Dark mode
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
         const toggleText = themeToggle.querySelector('.toggle-text');
@@ -1576,14 +1937,14 @@
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark-mode');
             themeIcon.classList.replace('fa-moon', 'fa-sun');
-            toggleText.textContent = 'Mode clair';
+            toggleText.textContent = 'Light mode';
         }
 
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             const isDark = document.body.classList.contains('dark-mode');
             themeIcon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
-            toggleText.textContent = isDark ? 'Mode clair' : 'Mode sombre';
+            toggleText.textContent = isDark ? 'Light mode' : 'Dark mode';
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
 
@@ -1596,7 +1957,7 @@
             });
         });
 
-        // Menu mobile
+        // Mobile menu
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
 
@@ -1607,7 +1968,7 @@
             icon.classList.toggle('fa-times');
         });
 
-        // Dropdowns mobiles
+        // Mobile dropdowns
         document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 if (window.innerWidth <= 768) {
@@ -1621,7 +1982,7 @@
             });
         });
 
-        // Fermer menu mobile au clic sur lien
+        // Close mobile menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -1675,7 +2036,7 @@
             updateCounter();
         }
 
-        // Particules
+        // Particles
         function createParticles() {
             const container = document.getElementById('particles');
             if (!container) return;
@@ -1708,167 +2069,6 @@
             });
         });
 
-        // ===== E-LEARNING (EN ANGLAIS) =====
-        const elearningData = {
-            "2025-2026": [
-                {
-                    id: "basic",
-                    name: "Department of Basic Education (L1, L2, L3)",
-                    icon: "fas fa-book-open",
-                    courses: [
-                        { title: "Mathematics 1", level: "L1", teacher: "Dr. A. Benali", progress: 75 },
-                        { title: "General Physics", level: "L1", teacher: "Pr. M. Khelifi", progress: 60 },
-                        { title: "Algorithms & Programming", level: "L2", teacher: "Dr. S. Haddad", progress: 90 },
-                        { title: "Numerical Analysis", level: "L3", teacher: "Pr. F. Ziani", progress: 45 },
-                        { title: "Applied Mathematics", level: "L2", teacher: "Dr. R. Bouaziz", progress: 55 }
-                    ]
-                },
-                {
-                    id: "electronics",
-                    name: "Department of Electronics (Computer, Telecommunications)",
-                    icon: "fas fa-microchip",
-                    courses: [
-                        { title: "Analog Circuits", level: "L2", teacher: "Dr. K. Amrani", progress: 80 },
-                        { title: "Embedded Systems", level: "M1", teacher: "Pr. R. Belkacem", progress: 55 },
-                        { title: "Telecommunications", level: "M1", teacher: "Dr. Y. Meraihi", progress: 70 },
-                        { title: "Digital Signal Processing", level: "M2", teacher: "Pr. A. Recioui", progress: 40 },
-                        { title: "Computer Networks", level: "M1", teacher: "Dr. M. Saadi", progress: 65 }
-                    ]
-                },
-                {
-                    id: "automation",
-                    name: "Department of Automation and Electrical Engineering",
-                    icon: "fas fa-cogs",
-                    courses: [
-                        { title: "Linear Control Systems", level: "L3", teacher: "Dr. Y. Tabet", progress: 65 },
-                        { title: "Electrical Machines", level: "M1", teacher: "Pr. A. Kheldoun", progress: 50 },
-                        { title: "Robotics", level: "M2", teacher: "Dr. A. Ammar", progress: 85 },
-                        { title: "Power Electronics", level: "M1", teacher: "Pr. R. Boushaki", progress: 60 }
-                    ]
-                },
-                {
-                    id: "m2",
-                    name: "M2 (Common Courses)",
-                    icon: "fas fa-graduation-cap",
-                    courses: [
-                        { title: "Research Methodology", level: "M2", teacher: "Pr. M. Challal", progress: 30 },
-                        { title: "Scientific English", level: "M2", teacher: "Mrs. L. Saadi", progress: 95 },
-                        { title: "Project Management", level: "M2", teacher: "Dr. H. Daoudi", progress: 45 }
-                    ]
-                }
-            ],
-            "2024-2025": [
-                {
-                    id: "basic-archive",
-                    name: "Department of Basic Education (Archives)",
-                    icon: "fas fa-archive",
-                    courses: [
-                        { title: "Mathematics 1 (2024)", level: "L1", teacher: "Dr. A. Benali", progress: 100 },
-                        { title: "General Physics (2024)", level: "L1", teacher: "Pr. M. Khelifi", progress: 100 }
-                    ]
-                }
-            ]
-        };
-
-        function renderElearning(year = "2025-2026", searchTerm = "") {
-            const container = document.getElementById('elearningContent');
-            if (!container) return;
-
-            const data = elearningData[year] || [];
-            
-            let html = '';
-            let hasResults = false;
-
-            data.forEach(dept => {
-                const filteredCourses = dept.courses.filter(course => 
-                    course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    course.teacher.toLowerCase().includes(searchTerm.toLowerCase())
-                );
-
-                if (filteredCourses.length === 0) return;
-                hasResults = true;
-
-                html += `
-                    <div class="department-card fade-in">
-                        <div class="department-header" onclick="toggleDepartment(this)">
-                            <h3><i class="${dept.icon}"></i> ${dept.name}</h3>
-                            <i class="fas fa-chevron-down toggle-icon"></i>
-                        </div>
-                        <div class="department-body">
-                            <div class="course-grid">
-                                ${filteredCourses.map(course => `
-                                    <div class="course-card">
-                                        <div class="course-icon"><i class="fas fa-play-circle"></i></div>
-                                        <h4>${course.title}</h4>
-                                        <div class="course-meta">
-                                            <span><i class="fas fa-layer-group"></i> ${course.level}</span>
-                                            <span><i class="fas fa-user-tie"></i> ${course.teacher}</span>
-                                        </div>
-                                        <div class="progress-bar">
-                                            <div class="progress-fill" style="width: ${course.progress}%"></div>
-                                        </div>
-                                        <a href="#" class="btn-access" onclick="event.preventDefault(); alert('Redirecting to the e-learning platform for the course: ${course.title}');">Access the course <i class="fas fa-arrow-right"></i></a>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-
-            if (!hasResults) {
-                html = '<div style="text-align:center; padding:60px 20px; color: var(--text-light);"><i class="fas fa-search" style="font-size:2.5rem; color: var(--accent); margin-bottom:15px;"></i><p>No courses were found for your search.</p></div>';
-            }
-
-            container.innerHTML = html;
-
-            // Automatically open the first department
-            const firstCard = container.querySelector('.department-card');
-            if (firstCard) firstCard.classList.add('active');
-        }
-
-        function toggleDepartment(header) {
-            const card = header.parentElement;
-            card.classList.toggle('active');
-        }
-
-        // Initialisation E-learning
-        function initElearning() {
-            const container = document.getElementById('elearningContent');
-            if (!container) return;
-
-            renderElearning();
-
-            const yearSelect = document.getElementById('yearSelect');
-            const courseSearch = document.getElementById('courseSearch');
-            const searchBtn = document.getElementById('searchBtn');
-
-            if (yearSelect) {
-                yearSelect.addEventListener('change', (e) => {
-                    renderElearning(e.target.value, courseSearch ? courseSearch.value : '');
-                });
-            }
-
-            if (courseSearch) {
-                courseSearch.addEventListener('input', (e) => {
-                    renderElearning(yearSelect ? yearSelect.value : '2025-2026', e.target.value);
-                });
-            }
-
-            if (searchBtn) {
-                searchBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    renderElearning(yearSelect ? yearSelect.value : '2025-2026', courseSearch ? courseSearch.value : '');
-                });
-            }
-        }
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initElearning);
-        } else {
-            initElearning();
-        }
-
         // PDF Modal
         function openPdfModal(url) {
             const modal = document.getElementById('pdfModal');
@@ -1887,19 +2087,72 @@
         document.getElementById('pdfModal').addEventListener('click', (e) => { if (e.target === e.currentTarget) closePdfModal(); });
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePdfModal(); });
 
-        // Partage social
+        // Social sharing
         function shareFacebook() { window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank', 'width=600,height=400,noopener,noreferrer'); }
         function shareTwitter() {
             const url = encodeURIComponent(window.location.href);
-            const text = encodeURIComponent('Découvrez l\'IGEE - Institut de Génie Électrique et Électronique');
+            const text = encodeURIComponent('Discover IGEE - Institute of Electrical and Electronic Engineering');
             window.open('https://twitter.com/intent/tweet?url=' + url + '&text=' + text + '&via=IGEECommunicat1', '_blank', 'width=600,height=400,noopener,noreferrer');
         }
         function shareLinkedIn() { window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank', 'width=600,height=400,noopener,noreferrer'); }
-        function shareWhatsApp() { window.open('https://wa.me/?text=' + encodeURIComponent('Découvrez l\'IGEE : ' + window.location.href), '_blank', 'noopener,noreferrer'); }
+        function shareWhatsApp() { window.open('https://wa.me/?text=' + encodeURIComponent('Discover IGEE: ' + window.location.href), '_blank', 'noopener,noreferrer'); }
         function shareEmail() {
-            const subject = encodeURIComponent('Découvrez l\'IGEE');
-            const body = encodeURIComponent('Bonjour,\n\nJe vous invite à découvrir l\'IGEE :\n\n' + window.location.href);
+            const subject = encodeURIComponent('Discover IGEE');
+            const body = encodeURIComponent('Hello,\n\nI invite you to discover IGEE:\n\n' + window.location.href);
             window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+        }
+
+        // ===== E-LEARNING FUNCTIONS =====
+        function searchCourses() {
+            const query = document.getElementById('elearnSearchInput').value.trim();
+            const level = document.getElementById('elearnSearchLevel').value;
+            let url = MOODLE_COURSE_URL;
+            const params = [];
+            if (query) params.push('search=' + encodeURIComponent(query));
+            if (level) params.push('level=' + encodeURIComponent(level));
+            if (params.length) url += '&' + params.join('&');
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
+        // Allow Enter key in search
+        document.getElementById('elearnSearchInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') searchCourses();
+        });
+
+        function filterCourses(level, btn) {
+            // Update active button
+            document.querySelectorAll('.elearn-filter').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Filter course cards
+            const cards = document.querySelectorAll('#elearnCoursesGrid .elearn-course');
+            let visibleCount = 0;
+            cards.forEach(card => {
+                const cardLevel = card.getAttribute('data-level');
+                if (level === 'all' || cardLevel === level) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                    card.classList.remove('visible');
+                    setTimeout(() => card.classList.add('visible'), 50);
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // If no courses match, show a message
+            const grid = document.getElementById('elearnCoursesGrid');
+            let noResult = grid.querySelector('.no-results');
+            if (visibleCount === 0) {
+                if (!noResult) {
+                    noResult = document.createElement('div');
+                    noResult.className = 'no-results';
+                    noResult.style.cssText = 'grid-column: 1/-1; text-align: center; padding: 40px 20px; color: var(--text-light); background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);';
+                    noResult.innerHTML = '<i class="fas fa-search" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; display: block;"></i><h4 style="color: var(--primary); margin-bottom: 8px;">No courses found for this level</h4><p style="font-size: 0.9rem;">Try another level or browse all courses.</p>';
+                    grid.appendChild(noResult);
+                }
+            } else if (noResult) {
+                noResult.remove();
+            }
         }
     </script>
 </body>
