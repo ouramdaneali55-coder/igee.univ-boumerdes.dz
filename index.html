@@ -342,9 +342,7 @@
         .formation-card ul li { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--text-light); }
         .formation-card ul li i { color: var(--accent); font-size: 0.8rem; }
 
-        /* ===== E-LEARNING PLATFORM ===== */
         .elearning-section { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); position: relative; overflow: hidden; }
-
         .elearn-hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 45px; align-items: center; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); border-radius: var(--radius); padding: 50px; color: var(--white); position: relative; overflow: hidden; box-shadow: var(--shadow-lg); margin-bottom: 60px; }
         .elearn-hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(0, 168, 232, 0.25) 0%, transparent 70%); border-radius: 50%; animation: pulse-bg 6s ease-in-out infinite; }
         .elearn-hero-content { position: relative; z-index: 2; }
@@ -454,7 +452,6 @@
         .resource-content .resource-meta { font-size: 0.75rem; color: var(--text-light); display: flex; gap: 12px; }
         .resource-content .resource-meta i { color: var(--accent); }
 
-        /* ===== TIMETABLE ===== */
         .timetable-section { background: var(--white); position: relative; overflow: hidden; }
         .timetable-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 50px; }
         .tt-stat { background: var(--bg); border-radius: var(--radius); padding: 28px 20px; text-align: center; box-shadow: var(--shadow); border-top: 4px solid var(--accent); transition: var(--transition); }
@@ -538,23 +535,8 @@
         .tt-dot.recitation { background: #f59e0b; }
         .tt-dot.exam { background: #ef4444; }
 
-        /* ============================================================
-           ASSESSMENTS SECTION — PROFESSIONAL
-           ============================================================ */
-        .assessments-section {
-            background: linear-gradient(180deg, var(--bg) 0%, var(--white) 100%);
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .assessments-section::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 300px;
-            background: radial-gradient(circle at 50% 0%, rgba(0, 168, 232, 0.06) 0%, transparent 70%);
-            pointer-events: none;
-        }
+        .assessments-section { background: linear-gradient(180deg, var(--bg) 0%, var(--white) 100%); padding: 100px 0; position: relative; overflow: hidden; }
+        .assessments-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 300px; background: radial-gradient(circle at 50% 0%, rgba(0, 168, 232, 0.06) 0%, transparent 70%); pointer-events: none; }
         .assess-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 45px; }
         .assess-stat { background: var(--white); border-radius: var(--radius); padding: 25px 20px; text-align: center; box-shadow: var(--shadow); border: 1px solid rgba(0, 0, 0, 0.04); transition: var(--transition); position: relative; overflow: hidden; }
         .assess-stat::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent), #4dd0e1); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
@@ -650,7 +632,6 @@
         .assess-dot.exam { background: #10b981; }
         .assess-dot.makeup { background: #f59e0b; }
 
-        /* ===== INFO / INTERNATIONAL / OTHER ===== */
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
         .info-card { background: var(--white); border-radius: var(--radius); padding: 35px 30px; box-shadow: var(--shadow); border-left: 5px solid var(--accent); transition: var(--transition); }
         .info-card:hover { transform: translateY(-5px) scale(1.01); box-shadow: var(--shadow-lg); }
@@ -931,155 +912,28 @@
         .stagger-5 { transition-delay: 0.5s; }
         .stagger-6 { transition-delay: 0.6s; }
 
-        /* ============================================================
-           🎨 QUICK ACTION DOCK — Floating Control Panel
-           ============================================================ */
-        .quick-dock {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            z-index: 999;
-            background: rgba(10, 43, 94, 0.92);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 50px;
-            padding: 12px 8px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: dockSlideIn 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-        }
-        @keyframes dockSlideIn {
-            from { opacity: 0; transform: translateY(-50%) translateX(60px); }
-            to { opacity: 1; transform: translateY(-50%) translateX(0); }
-        }
-        .quick-dock:hover {
-            box-shadow: 0 20px 55px rgba(0, 168, 232, 0.35);
-            border-color: rgba(0, 168, 232, 0.4);
-        }
-        .quick-dock::before {
-            content: '';
-            position: absolute;
-            top: -6px;
-            left: 50%;
-            transform: translateX(-50%) rotate(45deg);
-            width: 10px;
-            height: 10px;
-            background: var(--accent);
-            border-radius: 2px;
-            animation: dockPulse 2s ease-in-out infinite;
-        }
-        @keyframes dockPulse {
-            0%, 100% { opacity: 0.4; transform: translateX(-50%) rotate(45deg) scale(1); }
-            50% { opacity: 1; transform: translateX(-50%) rotate(45deg) scale(1.2); }
-        }
-
-        .dock-btn {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            border: none;
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--white);
-            font-size: 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            outline: none;
-        }
-        .dock-btn:hover {
-            background: var(--accent);
-            transform: scale(1.15) translateX(-4px);
-            box-shadow: 0 8px 20px rgba(0, 168, 232, 0.5);
-        }
+        .quick-dock { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 8px; z-index: 999; background: rgba(10, 43, 94, 0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 50px; padding: 12px 8px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); animation: dockSlideIn 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); }
+        @keyframes dockSlideIn { from { opacity: 0; transform: translateY(-50%) translateX(60px); } to { opacity: 1; transform: translateY(-50%) translateX(0); } }
+        .quick-dock:hover { box-shadow: 0 20px 55px rgba(0, 168, 232, 0.35); border-color: rgba(0, 168, 232, 0.4); }
+        .quick-dock::before { content: ''; position: absolute; top: -6px; left: 50%; transform: translateX(-50%) rotate(45deg); width: 10px; height: 10px; background: var(--accent); border-radius: 2px; animation: dockPulse 2s ease-in-out infinite; }
+        @keyframes dockPulse { 0%, 100% { opacity: 0.4; transform: translateX(-50%) rotate(45deg) scale(1); } 50% { opacity: 1; transform: translateX(-50%) rotate(45deg) scale(1.2); } }
+        .dock-btn { width: 42px; height: 42px; border-radius: 50%; border: none; background: rgba(255, 255, 255, 0.08); color: var(--white); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); position: relative; outline: none; }
+        .dock-btn:hover { background: var(--accent); transform: scale(1.15) translateX(-4px); box-shadow: 0 8px 20px rgba(0, 168, 232, 0.5); }
         .dock-btn:active { transform: scale(0.95); }
-        .dock-btn.active {
-            background: linear-gradient(135deg, var(--accent), #4dd0e1);
-            box-shadow: 0 0 20px rgba(0, 168, 232, 0.6);
-        }
-        .dock-btn::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            right: calc(100% + 14px);
-            top: 50%;
-            transform: translateY(-50%) translateX(8px);
-            background: var(--primary);
-            color: var(--white);
-            padding: 7px 14px;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            font-family: 'Inter', sans-serif;
-        }
-        .dock-btn::before {
-            content: '';
-            position: absolute;
-            right: calc(100% + 8px);
-            top: 50%;
-            transform: translateY(-50%) translateX(8px);
-            border: 6px solid transparent;
-            border-left-color: var(--primary);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        .dock-btn:hover::after,
-        .dock-btn:hover::before {
-            opacity: 1;
-            transform: translateY(-50%) translateX(0);
-        }
-        .dock-font-indicator {
-            position: absolute;
-            bottom: 1px;
-            right: 1px;
-            font-size: 0.55rem;
-            font-weight: 700;
-            background: var(--accent);
-            color: var(--white);
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        }
-        .dock-divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.15);
-            margin: 3px 8px;
-            border-radius: 1px;
-        }
-        body.dark-mode .quick-dock {
-            background: rgba(15, 23, 42, 0.92);
-            border-color: rgba(59, 130, 246, 0.2);
-        }
+        .dock-btn.active { background: linear-gradient(135deg, var(--accent), #4dd0e1); box-shadow: 0 0 20px rgba(0, 168, 232, 0.6); }
+        .dock-btn::after { content: attr(data-tooltip); position: absolute; right: calc(100% + 14px); top: 50%; transform: translateY(-50%) translateX(8px); background: var(--primary); color: var(--white); padding: 7px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 500; white-space: nowrap; opacity: 0; pointer-events: none; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); font-family: 'Inter', sans-serif; }
+        .dock-btn::before { content: ''; position: absolute; right: calc(100% + 8px); top: 50%; transform: translateY(-50%) translateX(8px); border: 6px solid transparent; border-left-color: var(--primary); opacity: 0; transition: all 0.3s ease; }
+        .dock-btn:hover::after, .dock-btn:hover::before { opacity: 1; transform: translateY(-50%) translateX(0); }
+        .dock-font-indicator { position: absolute; bottom: 1px; right: 1px; font-size: 0.55rem; font-weight: 700; background: var(--accent); color: var(--white); width: 14px; height: 14px; border-radius: 50%; display: flex; align-items: center; justify-content: center; line-height: 1; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); }
+        .dock-divider { height: 1px; background: rgba(255, 255, 255, 0.15); margin: 3px 8px; border-radius: 1px; }
+        body.dark-mode .quick-dock { background: rgba(15, 23, 42, 0.92); border-color: rgba(59, 130, 246, 0.2); }
         body.dark-mode .dock-btn { background: rgba(255, 255, 255, 0.06); }
         body.dark-mode .dock-btn:hover { background: var(--accent); }
-        body.high-contrast .quick-dock {
-            background: #000;
-            border: 2px solid #ffff00;
-        }
-        body.high-contrast .dock-btn {
-            background: #ffff00;
-            color: #000;
-        }
+        body.high-contrast .quick-dock { background: #000; border: 2px solid #ffff00; }
+        body.high-contrast .dock-btn { background: #ffff00; color: #000; }
 
         @media (max-width: 1100px) {
-            .nav-links > .nav-item > a,
-            .nav-links .dropdown-toggle { font-size: 0.72rem; padding: 10px 8px; }
+            .nav-links > .nav-item > a, .nav-links .dropdown-toggle { font-size: 0.72rem; padding: 10px 8px; }
             .theme-toggle { padding: 0 12px; font-size: 0.75rem; }
         }
         @media (max-width: 992px) {
@@ -1091,51 +945,16 @@
             .share-btn { width: 42px; height: 42px; font-size: 1rem; }
             .share-btn::before { display: none; }
             .elearn-stats, .timetable-stats, .assess-stats { grid-template-columns: repeat(2, 1fr); }
-            .elearning-hero { padding: 35px; }
             .assess-tabs { grid-template-columns: 1fr; max-width: 500px; }
             .assess-content-header { flex-direction: column; align-items: flex-start; }
         }
         @media (max-width: 768px) {
             nav { padding: 8px 0; gap: 10px; }
-            .nav-links {
-                position: fixed; top: 64px; left: 0; width: 100%;
-                background: var(--primary); flex-direction: column;
-                padding: 20px; gap: 4px;
-                transform: translateY(-150%);
-                transition: var(--transition);
-                box-shadow: var(--shadow-lg);
-                z-index: 999;
-                max-height: calc(100vh - 64px);
-                overflow-y: auto;
-                align-items: stretch;
-            }
+            .nav-links { position: fixed; top: 64px; left: 0; width: 100%; background: var(--primary); flex-direction: column; padding: 20px; gap: 4px; transform: translateY(-150%); transition: var(--transition); box-shadow: var(--shadow-lg); z-index: 999; max-height: calc(100vh - 64px); overflow-y: auto; align-items: stretch; }
             .nav-links.active { transform: translateY(0); }
             .nav-item { width: 100%; }
-            .nav-links > .nav-item > a,
-            .nav-links .dropdown-toggle {
-                width: 100%;
-                text-align: left;
-                justify-content: space-between;
-                padding: 14px 16px;
-                font-size: 0.95rem;
-                border-radius: 8px;
-            }
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                background: rgba(0, 0, 0, 0.2);
-                box-shadow: none;
-                border: none;
-                border-radius: 8px;
-                margin: 4px 0;
-                max-height: 0;
-                overflow: hidden;
-                padding: 0;
-                transition: max-height 0.4s ease, padding 0.4s ease;
-                min-width: auto;
-            }
+            .nav-links > .nav-item > a, .nav-links .dropdown-toggle { width: 100%; text-align: left; justify-content: space-between; padding: 14px 16px; font-size: 0.95rem; border-radius: 8px; }
+            .dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; background: rgba(0, 0, 0, 0.2); box-shadow: none; border: none; border-radius: 8px; margin: 4px 0; max-height: 0; overflow: hidden; padding: 0; transition: max-height 0.4s ease, padding 0.4s ease; min-width: auto; }
             .dropdown-menu::before { display: none; }
             .nav-item.open .dropdown-menu { max-height: 500px; padding: 8px 0; }
             .dropdown-menu a { color: rgba(255, 255, 255, 0.85); padding: 10px 20px 10px 30px; font-size: 0.88rem; }
@@ -1169,27 +988,11 @@
             .assess-banner-btn { width: 100%; justify-content: center; }
             .assess-card-top { padding: 18px 20px; }
             .assess-card-content { padding: 18px 20px 20px; }
-            /* Quick Dock mobile */
-            .quick-dock {
-                top: auto;
-                bottom: 20px;
-                right: 50%;
-                transform: translateX(50%);
-                flex-direction: row;
-                padding: 8px 12px;
-                border-radius: 50px;
-                gap: 6px;
-            }
-            .quick-dock::before {
-                top: 50%;
-                left: -6px;
-                transform: translateY(-50%) rotate(45deg);
-                animation: none;
-            }
+            .quick-dock { top: auto; bottom: 20px; right: 50%; transform: translateX(50%); flex-direction: row; padding: 8px 12px; border-radius: 50px; gap: 6px; }
+            .quick-dock::before { top: 50%; left: -6px; transform: translateY(-50%) rotate(45deg); animation: none; }
             .dock-btn { width: 38px; height: 38px; font-size: 0.9rem; }
             .dock-btn:hover { transform: scale(1.1) translateY(-3px); }
-            .dock-btn::after,
-            .dock-btn::before { display: none; }
+            .dock-btn::after, .dock-btn::before { display: none; }
             .dock-divider { width: 1px; height: 24px; margin: 8px 2px; }
         }
         @media (max-width: 480px) {
@@ -1233,7 +1036,6 @@
         <button class="share-btn email" data-tooltip="Share by Email" onclick="shareEmail()" aria-label="Email"><i class="fas fa-envelope"></i></button>
     </div>
 
-    <!-- ===== FLOATING QUICK ACTION DOCK ===== -->
     <div class="quick-dock" id="quickDock" role="toolbar" aria-label="Quick actions">
         <button class="dock-btn" id="dockThemeToggle" data-tooltip="Toggle Dark Mode" aria-label="Toggle theme">
             <i class="fas fa-moon" id="dockThemeIcon"></i>
@@ -1321,9 +1123,14 @@
                             <a href="#galerie"><i class="fas fa-images"></i> Gallery</a>
                         </div>
                     </li>
-                    <li class="nav-item"><a href="#actualites">News</a></li>
-                    <li class="nav-item"><a href="#documents">Documents</a></li>
-                    <li class="nav-item"><a href="#faq">FAQ</a></li>
+                    <li class="nav-item">
+                        <button class="dropdown-toggle">News & Resources <i class="fas fa-chevron-down"></i></button>
+                        <div class="dropdown-menu">
+                            <a href="#actualites"><i class="fas fa-newspaper"></i> News</a>
+                            <a href="#documents"><i class="fas fa-file-pdf"></i> Documents</a>
+                            <a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a>
+                        </div>
+                    </li>
                     <li class="nav-item"><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="nav-actions">
@@ -2866,15 +2673,10 @@
     <button class="scroll-top" id="scrollTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
     <script>
-        // ============================================================
-        // ⚙️ CONFIGURATION
-        // ============================================================
         const MOODLE_COURSE_URL = "https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700";
         const MOODLE_LOGIN_URL  = "https://elearning.univ-boumerdes.dz/login/index.php";
         const GITHUB_TIMETABLE_URL = "https://ouramdaneali55-coder.github.io/timetable-igee/";
-        // ============================================================
 
-        // Scroll progress bar
         const scrollProgress = document.getElementById('scrollProgress');
         window.addEventListener('scroll', () => {
             const winScroll = document.documentElement.scrollTop;
@@ -2882,9 +2684,6 @@
             scrollProgress.style.width = (winScroll / height) * 100 + '%';
         });
 
-        // ============================================================
-        // 🌙 DARK MODE — Synchronized between header and dock
-        // ============================================================
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
         const toggleText = themeToggle.querySelector('.toggle-text');
@@ -2913,9 +2712,6 @@
             dockThemeToggle.addEventListener('click', () => setTheme(!document.body.classList.contains('dark-mode')));
         }
 
-        // ============================================================
-        // 🔤 FONT SIZE ADJUSTER
-        // ============================================================
         let currentFontSize = parseInt(localStorage.getItem('fontSize') || '100');
         function applyFontSize() {
             document.documentElement.style.fontSize = currentFontSize + '%';
@@ -2929,9 +2725,6 @@
         }
         applyFontSize();
 
-        // ============================================================
-        // ◐ HIGH CONTRAST MODE
-        // ============================================================
         function toggleHighContrast() {
             document.body.classList.toggle('high-contrast');
             const isHC = document.body.classList.contains('high-contrast');
@@ -2945,14 +2738,10 @@
             if (btn) btn.classList.add('active');
         }
 
-        // ============================================================
-        // ⬆ SCROLL TO TOP
-        // ============================================================
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // FAQ
         document.querySelectorAll('.faq-question').forEach(btn => {
             btn.addEventListener('click', () => {
                 const item = btn.parentElement;
@@ -2961,7 +2750,6 @@
             });
         });
 
-        // Mobile menu
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
 
@@ -2972,7 +2760,6 @@
             icon.classList.toggle('fa-times');
         });
 
-        // Mobile dropdowns
         document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 if (window.innerWidth <= 768) {
@@ -2986,7 +2773,6 @@
             });
         });
 
-        // Close mobile menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -2997,13 +2783,11 @@
             });
         });
 
-        // Header scroll
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
             header.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Scroll top button visibility
         const scrollTop = document.getElementById('scrollTop');
         window.addEventListener('scroll', () => {
             scrollTop.classList.toggle('visible', window.scrollY > 500);
@@ -3012,7 +2796,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -3040,7 +2823,6 @@
             updateCounter();
         }
 
-        // Particles
         function createParticles() {
             const container = document.getElementById('particles');
             if (!container) return;
@@ -3059,7 +2841,6 @@
         }
         createParticles();
 
-        // Active nav link
         const sections = document.querySelectorAll('section[id]');
         const navItems = document.querySelectorAll('.nav-links > .nav-item > a');
         window.addEventListener('scroll', () => {
@@ -3073,7 +2854,6 @@
             });
         });
 
-        // PDF Modal
         function openPdfModal(url) {
             const modal = document.getElementById('pdfModal');
             const iframe = document.getElementById('pdfIframe');
@@ -3091,7 +2871,6 @@
         document.getElementById('pdfModal').addEventListener('click', (e) => { if (e.target === e.currentTarget) closePdfModal(); });
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePdfModal(); });
 
-        // Social sharing
         function shareFacebook() { window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank', 'width=600,height=400,noopener,noreferrer'); }
         function shareTwitter() {
             const url = encodeURIComponent(window.location.href);
@@ -3106,7 +2885,6 @@
             window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
         }
 
-        // E-Learning search
         function searchCourses() {
             const query = document.getElementById('elearnSearchInput').value.trim();
             const level = document.getElementById('elearnSearchLevel').value;
@@ -3152,9 +2930,6 @@
             }
         }
 
-        // ============================================================
-        // 📅 TIMETABLE CONFIGURATION
-        // ============================================================
         const TT_DAYS = ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'];
         const TT_TIME_SLOTS = [
             '08:00 - 09:30', '09:30 - 11:00', '11:00 - 12:30',
@@ -3343,9 +3118,6 @@
             setTimeout(() => { document.title = originalTitle; }, 1000);
         }
 
-        // ============================================================
-        // 📋 ASSESSMENTS FUNCTIONS
-        // ============================================================
         function showAssessmentTab(tabName, btn, event) {
             if (event) event.preventDefault();
 
@@ -3413,7 +3185,6 @@
             });
         }
 
-        // Initialize on page load
         document.addEventListener('DOMContentLoaded', () => {
             initTimetable();
             initAssessCounters();
