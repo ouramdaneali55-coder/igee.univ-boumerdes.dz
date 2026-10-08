@@ -7,8 +7,8 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
     <meta name="theme-color" content="#0a2b5e">
-    <meta name="description" content="Institute of Electrical and Electronic Engineering (IGEE) - M'Hamed Bougara University of Boumerdès. E-Learning platform for students and teachers.">
-    <meta name="keywords" content="IGEE, Boumerdès, electrical engineering, electronics, e-learning, Moodle, Algerian university, UMBB">
+    <meta name="description" content="Institute of Electrical and Electronic Engineering (IGEE) - M'Hamed Bougara University of Boumerdès. E-Learning platform, timetable and assessments.">
+    <meta name="keywords" content="IGEE, Boumerdès, electrical engineering, electronics, e-learning, Moodle, timetable, assessments, Algerian university, UMBB">
     <meta name="author" content="IGEE - M'Hamed Bougara University of Boumerdès">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
@@ -86,7 +86,6 @@
         .btn-warning:hover { background: #d97706; transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 25px rgba(245, 158, 11, 0.4); }
         .btn-sm { padding: 8px 18px; font-size: 0.85rem; }
 
-        /* ===== HEADER ===== */
         header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(10, 43, 94, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15); transition: var(--transition); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
         header.scrolled { background: rgba(10, 43, 94, 0.99); box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25); }
         nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; gap: 16px; }
@@ -145,6 +144,30 @@
             box-shadow: 0 6px 20px rgba(0, 168, 232, 0.5);
         }
         .nav-links > .nav-item > a.nav-elearn i { font-size: 0.85rem; }
+
+        .nav-links > .nav-item > a.nav-timetable {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.35), rgba(16, 185, 129, 0.15));
+            border: 1px solid rgba(16, 185, 129, 0.5);
+            color: var(--white) !important;
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-links > .nav-item > a.nav-timetable::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        .nav-links > .nav-item > a.nav-timetable:hover::after { left: 100%; }
+        .nav-links > .nav-item > a.nav-timetable:hover {
+            background: var(--success);
+            border-color: var(--success);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+        }
+        .nav-links > .nav-item > a.nav-timetable i { font-size: 0.85rem; }
 
         .dropdown-toggle i { font-size: 0.6rem; transition: transform 0.3s ease; margin-left: 2px; }
         .nav-item:hover .dropdown-toggle i { transform: rotate(180deg); }
@@ -242,7 +265,6 @@
         }
         .menu-toggle:hover { background: var(--accent); border-color: var(--accent); }
 
-        /* ===== HERO ===== */
         .hero { min-height: 100vh; display: flex; align-items: center; color: var(--white); padding: 120px 0 80px; position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(10, 43, 94, 0.85) 0%, rgba(26, 74, 138, 0.75) 100%), url('entree.jpg') center/cover no-repeat; background-attachment: fixed; }
         .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 30%, rgba(0, 168, 232, 0.15) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(0, 168, 232, 0.1) 0%, transparent 40%); animation: pulse-bg 8s ease-in-out infinite; }
         @keyframes pulse-bg { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
@@ -432,6 +454,203 @@
         .resource-content .resource-meta { font-size: 0.75rem; color: var(--text-light); display: flex; gap: 12px; }
         .resource-content .resource-meta i { color: var(--accent); }
 
+        /* ===== TIMETABLE ===== */
+        .timetable-section { background: var(--white); position: relative; overflow: hidden; }
+        .timetable-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 50px; }
+        .tt-stat { background: var(--bg); border-radius: var(--radius); padding: 28px 20px; text-align: center; box-shadow: var(--shadow); border-top: 4px solid var(--accent); transition: var(--transition); }
+        .tt-stat:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+        .tt-stat i { font-size: 2rem; color: var(--accent); margin-bottom: 12px; display: inline-block; transition: var(--transition); }
+        .tt-stat:hover i { transform: scale(1.2) rotate(-10deg); }
+        .tt-stat h4 { font-size: 1.9rem; color: var(--primary); margin-bottom: 5px; font-family: 'Poppins', sans-serif; }
+        .tt-stat p { font-size: 0.85rem; color: var(--text-light); margin: 0; }
+
+        .tt-tabs { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 35px; }
+        .tt-tab { background: var(--white); border: 2px solid rgba(0, 0, 0, 0.06); color: var(--text-light); padding: 12px 24px; border-radius: 50px; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: var(--transition); font-family: inherit; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+        .tt-tab:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+        .tt-tab.active { background: var(--accent); border-color: var(--accent); color: var(--white); box-shadow: 0 6px 20px rgba(0, 168, 232, 0.4); }
+
+        .tt-content-wrapper { background: var(--bg); border-radius: var(--radius); box-shadow: var(--shadow-lg); overflow: hidden; margin-bottom: 50px; border: 1px solid rgba(0, 0, 0, 0.04); }
+        .tt-toolbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: var(--white); }
+        .tt-view-switcher { display: flex; gap: 6px; }
+        .tt-view-btn { background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.25); color: var(--white); padding: 8px 18px; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: var(--transition); font-family: inherit; display: inline-flex; align-items: center; gap: 6px; }
+        .tt-view-btn:hover { background: rgba(255, 255, 255, 0.25); }
+        .tt-view-btn.active { background: var(--accent); border-color: var(--accent); }
+        .tt-toolbar-actions { display: flex; gap: 8px; }
+        .tt-action-btn { background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.25); color: var(--white); width: 38px; height: 38px; border-radius: 8px; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+        .tt-action-btn:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
+
+        .tt-week-view { display: none; }
+        .tt-week-view.active { display: block; }
+        .tt-grid-container { overflow-x: auto; }
+        .tt-grid-header { display: grid; grid-template-columns: 90px repeat(6, 1fr); background: var(--bg); border-bottom: 2px solid rgba(0, 0, 0, 0.06); min-width: 800px; }
+        .tt-time-col { padding: 15px 10px; font-weight: 600; font-size: 0.8rem; color: var(--primary); text-align: center; background: rgba(0, 168, 232, 0.05); border-right: 1px solid rgba(0, 0, 0, 0.06); }
+        .tt-day-col { padding: 15px 10px; font-weight: 600; font-size: 0.85rem; color: var(--primary); text-align: center; border-right: 1px solid rgba(0, 0, 0, 0.06); }
+        .tt-day-col:last-child { border-right: none; }
+        .tt-grid-body { min-width: 800px; }
+        .tt-grid-row { display: grid; grid-template-columns: 90px repeat(6, 1fr); border-bottom: 1px solid rgba(0, 0, 0, 0.04); }
+        .tt-grid-row:last-child { border-bottom: none; }
+        .tt-time-cell { padding: 12px 10px; font-size: 0.72rem; color: var(--text-light); text-align: center; background: rgba(0, 168, 232, 0.02); border-right: 1px solid rgba(0, 0, 0, 0.06); display: flex; align-items: center; justify-content: center; font-weight: 500; }
+        .tt-slot { padding: 6px; border-right: 1px solid rgba(0, 0, 0, 0.04); min-height: 70px; display: flex; flex-direction: column; gap: 4px; }
+        .tt-slot:last-child { border-right: none; }
+        .tt-slot.empty { background: transparent; }
+        .tt-slot.has-class { background: rgba(0, 168, 232, 0.02); }
+
+        .tt-class-block { width: 100%; border-radius: 8px; padding: 8px 10px; color: var(--white); font-size: 0.7rem; cursor: pointer; transition: var(--transition); position: relative; overflow: hidden; animation: ttFadeIn 0.4s ease forwards; }
+        @keyframes ttFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .tt-class-block:hover { transform: scale(1.04); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); z-index: 2; }
+        .tt-class-block.lecture { background: linear-gradient(135deg, #0a2b5e 0%, #1a4a8a 100%); }
+        .tt-class-block.lab { background: linear-gradient(135deg, #00a8e8 0%, #4dd0e1 100%); }
+        .tt-class-block.recitation { background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); }
+        .tt-class-block.exam { background: linear-gradient(135deg, #ef4444 0%, #f87171 100%); }
+        .tt-class-block .tt-class-code { font-weight: 700; font-size: 0.65rem; opacity: 0.95; display: block; margin-bottom: 2px; letter-spacing: 0.3px; }
+        .tt-class-block .tt-class-name { font-weight: 500; font-size: 0.72rem; line-height: 1.25; display: block; }
+        .tt-class-block .tt-class-meta { font-size: 0.6rem; opacity: 0.9; margin-top: 4px; display: flex; flex-wrap: wrap; gap: 6px; }
+
+        .tt-list-view { display: none; padding: 25px; }
+        .tt-list-view.active { display: block; }
+        .tt-list-day { margin-bottom: 25px; }
+        .tt-list-day h4 { font-size: 1rem; color: var(--primary); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid rgba(0, 168, 232, 0.2); display: flex; align-items: center; gap: 10px; }
+        .tt-list-day h4 i { color: var(--accent); }
+        .tt-list-item { display: flex; gap: 15px; padding: 12px 15px; border-radius: 8px; background: var(--white); margin-bottom: 8px; transition: var(--transition); border-left: 4px solid transparent; }
+        .tt-list-item:hover { transform: translateX(5px); box-shadow: var(--shadow); }
+        .tt-list-item.lecture { border-left-color: #0a2b5e; }
+        .tt-list-item.lab { border-left-color: #00a8e8; }
+        .tt-list-item.recitation { border-left-color: #f59e0b; }
+        .tt-list-item.exam { border-left-color: #ef4444; }
+        .tt-list-item .tt-list-time { font-size: 0.8rem; font-weight: 600; color: var(--text-light); min-width: 100px; flex-shrink: 0; }
+        .tt-list-item .tt-list-info h5 { font-size: 0.9rem; color: var(--primary); margin-bottom: 3px; }
+        .tt-list-item .tt-list-info p { font-size: 0.78rem; color: var(--text-light); margin: 0; }
+
+        .tt-embed-section { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: var(--radius); padding: 35px; margin-bottom: 40px; box-shadow: var(--shadow); }
+        .tt-embed-header { text-align: center; margin-bottom: 25px; }
+        .tt-embed-header h3 { font-size: 1.3rem; color: var(--primary); margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .tt-embed-header h3 i { color: var(--accent); }
+        .tt-embed-header p { font-size: 0.92rem; color: var(--text-light); }
+        .tt-embed-wrapper { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); margin-bottom: 20px; background: var(--white); }
+        .tt-embed-wrapper iframe { width: 100%; height: 600px; border: none; display: block; }
+        .tt-embed-cta { text-align: center; }
+
+        .tt-legend { display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; padding: 20px; background: var(--bg); border-radius: var(--radius); }
+        .tt-legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-light); font-weight: 500; }
+        .tt-dot { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
+        .tt-dot.lecture { background: #0a2b5e; }
+        .tt-dot.lab { background: #00a8e8; }
+        .tt-dot.recitation { background: #f59e0b; }
+        .tt-dot.exam { background: #ef4444; }
+
+        /* ============================================================
+           ASSESSMENTS SECTION — PROFESSIONAL
+           ============================================================ */
+        .assessments-section {
+            background: linear-gradient(180deg, var(--bg) 0%, var(--white) 100%);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .assessments-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 300px;
+            background: radial-gradient(circle at 50% 0%, rgba(0, 168, 232, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .assess-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 45px; }
+        .assess-stat { background: var(--white); border-radius: var(--radius); padding: 25px 20px; text-align: center; box-shadow: var(--shadow); border: 1px solid rgba(0, 0, 0, 0.04); transition: var(--transition); position: relative; overflow: hidden; }
+        .assess-stat::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent), #4dd0e1); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+        .assess-stat:hover::after { transform: scaleX(1); }
+        .assess-stat:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+        .assess-stat-icon { width: 55px; height: 55px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--white); margin: 0 auto 15px; transition: var(--transition); }
+        .assess-stat:hover .assess-stat-icon { transform: scale(1.1) rotate(-8deg); }
+        .assess-stat-icon.control { background: linear-gradient(135deg, #0a2b5e, #1a4a8a); }
+        .assess-stat-icon.exam { background: linear-gradient(135deg, #059669, #10b981); }
+        .assess-stat-icon.makeup { background: linear-gradient(135deg, #d97706, #f59e0b); }
+        .assess-stat-icon.year { background: linear-gradient(135deg, #7c3aed, #a855f7); }
+        .assess-stat h4 { font-size: 1.9rem; color: var(--primary); margin-bottom: 4px; font-family: 'Poppins', sans-serif; }
+        .assess-stat p { font-size: 0.9rem; color: var(--text); margin: 0 0 4px; font-weight: 600; }
+        .assess-stat-sub { font-size: 0.72rem; color: var(--text-light); letter-spacing: 0.3px; }
+
+        .assess-banner { display: flex; align-items: center; gap: 20px; background: linear-gradient(135deg, #0a2b5e 0%, #1a4a8a 100%); color: var(--white); border-radius: var(--radius); padding: 25px 30px; margin-bottom: 45px; box-shadow: var(--shadow-lg); position: relative; overflow: hidden; }
+        .assess-banner::before { content: ''; position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(0, 168, 232, 0.3) 0%, transparent 70%); border-radius: 50%; }
+        .assess-banner-icon { width: 50px; height: 50px; background: rgba(0, 168, 232, 0.25); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--accent); flex-shrink: 0; position: relative; z-index: 1; }
+        .assess-banner-content { flex: 1; position: relative; z-index: 1; }
+        .assess-banner-content h4 { font-size: 1.05rem; margin-bottom: 4px; }
+        .assess-banner-content p { font-size: 0.88rem; opacity: 0.9; margin: 0; line-height: 1.5; }
+        .assess-banner-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--white); color: var(--primary); padding: 10px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; flex-shrink: 0; transition: var(--transition); position: relative; z-index: 1; }
+        .assess-banner-btn:hover { background: var(--accent); color: var(--white); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0, 168, 232, 0.4); }
+
+        .assess-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 45px; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .assess-tab { display: flex; align-items: center; gap: 15px; background: var(--white); border: 2px solid rgba(0, 0, 0, 0.06); border-radius: 14px; padding: 18px 22px; cursor: pointer; transition: var(--transition); font-family: inherit; text-align: left; position: relative; overflow: hidden; }
+        .assess-tab::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: transparent; transition: var(--transition); }
+        .assess-tab:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+        .assess-tab.active { border-color: transparent; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: var(--white); box-shadow: 0 12px 30px rgba(10, 43, 94, 0.25); }
+        .assess-tab-icon { width: 45px; height: 45px; background: var(--bg); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--accent); flex-shrink: 0; transition: var(--transition); }
+        .assess-tab.active .assess-tab-icon { background: rgba(255, 255, 255, 0.15); color: var(--white); }
+        .assess-tab-text { display: flex; flex-direction: column; gap: 2px; }
+        .assess-tab-label { font-size: 0.95rem; font-weight: 600; font-family: 'Poppins', sans-serif; }
+        .assess-tab-desc { font-size: 0.75rem; opacity: 0.65; }
+        .assess-tab.active .assess-tab-desc { opacity: 0.85; }
+
+        .assess-content { display: none; }
+        .assess-content.active { display: block; animation: fadeInUp 0.5s ease; }
+
+        .assess-content-header { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid rgba(0, 168, 232, 0.12); }
+        .assess-content-title { flex: 1; min-width: 250px; }
+        .assess-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 50px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 10px; }
+        .assess-badge.control { background: rgba(10, 43, 94, 0.1); color: #0a2b5e; }
+        .assess-badge.exam { background: rgba(16, 185, 129, 0.1); color: #059669; }
+        .assess-badge.makeup { background: rgba(245, 158, 11, 0.12); color: #d97706; }
+        .assess-content-title h3 { font-size: 1.35rem; color: var(--primary); margin-bottom: 5px; }
+        .assess-content-title p { font-size: 0.9rem; color: var(--text-light); margin: 0; }
+        .assess-source-btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 50px; background: rgba(0, 168, 232, 0.08); color: var(--accent); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border: 1px solid rgba(0, 168, 232, 0.2); }
+        .assess-source-btn:hover { background: var(--accent); color: var(--white); transform: translateY(-2px); }
+
+        .assess-years { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; justify-content: center; }
+        .assess-year { background: var(--white); border: 2px solid rgba(0, 0, 0, 0.06); color: var(--text-light); padding: 8px 20px; border-radius: 50px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: var(--transition); font-family: inherit; }
+        .assess-year:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+        .assess-year.active { background: var(--accent); border-color: var(--accent); color: var(--white); box-shadow: 0 6px 20px rgba(0, 168, 232, 0.35); }
+
+        .assess-notice { display: flex; align-items: flex-start; gap: 15px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-left: 5px solid #f59e0b; border-radius: 12px; padding: 20px 25px; margin-bottom: 35px; box-shadow: var(--shadow); }
+        .assess-notice > i { color: #d97706; font-size: 1.4rem; margin-top: 2px; flex-shrink: 0; }
+        .assess-notice div { font-size: 0.92rem; color: #78350f; line-height: 1.55; }
+        .assess-notice strong { color: #92400e; }
+        .assess-notice a { color: #92400e; text-decoration: underline; font-weight: 600; white-space: nowrap; }
+        .assess-notice a:hover { color: #78350f; }
+
+        .assess-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .assess-card { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid rgba(0, 0, 0, 0.04); transition: var(--transition); display: flex; flex-direction: column; }
+        .assess-card:hover { transform: translateY(-8px); box-shadow: 0 22px 45px rgba(0, 0, 0, 0.12); border-color: rgba(0, 168, 232, 0.25); }
+        .assess-card-top { padding: 22px 25px; display: flex; justify-content: space-between; align-items: center; position: relative; overflow: hidden; }
+        .assess-card-top::before { content: ''; position: absolute; top: -40px; right: -40px; width: 130px; height: 130px; background: rgba(255, 255, 255, 0.12); border-radius: 50%; }
+        .assess-card-top.control { background: linear-gradient(135deg, #0a2b5e 0%, #1a4a8a 100%); color: var(--white); }
+        .assess-card-top.exam { background: linear-gradient(135deg, #059669 0%, #10b981 100%); color: var(--white); }
+        .assess-card-top.makeup { background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%); color: var(--white); }
+        .assess-card-icon { width: 48px; height: 48px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(8px); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; position: relative; z-index: 1; }
+        .assess-card-tag { display: inline-flex; align-items: center; gap: 5px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(8px); padding: 4px 12px; border-radius: 50px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; position: relative; z-index: 1; }
+        .assess-card-content { padding: 22px 25px 25px; display: flex; flex-direction: column; flex: 1; }
+        .assess-card-content h4 { font-size: 1.08rem; color: var(--primary); margin-bottom: 8px; line-height: 1.35; }
+        .assess-card-desc { font-size: 0.87rem; color: var(--text-light); margin-bottom: 16px; flex-grow: 1; line-height: 1.55; }
+        .assess-card-meta { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 18px; padding-top: 15px; border-top: 1px solid rgba(0, 0, 0, 0.06); }
+        .assess-card-meta span { font-size: 0.75rem; color: var(--text-light); display: inline-flex; align-items: center; gap: 5px; font-weight: 500; }
+        .assess-card-meta span i { color: var(--accent); }
+        .assess-card-actions { display: flex; gap: 10px; }
+        .assess-btn-primary { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 16px; border-radius: 8px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: var(--white); font-size: 0.85rem; font-weight: 600; transition: var(--transition); text-decoration: none; }
+        .assess-btn-primary.exam { background: linear-gradient(135deg, #059669, #10b981); }
+        .assess-btn-primary.makeup { background: linear-gradient(135deg, #d97706, #f59e0b); }
+        .assess-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 168, 232, 0.35); filter: brightness(1.1); }
+        .assess-btn-outline { width: 42px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; background: var(--bg); color: var(--text-light); transition: var(--transition); border: 1px solid rgba(0, 0, 0, 0.06); text-decoration: none; }
+        .assess-btn-outline:hover { background: var(--accent); color: var(--white); border-color: var(--accent); transform: translateY(-2px); }
+
+        .assess-legend { display: flex; gap: 22px; justify-content: center; align-items: center; flex-wrap: wrap; padding: 18px 25px; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid rgba(0, 0, 0, 0.04); }
+        .assess-legend-title { font-size: 0.85rem; color: var(--primary); font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+        .assess-legend-title i { color: var(--accent); }
+        .assess-legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-light); font-weight: 500; }
+        .assess-dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+        .assess-dot.control { background: #0a2b5e; }
+        .assess-dot.exam { background: #10b981; }
+        .assess-dot.makeup { background: #f59e0b; }
+
+        /* ===== INFO / INTERNATIONAL / OTHER ===== */
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
         .info-card { background: var(--white); border-radius: var(--radius); padding: 35px 30px; box-shadow: var(--shadow); border-left: 5px solid var(--accent); transition: var(--transition); }
         .info-card:hover { transform: translateY(-5px) scale(1.01); box-shadow: var(--shadow-lg); }
@@ -670,17 +889,32 @@
         .scroll-top:hover { transform: translateY(-5px) scale(1.1) rotate(360deg); box-shadow: 0 15px 35px rgba(0, 168, 232, 0.6); }
 
         body.dark-mode { --bg: #0f172a; --white: #1e293b; --text: #e2e8f0; --text-light: #94a3b8; --primary: #1e40af; --primary-light: #3b82f6; }
-        body.dark-mode .card, body.dark-mode .info-card, body.dark-mode .csi-member, body.dark-mode .news-card, body.dark-mode .document-card, body.dark-mode .life-card, body.dark-mode .club-activity, body.dark-mode .research-item, body.dark-mode .library-space, body.dark-mode .library-hours, body.dark-mode .program-highlight, body.dark-mode .faq-item, body.dark-mode .contact-form, body.dark-mode .dropdown-menu, body.dark-mode .elearn-stat, body.dark-mode .elearn-category, body.dark-mode .elearn-course, body.dark-mode .elearn-search, body.dark-mode .resource-card, body.dark-mode .quick-access-card { background: #1e293b; border-color: rgba(255, 255, 255, 0.1); }
+        body.dark-mode .card, body.dark-mode .info-card, body.dark-mode .csi-member, body.dark-mode .news-card, body.dark-mode .document-card, body.dark-mode .life-card, body.dark-mode .club-activity, body.dark-mode .research-item, body.dark-mode .library-space, body.dark-mode .library-hours, body.dark-mode .program-highlight, body.dark-mode .faq-item, body.dark-mode .contact-form, body.dark-mode .dropdown-menu, body.dark-mode .elearn-stat, body.dark-mode .elearn-category, body.dark-mode .elearn-course, body.dark-mode .elearn-search, body.dark-mode .resource-card, body.dark-mode .quick-access-card, body.dark-mode .tt-stat, body.dark-mode .tt-content-wrapper, body.dark-mode .tt-tab, body.dark-mode .tt-list-item, body.dark-mode .assess-stat, body.dark-mode .assess-tab, body.dark-mode .assess-year, body.dark-mode .assess-card, body.dark-mode .assess-legend { background: #1e293b; border-color: rgba(255, 255, 255, 0.1); }
         body.dark-mode .dropdown-menu::before { background: #1e293b; }
         body.dark-mode .dropdown-menu a { color: #e2e8f0; }
         body.dark-mode .dropdown-menu a:hover { background: rgba(0, 168, 232, 0.15); }
-        body.dark-mode .section-header h2, body.dark-mode .card h3, body.dark-mode .info-card h3, body.dark-mode .csi-member h4, body.dark-mode .news-card-body h3, body.dark-mode .contact-item h4, body.dark-mode .life-card h4, body.dark-mode .faq-question, body.dark-mode .international-text h3, body.dark-mode .elearn-stat h4, body.dark-mode .elearn-category h4, body.dark-mode .elearn-categories-title, body.dark-mode .resource-content h4, body.dark-mode .quick-access-content h4 { color: #e2e8f0; }
-        body.dark-mode .international-section, body.dark-mode .elearning-section { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        body.dark-mode .section-header h2, body.dark-mode .card h3, body.dark-mode .info-card h3, body.dark-mode .csi-member h4, body.dark-mode .news-card-body h3, body.dark-mode .contact-item h4, body.dark-mode .life-card h4, body.dark-mode .faq-question, body.dark-mode .international-text h3, body.dark-mode .elearn-stat h4, body.dark-mode .elearn-category h4, body.dark-mode .elearn-categories-title, body.dark-mode .resource-content h4, body.dark-mode .quick-access-content h4, body.dark-mode .tt-stat h4, body.dark-mode .tt-day-col, body.dark-mode .tt-time-col, body.dark-mode .tt-list-day h4, body.dark-mode .assess-stat h4, body.dark-mode .assess-content-title h3, body.dark-mode .assess-card-content h4 { color: #e2e8f0; }
+        body.dark-mode .international-section, body.dark-mode .elearning-section, body.dark-mode .assessments-section { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
         body.dark-mode .about-image { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); }
         body.dark-mode .elearn-search input, body.dark-mode .elearn-search select { color: #e2e8f0; }
         body.dark-mode .elearn-search select { border-left-color: rgba(255, 255, 255, 0.1); }
         body.dark-mode .elearn-course-meta, body.dark-mode .elearn-category-footer { border-top-color: rgba(255, 255, 255, 0.1); }
         body.dark-mode .elearn-filter { border-color: rgba(255, 255, 255, 0.1); }
+        body.dark-mode .tt-grid-header { background: #0f172a; }
+        body.dark-mode .tt-grid-row { border-bottom-color: rgba(255, 255, 255, 0.06); }
+        body.dark-mode .tt-embed-section { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        body.dark-mode .tt-legend { background: #0f172a; }
+        body.dark-mode .tt-slot.has-class { background: rgba(0, 168, 232, 0.05); }
+        body.dark-mode .assess-tab.active { background: linear-gradient(135deg, #1e40af, #3b82f6); }
+        body.dark-mode .assess-tab-icon { background: #0f172a; }
+        body.dark-mode .assess-tab.active .assess-tab-icon { background: rgba(255, 255, 255, 0.15); }
+        body.dark-mode .assess-card-meta { border-top-color: rgba(255, 255, 255, 0.08); }
+        body.dark-mode .assess-btn-outline { background: #0f172a; border-color: rgba(255, 255, 255, 0.08); }
+        body.dark-mode .assess-notice { background: linear-gradient(135deg, #78350f 0%, #92400e 100%); border-left-color: #fbbf24; }
+        body.dark-mode .assess-notice div, body.dark-mode .assess-notice strong, body.dark-mode .assess-notice a { color: #fef3c7; }
+        body.dark-mode .assess-badge.control { background: rgba(59, 130, 246, 0.15); color: #93c5fd; }
+        body.dark-mode .assess-badge.exam { background: rgba(16, 185, 129, 0.15); color: #6ee7b7; }
+        body.dark-mode .assess-badge.makeup { background: rgba(245, 158, 11, 0.15); color: #fcd34d; }
 
         .fade-in { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -697,6 +931,152 @@
         .stagger-5 { transition-delay: 0.5s; }
         .stagger-6 { transition-delay: 0.6s; }
 
+        /* ============================================================
+           🎨 QUICK ACTION DOCK — Floating Control Panel
+           ============================================================ */
+        .quick-dock {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 999;
+            background: rgba(10, 43, 94, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 50px;
+            padding: 12px 8px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: dockSlideIn 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        @keyframes dockSlideIn {
+            from { opacity: 0; transform: translateY(-50%) translateX(60px); }
+            to { opacity: 1; transform: translateY(-50%) translateX(0); }
+        }
+        .quick-dock:hover {
+            box-shadow: 0 20px 55px rgba(0, 168, 232, 0.35);
+            border-color: rgba(0, 168, 232, 0.4);
+        }
+        .quick-dock::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 2px;
+            animation: dockPulse 2s ease-in-out infinite;
+        }
+        @keyframes dockPulse {
+            0%, 100% { opacity: 0.4; transform: translateX(-50%) rotate(45deg) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) rotate(45deg) scale(1.2); }
+        }
+
+        .dock-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--white);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            outline: none;
+        }
+        .dock-btn:hover {
+            background: var(--accent);
+            transform: scale(1.15) translateX(-4px);
+            box-shadow: 0 8px 20px rgba(0, 168, 232, 0.5);
+        }
+        .dock-btn:active { transform: scale(0.95); }
+        .dock-btn.active {
+            background: linear-gradient(135deg, var(--accent), #4dd0e1);
+            box-shadow: 0 0 20px rgba(0, 168, 232, 0.6);
+        }
+        .dock-btn::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: calc(100% + 14px);
+            top: 50%;
+            transform: translateY(-50%) translateX(8px);
+            background: var(--primary);
+            color: var(--white);
+            padding: 7px 14px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            font-family: 'Inter', sans-serif;
+        }
+        .dock-btn::before {
+            content: '';
+            position: absolute;
+            right: calc(100% + 8px);
+            top: 50%;
+            transform: translateY(-50%) translateX(8px);
+            border: 6px solid transparent;
+            border-left-color: var(--primary);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .dock-btn:hover::after,
+        .dock-btn:hover::before {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+        .dock-font-indicator {
+            position: absolute;
+            bottom: 1px;
+            right: 1px;
+            font-size: 0.55rem;
+            font-weight: 700;
+            background: var(--accent);
+            color: var(--white);
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        .dock-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.15);
+            margin: 3px 8px;
+            border-radius: 1px;
+        }
+        body.dark-mode .quick-dock {
+            background: rgba(15, 23, 42, 0.92);
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+        body.dark-mode .dock-btn { background: rgba(255, 255, 255, 0.06); }
+        body.dark-mode .dock-btn:hover { background: var(--accent); }
+        body.high-contrast .quick-dock {
+            background: #000;
+            border: 2px solid #ffff00;
+        }
+        body.high-contrast .dock-btn {
+            background: #ffff00;
+            color: #000;
+        }
+
         @media (max-width: 1100px) {
             .nav-links > .nav-item > a,
             .nav-links .dropdown-toggle { font-size: 0.72rem; padding: 10px 8px; }
@@ -710,8 +1090,10 @@
             .share-sidebar { left: auto; right: 15px; top: auto; bottom: 100px; transform: none; }
             .share-btn { width: 42px; height: 42px; font-size: 1rem; }
             .share-btn::before { display: none; }
-            .elearn-stats { grid-template-columns: repeat(2, 1fr); }
+            .elearn-stats, .timetable-stats, .assess-stats { grid-template-columns: repeat(2, 1fr); }
             .elearning-hero { padding: 35px; }
+            .assess-tabs { grid-template-columns: 1fr; max-width: 500px; }
+            .assess-content-header { flex-direction: column; align-items: flex-start; }
         }
         @media (max-width: 768px) {
             nav { padding: 8px 0; gap: 10px; }
@@ -777,6 +1159,38 @@
             .elearn-search input { width: 100%; }
             .elearn-search select { border-left: none; border-top: 1px solid #e2e8f0; width: 100%; }
             .elearn-search button { width: 100%; justify-content: center; }
+            .tt-tab { padding: 10px 16px; font-size: 0.8rem; }
+            .tt-tab span { display: none; }
+            .tt-embed-wrapper iframe { height: 400px; }
+            .tt-embed-section { padding: 20px; }
+            .tt-toolbar { flex-direction: column; gap: 10px; }
+            .assess-banner { flex-direction: column; text-align: center; }
+            .assess-banner-icon { margin: 0 auto; }
+            .assess-banner-btn { width: 100%; justify-content: center; }
+            .assess-card-top { padding: 18px 20px; }
+            .assess-card-content { padding: 18px 20px 20px; }
+            /* Quick Dock mobile */
+            .quick-dock {
+                top: auto;
+                bottom: 20px;
+                right: 50%;
+                transform: translateX(50%);
+                flex-direction: row;
+                padding: 8px 12px;
+                border-radius: 50px;
+                gap: 6px;
+            }
+            .quick-dock::before {
+                top: 50%;
+                left: -6px;
+                transform: translateY(-50%) rotate(45deg);
+                animation: none;
+            }
+            .dock-btn { width: 38px; height: 38px; font-size: 0.9rem; }
+            .dock-btn:hover { transform: scale(1.1) translateY(-3px); }
+            .dock-btn::after,
+            .dock-btn::before { display: none; }
+            .dock-divider { width: 1px; height: 24px; margin: 8px 2px; }
         }
         @media (max-width: 480px) {
             .logo-text span:last-child { display: none; }
@@ -788,11 +1202,22 @@
             .share-sidebar { bottom: 80px; right: 10px; }
             .share-btn { width: 38px; height: 38px; font-size: 0.9rem; }
             .footer-bottom { flex-direction: column; gap: 10px; }
-            .elearn-stats { grid-template-columns: 1fr; }
+            .elearn-stats, .timetable-stats, .assess-stats { grid-template-columns: 1fr; }
             .elearn-hero-buttons { flex-direction: column; }
             .elearn-hero-buttons .btn { justify-content: center; }
             .elearn-course-actions { flex-direction: column; }
             .elearn-course-actions .btn { width: 100%; }
+            .tt-embed-wrapper iframe { height: 350px; }
+            .tt-list-item { flex-direction: column; gap: 5px; }
+            .assess-cards { grid-template-columns: 1fr; }
+            .assess-tab { padding: 14px 18px; }
+            .assess-tab-text { flex: 1; }
+            .assess-years { gap: 6px; }
+            .assess-year { padding: 6px 14px; font-size: 0.75rem; }
+            .assess-card-actions { flex-direction: column; }
+            .assess-btn-outline { width: 100%; }
+            .quick-dock { bottom: 80px; padding: 6px 10px; }
+            .dock-btn { width: 34px; height: 34px; font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -806,6 +1231,29 @@
         <button class="share-btn linkedin" data-tooltip="Share on LinkedIn" onclick="shareLinkedIn()" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
         <button class="share-btn whatsapp" data-tooltip="Share on WhatsApp" onclick="shareWhatsApp()" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></button>
         <button class="share-btn email" data-tooltip="Share by Email" onclick="shareEmail()" aria-label="Email"><i class="fas fa-envelope"></i></button>
+    </div>
+
+    <!-- ===== FLOATING QUICK ACTION DOCK ===== -->
+    <div class="quick-dock" id="quickDock" role="toolbar" aria-label="Quick actions">
+        <button class="dock-btn" id="dockThemeToggle" data-tooltip="Toggle Dark Mode" aria-label="Toggle theme">
+            <i class="fas fa-moon" id="dockThemeIcon"></i>
+        </button>
+        <div class="dock-divider"></div>
+        <button class="dock-btn" onclick="increaseFontSize()" data-tooltip="Increase Text Size" aria-label="Increase font">
+            <i class="fas fa-font"></i>
+            <span class="dock-font-indicator">+</span>
+        </button>
+        <button class="dock-btn" onclick="decreaseFontSize()" data-tooltip="Decrease Text Size" aria-label="Decrease font">
+            <i class="fas fa-font" style="font-size:0.8rem;"></i>
+            <span class="dock-font-indicator">−</span>
+        </button>
+        <button class="dock-btn" id="dockContrastBtn" onclick="toggleHighContrast()" data-tooltip="High Contrast Mode" aria-label="High contrast">
+            <i class="fas fa-adjust"></i>
+        </button>
+        <div class="dock-divider"></div>
+        <button class="dock-btn" onclick="scrollToTop()" data-tooltip="Back to Top" aria-label="Back to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
     </div>
 
     <header id="header">
@@ -843,6 +1291,25 @@
                             <i class="fas fa-laptop-code"></i> E-Learning
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="#timetable" class="nav-timetable">
+                            <i class="fas fa-calendar-alt"></i> Timetable
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="dropdown-toggle">Assessments <i class="fas fa-chevron-down"></i></button>
+                        <div class="dropdown-menu">
+                            <a href="#assessments" onclick="showAssessmentTab('controls', null, event)">
+                                <i class="fas fa-file-alt" style="color:#0a2b5e;"></i> Controls
+                            </a>
+                            <a href="#assessments" onclick="showAssessmentTab('exams', null, event)">
+                                <i class="fas fa-graduation-cap" style="color:#10b981;"></i> Final Exams
+                            </a>
+                            <a href="#assessments" onclick="showAssessmentTab('makeup', null, event)">
+                                <i class="fas fa-redo" style="color:#f59e0b;"></i> Make-Up
+                            </a>
+                        </div>
+                    </li>
                     <li class="nav-item"><a href="#recherche">Research</a></li>
                     <li class="nav-item"><a href="#international">International</a></li>
                     <li class="nav-item">
@@ -878,8 +1345,8 @@
                 <h1>Excellence in <span>electrical engineering</span> and <span>electronics</span></h1>
                 <p>IGEE trains tomorrow's engineers and researchers in the fields of electronics, telecommunications, automatic control and electrical engineering. All courses are taught entirely in English.</p>
                 <div class="hero-buttons">
-                    <a href="#elearning" class="btn btn-primary"><i class="fas fa-laptop-code"></i> Access E-Learning Platform</a>
-                    <a href="#formations" class="btn btn-outline"><i class="fas fa-graduation-cap"></i> Discover our programs</a>
+                    <a href="#elearning" class="btn btn-primary"><i class="fas fa-laptop-code"></i> Access E-Learning</a>
+                    <a href="#timetable" class="btn btn-success"><i class="fas fa-calendar-alt"></i> View Timetable</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item"><h3><span class="counter" data-target="3">0</span></h3><p>Departments</p></div>
@@ -891,7 +1358,7 @@
         </div>
     </section>
 
-    <!-- ===== E-LEARNING PLATFORM SECTION (ENGLISH ONLY) ===== -->
+    <!-- ===== E-LEARNING PLATFORM SECTION ===== -->
     <section id="elearning" class="elearning-section">
         <div class="container">
             <div class="section-header fade-in">
@@ -900,7 +1367,6 @@
                 <p>A fast, stable and fully English-taught learning environment for IGEE students and teachers.</p>
             </div>
 
-            <!-- Hero Banner -->
             <div class="elearn-hero fade-in">
                 <div class="elearn-hero-content">
                     <div class="elearn-badge"><i class="fas fa-graduation-cap"></i> Powered by Moodle LMS</div>
@@ -935,7 +1401,6 @@
                 </div>
             </div>
 
-            <!-- Quick Access: Login / Register -->
             <div class="elearn-quick-access fade-in">
                 <div class="quick-access-card">
                     <div class="quick-access-icon login"><i class="fas fa-sign-in-alt"></i></div>
@@ -955,7 +1420,6 @@
                 </div>
             </div>
 
-            <!-- Stats -->
             <div class="elearn-stats">
                 <div class="elearn-stat fade-in stagger-1">
                     <i class="fas fa-book-open"></i>
@@ -979,7 +1443,6 @@
                 </div>
             </div>
 
-            <!-- Search Bar -->
             <div class="elearn-search fade-in">
                 <i class="fas fa-search"></i>
                 <input type="text" id="elearnSearchInput" placeholder="Search for a course, a module, a teacher..." aria-label="Search courses">
@@ -995,7 +1458,6 @@
                 <button onclick="searchCourses()"><i class="fas fa-arrow-right"></i> <span>Search</span></button>
             </div>
 
-            <!-- Filter Buttons -->
             <div class="elearn-filters fade-in">
                 <button class="elearn-filter active" onclick="filterCourses('all', this)">All Courses</button>
                 <button class="elearn-filter" onclick="filterCourses('L1', this)">L1</button>
@@ -1006,7 +1468,6 @@
                 <button class="elearn-filter" onclick="filterCourses('DOC', this)">Doctorate</button>
             </div>
 
-            <!-- Categories -->
             <h3 class="elearn-categories-title fade-in" id="elearn-categories">
                 <i class="fas fa-layer-group"></i> Course Categories
                 <span class="title-badge">6 Departments</span>
@@ -1068,7 +1529,6 @@
                 </a>
             </div>
 
-            <!-- Featured Courses -->
             <h3 class="elearn-categories-title fade-in" id="elearn-courses">
                 <i class="fas fa-star"></i> Featured Courses
                 <span class="title-badge">English-taught</span>
@@ -1178,7 +1638,6 @@
                 </div>
             </div>
 
-            <!-- Student & Teacher Corners -->
             <div class="elearn-corner" style="margin-top: 60px;">
                 <div class="corner-card student fade-in slide-left">
                     <div class="corner-icon"><i class="fas fa-user-graduate"></i></div>
@@ -1214,7 +1673,6 @@
                 </div>
             </div>
 
-            <!-- Platform Features -->
             <h3 class="elearn-categories-title fade-in">
                 <i class="fas fa-cogs"></i> Platform Features
                 <span class="title-badge">Built for performance</span>
@@ -1228,7 +1686,7 @@
                 <div class="elearn-feature-card fade-in stagger-2">
                     <div class="feature-icon"><i class="fas fa-language"></i></div>
                     <h4>100% English</h4>
-                    <p>All courses, interfaces and resources are exclusively in English — no translation needed.</p>
+                    <p>All courses, interfaces and resources are exclusively in English.</p>
                 </div>
                 <div class="elearn-feature-card fade-in stagger-3">
                     <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
@@ -1242,66 +1700,555 @@
                 </div>
             </div>
 
-            <!-- Resources Library -->
-            <h3 class="elearn-categories-title fade-in" style="margin-top: 60px;">
-                <i class="fas fa-download"></i> Downloadable Resources
-                <span class="title-badge">Free access</span>
-            </h3>
-            <div class="elearn-resources">
-                <div class="resource-card fade-in stagger-1">
-                    <div class="resource-icon pdf"><i class="fas fa-file-pdf"></i></div>
-                    <div class="resource-content">
-                        <h4>Student Guide 2026</h4>
-                        <p>Complete guide to using the Moodle platform, in English.</p>
-                        <div class="resource-meta"><span><i class="fas fa-file"></i> PDF · 2.4 MB</span><span><i class="fas fa-download"></i> 1,240</span></div>
-                    </div>
-                </div>
-                <div class="resource-card fade-in stagger-2">
-                    <div class="resource-icon pdf"><i class="fas fa-file-pdf"></i></div>
-                    <div class="resource-content">
-                        <h4>Teacher Guide 2026</h4>
-                        <p>How to create courses, quizzes and manage students on Moodle.</p>
-                        <div class="resource-meta"><span><i class="fas fa-file"></i> PDF · 3.1 MB</span><span><i class="fas fa-download"></i> 680</span></div>
-                    </div>
-                </div>
-                <div class="resource-card fade-in stagger-3">
-                    <div class="resource-icon video"><i class="fas fa-video"></i></div>
-                    <div class="resource-content">
-                        <h4>Video Tutorial: First Login</h4>
-                        <p>Step-by-step guide to log in and navigate the platform.</p>
-                        <div class="resource-meta"><span><i class="fas fa-clock"></i> 4 min</span><span><i class="fas fa-eye"></i> 3,500</span></div>
-                    </div>
-                </div>
-                <div class="resource-card fade-in stagger-4">
-                    <div class="resource-icon doc"><i class="fas fa-file-word"></i></div>
-                    <div class="resource-content">
-                        <h4>Course Template</h4>
-                        <p>Ready-to-use template for teachers to structure their courses.</p>
-                        <div class="resource-meta"><span><i class="fas fa-file"></i> DOCX · 480 KB</span><span><i class="fas fa-download"></i> 320</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- E-Learning FAQ -->
-            <h3 class="elearn-categories-title fade-in" id="faq-elearning" style="margin-top: 60px;">
-                <i class="fas fa-question-circle"></i> E-Learning FAQ
-            </h3>
-            <div class="faq-grid">
-                <div class="faq-item fade-in stagger-1"><button class="faq-question"><span>How do I log in to the E-Learning platform?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Use your university credentials (the same as your email) on the Moodle login page. If you don't have an account, contact the administration to request one.</p></div></div>
-                <div class="faq-item fade-in stagger-2"><button class="faq-question"><span>Are all courses taught in English?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Yes. Following the IGEE policy, all courses, materials and interactions on the E-Learning platform are exclusively in English.</p></div></div>
-                <div class="faq-item fade-in stagger-3"><button class="faq-question"><span>Is there a mobile app for the platform?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Yes. The official Moodle Mobile app is available for free on the Google Play Store and the Apple App Store. Search for "Moodle" and enter the platform URL: elearning.univ-boumerdes.dz</p></div></div>
-                <div class="faq-item fade-in stagger-4"><button class="faq-question"><span>How do I submit an assignment?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Navigate to your course, click on the assignment, and use the "Add submission" button to upload your file. You can upload PDF, DOCX, ZIP or image files depending on the teacher's settings.</p></div></div>
-                <div class="faq-item fade-in stagger-5"><button class="faq-question"><span>I forgot my password. What should I do?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Click on "Forgotten your username or password?" on the login page, enter your email address, and follow the instructions sent to your inbox. If the issue persists, contact the E-Learning support team.</p></div></div>
-            </div>
-
-            <!-- CTA -->
             <div class="elearn-cta fade-in" style="margin-top: 60px;">
                 <h3><i class="fas fa-rocket"></i> Ready to start learning?</h3>
-                <p>Join over 1,500 IGEE students and 160 teachers already using the English-taught E-Learning platform. Access your courses now.</p>
+                <p>Join over 1,500 IGEE students and 160 teachers already using the English-taught E-Learning platform.</p>
                 <div class="elearn-cta-buttons">
                     <a href="https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700" target="_blank" rel="noopener" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Access Platform Now</a>
                     <a href="#contact" class="btn btn-outline"><i class="fas fa-headset"></i> Contact Support</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STUDENT TIMETABLE SECTION ===== -->
+    <section id="timetable" class="timetable-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Student Timetable</h2>
+                <div class="underline"></div>
+                <p>Official weekly schedule for all IGEE levels — Academic Year 2026/2027, Semester 1.</p>
+            </div>
+
+            <div class="timetable-stats">
+                <div class="tt-stat fade-in stagger-1">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h4><span class="counter" data-target="1376">0</span></h4>
+                    <p>Total Sessions</p>
+                </div>
+                <div class="tt-stat fade-in stagger-2">
+                    <i class="fas fa-chalkboard"></i>
+                    <h4><span class="counter" data-target="96">0</span></h4>
+                    <p>Sessions Displayed</p>
+                </div>
+                <div class="tt-stat fade-in stagger-3">
+                    <i class="fas fa-book"></i>
+                    <h4><span class="counter" data-target="25">0</span>+</h4>
+                    <p>Courses</p>
+                </div>
+                <div class="tt-stat fade-in stagger-4">
+                    <i class="fas fa-users"></i>
+                    <h4><span class="counter" data-target="133">0</span></h4>
+                    <p>Teachers</p>
+                </div>
+            </div>
+
+            <div class="tt-tabs fade-in">
+                <button class="tt-tab active" onclick="showTimetable('L1', this)">
+                    <i class="fas fa-layer-group"></i> <span>L1</span>
+                </button>
+                <button class="tt-tab" onclick="showTimetable('L2', this)">
+                    <i class="fas fa-layer-group"></i> <span>L2</span>
+                </button>
+                <button class="tt-tab" onclick="showTimetable('L3', this)">
+                    <i class="fas fa-layer-group"></i> <span>L3</span>
+                </button>
+                <button class="tt-tab" onclick="showTimetable('M1', this)">
+                    <i class="fas fa-graduation-cap"></i> <span>M1</span>
+                </button>
+                <button class="tt-tab" onclick="showTimetable('M2', this)">
+                    <i class="fas fa-graduation-cap"></i> <span>M2</span>
+                </button>
+            </div>
+
+            <div class="tt-content-wrapper fade-in">
+                <div class="tt-toolbar">
+                    <div class="tt-view-switcher">
+                        <button class="tt-view-btn active" onclick="switchView('week', this)" title="Week View">
+                            <i class="fas fa-calendar-week"></i> Week
+                        </button>
+                        <button class="tt-view-btn" onclick="switchView('list', this)" title="List View">
+                            <i class="fas fa-list"></i> List
+                        </button>
+                    </div>
+                    <div class="tt-toolbar-actions">
+                        <button class="tt-action-btn" onclick="printTimetable()" title="Print">
+                            <i class="fas fa-print"></i>
+                        </button>
+                        <button class="tt-action-btn" onclick="downloadTimetable()" title="Download PDF">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="timetableWeekView" class="tt-week-view active">
+                    <div class="tt-grid-container">
+                        <div class="tt-grid-header">
+                            <div class="tt-time-col">Time</div>
+                            <div class="tt-day-col">Saturday</div>
+                            <div class="tt-day-col">Sunday</div>
+                            <div class="tt-day-col">Monday</div>
+                            <div class="tt-day-col">Tuesday</div>
+                            <div class="tt-day-col">Wednesday</div>
+                            <div class="tt-day-col">Thursday</div>
+                        </div>
+                        <div class="tt-grid-body" id="ttGridBody"></div>
+                    </div>
+                </div>
+
+                <div id="timetableListView" class="tt-list-view">
+                    <div id="ttListContent"></div>
+                </div>
+            </div>
+
+            <div class="tt-embed-section fade-in">
+                <div class="tt-embed-header">
+                    <h3><i class="fas fa-external-link-alt"></i> Full Timetable on GitHub</h3>
+                    <p>Access the complete and always up-to-date timetable on our dedicated GitHub Pages.</p>
+                </div>
+                <div class="tt-embed-wrapper">
+                    <iframe src="https://ouramdaneali55-coder.github.io/timetable-igee/" 
+                            title="IGEE Full Timetable"
+                            loading="lazy">
+                    </iframe>
+                </div>
+                <div class="tt-embed-cta">
+                    <a href="https://ouramdaneali55-coder.github.io/timetable-igee/" 
+                       target="_blank" rel="noopener" class="btn btn-primary">
+                        <i class="fas fa-external-link-alt"></i> Open Full Timetable
+                    </a>
+                </div>
+            </div>
+
+            <div class="tt-legend fade-in">
+                <div class="tt-legend-item"><span class="tt-dot lecture"></span> Lecture</div>
+                <div class="tt-legend-item"><span class="tt-dot lab"></span> Lab</div>
+                <div class="tt-legend-item"><span class="tt-dot recitation"></span> Recitation</div>
+                <div class="tt-legend-item"><span class="tt-dot exam"></span> Exam</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ASSESSMENTS SECTION ===== -->
+    <section id="assessments" class="assessments-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Assessments & Academic Schedules</h2>
+                <div class="underline"></div>
+                <p>Official schedules for Controls, Final Exams and Make-Up sessions — organized by academic year and level.</p>
+            </div>
+
+            <div class="assess-stats">
+                <div class="assess-stat fade-in stagger-1">
+                    <div class="assess-stat-icon control"><i class="fas fa-file-alt"></i></div>
+                    <h4><span class="counter" data-target="48">0</span>+</h4>
+                    <p>Control Sessions</p>
+                    <span class="assess-stat-sub">Continuous assessment</span>
+                </div>
+                <div class="assess-stat fade-in stagger-2">
+                    <div class="assess-stat-icon exam"><i class="fas fa-graduation-cap"></i></div>
+                    <h4><span class="counter" data-target="36">0</span>+</h4>
+                    <p>Final Exams</p>
+                    <span class="assess-stat-sub">End of semester</span>
+                </div>
+                <div class="assess-stat fade-in stagger-3">
+                    <div class="assess-stat-icon makeup"><i class="fas fa-redo"></i></div>
+                    <h4><span class="counter" data-target="24">0</span>+</h4>
+                    <p>Make-Up Sessions</p>
+                    <span class="assess-stat-sub">Replacement exams</span>
+                </div>
+                <div class="assess-stat fade-in stagger-4">
+                    <div class="assess-stat-icon year"><i class="fas fa-calendar-check"></i></div>
+                    <h4><span class="counter" data-target="5">0</span></h4>
+                    <p>Academic Years</p>
+                    <span class="assess-stat-sub">From 2019 to 2026</span>
+                </div>
+            </div>
+
+            <div class="assess-banner fade-in">
+                <div class="assess-banner-icon"><i class="fas fa-info-circle"></i></div>
+                <div class="assess-banner-content">
+                    <h4>Important Notice for Students</h4>
+                    <p>All assessment schedules are published by the IGEE administration. Students with debts are eligible to take either the official exam or the replacement session. Please check the links below for the complete schedules.</p>
+                </div>
+                <a href="#contact" class="assess-banner-btn">
+                    <i class="fas fa-headset"></i> Contact Support
+                </a>
+            </div>
+
+            <div class="assess-tabs fade-in">
+                <button class="assess-tab active" onclick="showAssessmentTab('controls', this, event)">
+                    <span class="assess-tab-icon"><i class="fas fa-file-alt"></i></span>
+                    <span class="assess-tab-text">
+                        <span class="assess-tab-label">Controls</span>
+                        <span class="assess-tab-desc">Continuous tests</span>
+                    </span>
+                </button>
+                <button class="assess-tab" onclick="showAssessmentTab('exams', this, event)">
+                    <span class="assess-tab-icon"><i class="fas fa-graduation-cap"></i></span>
+                    <span class="assess-tab-text">
+                        <span class="assess-tab-label">Final Exams</span>
+                        <span class="assess-tab-desc">End of semester</span>
+                    </span>
+                </button>
+                <button class="assess-tab" onclick="showAssessmentTab('makeup', this, event)">
+                    <span class="assess-tab-icon"><i class="fas fa-redo"></i></span>
+                    <span class="assess-tab-text">
+                        <span class="assess-tab-label">Make-Up</span>
+                        <span class="assess-tab-desc">Replacement sessions</span>
+                    </span>
+                </button>
+            </div>
+
+            <!-- CONTROLS TAB -->
+            <div id="assessControls" class="assess-content active">
+                <div class="assess-content-header fade-in">
+                    <div class="assess-content-title">
+                        <span class="assess-badge control"><i class="fas fa-file-alt"></i> Controls</span>
+                        <h3>Continuous Assessment Schedules</h3>
+                        <p>Planning of tests organized during the semester for all levels.</p>
+                    </div>
+                    <a href="https://igee.univ-boumerdes.dz/Controls.html" target="_blank" rel="noopener" class="assess-source-btn">
+                        <i class="fas fa-external-link-alt"></i> Source: Controls.html
+                    </a>
+                </div>
+
+                <div class="assess-years fade-in">
+                    <button class="assess-year active" onclick="filterAssessYear('all', this)">All Years</button>
+                    <button class="assess-year" onclick="filterAssessYear('2022-2023', this)">2022 – 2023</button>
+                    <button class="assess-year" onclick="filterAssessYear('2021-2022', this)">2021 – 2022</button>
+                    <button class="assess-year" onclick="filterAssessYear('2020-2021', this)">2020 – 2021</button>
+                </div>
+
+                <div class="assess-cards">
+                    <article class="assess-card fade-in stagger-1" data-year="2022-2023">
+                        <div class="assess-card-top control">
+                            <div class="assess-card-icon"><i class="fas fa-calendar-alt"></i></div>
+                            <span class="assess-card-tag">Latest</span>
+                        </div>
+                        <div class="assess-card-content">
+                            <h4>Semester 1 · 2022 / 2023</h4>
+                            <p class="assess-card-desc">First-semester tests for all Licence and Master programs.</p>
+                            <div class="assess-card-meta">
+                                <span><i class="fas fa-layer-group"></i> Licence & Master</span>
+                                <span><i class="fas fa-clock"></i> Published</span>
+                            </div>
+                            <div class="assess-card-actions">
+                                <a href="https://igee.univ-boumerdes.dz/Controls.html" target="_blank" rel="noopener" class="assess-btn-primary">
+                                    <i class="fas fa-eye"></i> View Schedule
+                                </a>
+                                <a href="https://igee.univ-boumerdes.dz/Controls.html" target="_blank" rel="noopener" class="assess-btn-outline" title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="assess-card fade-in stagger-2" data-year="2021-2022">
+                        <div class="assess-card-top control">
+                            <div class="assess-card-icon"><i class="fas fa-calendar-alt"></i></div>
+                        </div>
+                        <div class="assess-card-content">
+                            <h4>Semester 2 · 2021 / 2022</h4>
+                            <p class="assess-card-desc">Second-semester test planning and continuous assessment.</p>
+                            <div class="assess-card-meta">
+                                <span><i class="fas fa-layer-group"></i> Licence & Master</span>
+                                <span><i class="fas fa-clock"></i> Archived</span>
+                            </div>
+                            <div class="assess-card-actions">
+                                <a href="https://igee.univ-boumerdes.dz/Controls.html" target="_blank" rel="noopener" class="assess-btn-primary">
+                                    <i class="fas fa-eye"></i> View Schedule
+                                </a>
+                                <a href="https://igee.univ-boumerdes.dz/Controls.html" target="_blank" rel="noopener" class="assess-btn-outline" title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="assess-card fade-in stagger-3" data-year="2021-2022">
+                        <div class="assess-card-top control">
+                            <div class="assess-card-icon"><i class="fas fa-calendar-alt"></i></div>
+                        </div>
+                        <div class="assess-card-content">
+                            <h4>Semester 1 · 2021 / 2022</h4>
+                            <p class="assess-card-desc">Fall semester test sessions for all levels.</p>
+                            <div class="assess-card-meta">
+                                <span><i class="fas fa-layer-group"></i> Licence & Master</span>
+                                <span><i class="fas fa-clock"></i> Archived</span>
+                            </div>
+                            <div class="assess-card-actions">
+                                <a href="https://igee.univ-boumerdes.dz/Controls.html" target="_blank" rel="noopener" class="assess-btn-primary">
+                                    <i class="fas fa-eye"></i> View Schedule
+                                </a>
+                                <a href="https://igee.univ-boumerdes.dz/Controls.html" target="_blank" rel="noopener" class="assess-btn-outline" title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- EXAMS TAB -->
+            <div id="assessExams" class="assess-content">
+                <div class="assess-content-header fade-in">
+                    <div class="assess-content-title">
+                        <span class="assess-badge exam"><i class="fas fa-graduation-cap"></i> Final Exams</span>
+                        <h3>Official Examination Schedules</h3>
+                        <p>End-of-semester exam planning for all programs and levels.</p>
+                    </div>
+                    <a href="https://igee.univ-boumerdes.dz/Exams.html" target="_blank" rel="noopener" class="assess-source-btn">
+                        <i class="fas fa-external-link-alt"></i> Source: Exams.html
+                    </a>
+                </div>
+
+                <div class="assess-years fade-in">
+                    <button class="assess-year active" onclick="filterAssessYear('all', this)">All Years</button>
+                    <button class="assess-year" onclick="filterAssessYear('2022-2023', this)">2022 – 2023</button>
+                    <button class="assess-year" onclick="filterAssessYear('2021-2022', this)">2021 – 2022</button>
+                    <button class="assess-year" onclick="filterAssessYear('2020-2021', this)">2020 – 2021</button>
+                </div>
+
+                <div class="assess-cards">
+                    <article class="assess-card fade-in stagger-1" data-year="2022-2023">
+                        <div class="assess-card-top exam">
+                            <div class="assess-card-icon"><i class="fas fa-calendar-check"></i></div>
+                            <span class="assess-card-tag">Latest</span>
+                        </div>
+                        <div class="assess-card-content">
+                            <h4>Semester 1 · 2022 / 2023</h4>
+                            <p class="assess-card-desc">Official final exam schedule for the fall semester.</p>
+                            <div class="assess-card-meta">
+                                <span><i class="fas fa-layer-group"></i> Licence & Master</span>
+                                <span><i class="fas fa-clock"></i> Published</span>
+                            </div>
+                            <div class="assess-card-actions">
+                                <a href="https://igee.univ-boumerdes.dz/Exams.html" target="_blank" rel="noopener" class="assess-btn-primary exam">
+                                    <i class="fas fa-eye"></i> View Schedule
+                                </a>
+                                <a href="https://igee.univ-boumerdes.dz/Exams.html" target="_blank" rel="noopener" class="assess-btn-outline" title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="assess-card fade-in stagger-2" data-year="2021-2022">
+                        <div class="assess-card-top exam">
+                            <div class="assess-card-icon"><i class="fas fa-calendar-check"></i></div>
+                        </div>
+                        <div class="assess-card-content">
+                            <h4>Semester 2 · 2021 / 2022</h4>
+                            <p class="assess-card-desc">Spring semester examination schedule.</p>
+                            <div class="assess-card-meta">
+                                <span><i class="fas fa-layer-group"></i> Licence & Master</span>
+                                <span><i class="fas fa-clock"></i> Archived</span>
+                            </div>
+                            <div class="assess-card-actions">
+                                <a href="https://igee.univ-boumerdes.dz/Exams.html" target="_blank" rel="noopener" class="assess-btn-primary exam">
+                                    <i class="fas fa-eye"></i> View Schedule
+                                </a>
+                                <a href="https://igee.univ-boumerdes.dz/Exams.html" target="_blank" rel="noopener" class="assess-btn-outline" title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="assess-card fade-in stagger-3" data-year="2021-2022">
+                        <div class="assess-card-top exam">
+                            <div class="assess-card-icon"><i class="fas fa-calendar-check"></i></div>
+                        </div>
+                        <div class="assess-card-content">
+                            <h4>Semester 1 · 2021 / 2022</h4>
+                            <p class="assess-card-desc">Fall semester final exam schedule.</p>
+                            <div class="assess-card-meta">
+                                <span><i class="fas fa-layer-group"></i> Licence & Master</span>
+                                <span><i class="fas fa-clock"></i> Archived</span>
+                            </div>
+                            <div class="assess-card-actions">
+                                <a href="https://igee.univ-boumerdes.dz/Exams.html" target="_blank" rel="noopener" class="assess-btn-primary exam">
+                                    <i class="fas fa-eye"></i> View Schedule
+                                </a>
+                                <a href="https://igee.univ-boumerdes.dz/Exams.html" target="_blank" rel="noopener" class="assess-btn-outline" title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="assess-card fade-in stagger-4" data-year="2020-2021">
+                        <div class="assess-card-top exam">
+                            <div class="assess-card-icon"><i class="fas fa-calendar-check"></i></div>
+                        </div>
+                        <div class="assess-card-content">
+                            <h4>Semester 2 · 2020 / 2021</h4>
+                            <p class="assess-card-desc">Spring semester examinations during the pandemic period.</p>
+                            <div class="assess-card-meta">
+                                <span><i class="fas fa-layer-group"></i> Licence & Master</span>
+                                <span><i class="fas fa-clock"></i> Archived</span>
+                            </div>
+                            <div class="assess-card-actions">
+                                <a href="https://igee.univ-boumerdes.dz/Exams.html" target="_blank" rel="noopener" class="assess-btn-primary exam">
+                                    <i class="fas fa-eye"></i> View Schedule
+                                </a>
+                                <a href="https://igee.univ-boumerdes.dz/Exams.html" target="_blank" rel="noopener" class="assess-btn-outline" title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- MAKE-UP TAB -->
+            <div id="assessMakeup" class="assess-content">
+                <div class="assess-content-header fade-in">
+                    <div class="assess-content-title">
+                        <span class="assess-badge makeup"><i class="fas fa-redo"></i> Make-Up</span>
+                        <h3>Replacement & Make-Up Sessions</h3>
+                        <p>Replacement exams for students with validated absences or debts.</p>
+                    </div>
+                    <a href="https://igee.univ-boumerdes.dz/MakeUp.html" target="_blank" rel="noopener" class="assess-source-btn">
+                        <i class="fas fa-external-link-alt"></i> Source: MakeUp.html
+                    </a>
+                </div>
+
+                <div class="assess-notice fade-in">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div>
+                        <strong>Eligibility:</strong> Students with debts can take either the official exam or the replacement session.
+                        <a href="https://igee.univ-boumerdes.dz/MakeUp.html" target="_blank" rel="noopener">Read the official notice <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="assess-years fade-in">
+                    <button class="assess-year active" onclick="filterAssessYear('all', this)">All Years</button>
+                    <button class="assess-year" onclick="filterAssessYear('2021-2022', this)">2021 – 2022</button>
+                    <button class="assess-year" onclick="filterAssessYear('2020-2021', this)">2020 – 2021</button>
+                    <button class="assess-year" onclick="filterAssessYear('2019-2020', this)">2019 – 2020</button>
+                </div>
+
+                <div class="assess-cards">
+                    <article class="assess-card fade-in stagger-1" data-year="2021-2022">
+                        <div class="assess-card-top makeup">
+                            <div class="assess-card-icon"><i class="fas fa-redo"></i></div>
+                            <span class="assess-card-tag">Latest</span>
+                        </div>
+                        <div class="assess-card-content">
+                            <h4>Semester 1 · 2021 / 2022</h4>
+                            <p class="assess-card-desc">Replacement session for the fall semester.</p>
+                            <div class="assess-card-meta">
+                                <span><i class="fas fa-layer-group"></i> Licence & Master</span>
+                                <span><i class="fas fa-clock"></i> Published</span>
+                            </div>
+                            <div class="assess-card-actions">
+                                <a href="https://igee.univ-boumerdes.dz/MakeUp.html" target="_blank" rel="noopener" class="assess-btn-primary makeup">
+                                    <i class="fas fa-eye"></i> View Schedule
+                                </a>
+                                <a href="https://igee.univ-boumerdes.dz/MakeUp.html" target="_blank" rel="noopener" class="assess-btn-outline" title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="assess-card fade-in stagger-2" data-year="2021-2022">
+                        <div class="assess-card-top makeup">
+                            <div class="assess-card-icon"><i class="fas fa-redo"></i></div>
+                        </div>
+                        <div class="assess-card-content">
+                            <h4>Semester 2 · 2021 / 2022</h4>
+                            <p class="assess-card-desc">Replacement session for the spring semester.</p>
+                            <div class="assess-card-meta">
+                                <span><i class="fas fa-layer-group"></i> Licence & Master</span>
+                                <span><i class="fas fa-clock"></i> Archived</span>
+                            </div>
+                            <div class="assess-card-actions">
+                                <a href="https://igee.univ-boumerdes.dz/MakeUp.html" target="_blank" rel="noopener" class="assess-btn-primary makeup">
+                                    <i class="fas fa-eye"></i> View Schedule
+                                </a>
+                                <a href="https://igee.univ-boumerdes.dz/MakeUp.html" target="_blank" rel="noopener" class="assess-btn-outline" title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="assess-card fade-in stagger-3" data-year="2020-2021">
+                        <div class="assess-card-top makeup">
+                            <div class="assess-card-icon"><i class="fas fa-redo"></i></div>
+                        </div>
+                        <div class="assess-card-content">
+                            <h4>Semester 1 · 2020 / 2021</h4>
+                            <p class="assess-card-desc">Replacement exams for the fall semester.</p>
+                            <div class="assess-card-meta">
+                                <span><i class="fas fa-layer-group"></i> Licence & Master</span>
+                                <span><i class="fas fa-clock"></i> Archived</span>
+                            </div>
+                            <div class="assess-card-actions">
+                                <a href="https://igee.univ-boumerdes.dz/MakeUp.html" target="_blank" rel="noopener" class="assess-btn-primary makeup">
+                                    <i class="fas fa-eye"></i> View Schedule
+                                </a>
+                                <a href="https://igee.univ-boumerdes.dz/MakeUp.html" target="_blank" rel="noopener" class="assess-btn-outline" title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="assess-card fade-in stagger-4" data-year="2019-2020">
+                        <div class="assess-card-top makeup">
+                            <div class="assess-card-icon"><i class="fas fa-virus"></i></div>
+                        </div>
+                        <div class="assess-card-content">
+                            <h4>Special Session · 2019 / 2020</h4>
+                            <p class="assess-card-desc">Make-up exams organized during the COVID-19 period.</p>
+                            <div class="assess-card-meta">
+                                <span><i class="fas fa-layer-group"></i> Licence & Master</span>
+                                <span><i class="fas fa-clock"></i> Archived</span>
+                            </div>
+                            <div class="assess-card-actions">
+                                <a href="https://igee.univ-boumerdes.dz/MakeUp.html" target="_blank" rel="noopener" class="assess-btn-primary makeup">
+                                    <i class="fas fa-eye"></i> View Schedule
+                                </a>
+                                <a href="https://igee.univ-boumerdes.dz/MakeUp.html" target="_blank" rel="noopener" class="assess-btn-outline" title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="assess-card fade-in stagger-5" data-year="2019-2020">
+                        <div class="assess-card-top makeup">
+                            <div class="assess-card-icon"><i class="fas fa-redo"></i></div>
+                        </div>
+                        <div class="assess-card-content">
+                            <h4>Replacement · 2018 / 2019</h4>
+                            <p class="assess-card-desc">Make-up exam sessions for previous academic year.</p>
+                            <div class="assess-card-meta">
+                                <span><i class="fas fa-layer-group"></i> Licence & Master</span>
+                                <span><i class="fas fa-clock"></i> Archived</span>
+                            </div>
+                            <div class="assess-card-actions">
+                                <a href="https://igee.univ-boumerdes.dz/MakeUp.html" target="_blank" rel="noopener" class="assess-btn-primary makeup">
+                                    <i class="fas fa-eye"></i> View Schedule
+                                </a>
+                                <a href="https://igee.univ-boumerdes.dz/MakeUp.html" target="_blank" rel="noopener" class="assess-btn-outline" title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="assess-legend fade-in">
+                <span class="assess-legend-title"><i class="fas fa-palette"></i> Legend:</span>
+                <div class="assess-legend-item"><span class="assess-dot control"></span> Control</div>
+                <div class="assess-legend-item"><span class="assess-dot exam"></span> Final Exam</div>
+                <div class="assess-legend-item"><span class="assess-dot makeup"></span> Make-Up</div>
             </div>
         </div>
     </section>
@@ -1693,6 +2640,24 @@
             </div>
             <div class="news-grid">
                 <div class="news-card fade-in stagger-1">
+                    <div class="news-card-image"><i class="fas fa-clipboard-list"></i><span class="news-category">Assessments</span></div>
+                    <div class="news-card-body">
+                        <div class="news-date"><i class="fas fa-calendar-alt"></i><span>September 2026</span></div>
+                        <h3>Assessment Schedules Now Available</h3>
+                        <p>Check your controls, exams and make-up schedules directly on the website.</p>
+                        <div class="news-card-footer"><a href="#assessments" class="news-link">View Assessments <i class="fas fa-arrow-right"></i></a><span class="news-badge">New</span></div>
+                    </div>
+                </div>
+                <div class="news-card fade-in stagger-2">
+                    <div class="news-card-image"><i class="fas fa-calendar-alt"></i><span class="news-category">Timetable</span></div>
+                    <div class="news-card-body">
+                        <div class="news-date"><i class="fas fa-calendar-alt"></i><span>September 2026</span></div>
+                        <h3>New Interactive Timetable Available</h3>
+                        <p>Check your weekly schedule directly on the website — all levels available.</p>
+                        <div class="news-card-footer"><a href="#timetable" class="news-link">View Timetable <i class="fas fa-arrow-right"></i></a><span class="news-badge">New</span></div>
+                    </div>
+                </div>
+                <div class="news-card fade-in stagger-3">
                     <div class="news-card-image"><i class="fas fa-laptop-code"></i><span class="news-category">E-Learning</span></div>
                     <div class="news-card-body">
                         <div class="news-date"><i class="fas fa-calendar-alt"></i><span>September 2026</span></div>
@@ -1701,31 +2666,13 @@
                         <div class="news-card-footer"><a href="#elearning" class="news-link">Access Platform <i class="fas fa-arrow-right"></i></a><span class="news-badge">New</span></div>
                     </div>
                 </div>
-                <div class="news-card fade-in stagger-2">
+                <div class="news-card fade-in stagger-4">
                     <div class="news-card-image"><i class="fas fa-flag-usa"></i><span class="news-category">International</span></div>
                     <div class="news-card-body">
                         <div class="news-date"><i class="fas fa-calendar-alt"></i><span>March 25</span></div>
                         <h3>Videoconference on U.S. Exchange Programs</h3>
                         <p>The U.S. Embassy is organizing an information session on exchange programs with Mr. Adam Siegelem.</p>
                         <div class="news-card-footer"><a href="#international" class="news-link">Learn more <i class="fas fa-arrow-right"></i></a><span class="news-badge">Upcoming</span></div>
-                    </div>
-                </div>
-                <div class="news-card fade-in stagger-3">
-                    <div class="news-card-image"><i class="fas fa-microphone-alt"></i><span class="news-category">Conference</span></div>
-                    <div class="news-card-body">
-                        <div class="news-date"><i class="fas fa-calendar-alt"></i><span>October 25, 2026</span></div>
-                        <h3>NCAEEE 2026: Second National Conference</h3>
-                        <p>After the success of the first edition, IGEE is organizing the second National Conference on Electrical and Electronic Engineering.</p>
-                        <div class="news-card-footer"><a href="https://igee.univ-boumerdes.dz/ncaeee26/" target="_blank" rel="noopener" class="news-link">Learn more <i class="fas fa-arrow-right"></i></a><span class="news-badge">Upcoming</span></div>
-                    </div>
-                </div>
-                <div class="news-card fade-in stagger-4">
-                    <div class="news-card-image"><i class="fas fa-handshake"></i><span class="news-category">Partnership</span></div>
-                    <div class="news-card-body">
-                        <div class="news-date"><i class="fas fa-calendar-alt"></i><span>May 2024</span></div>
-                        <h3>Memorandum of Understanding with Elsewedy Electric Algeria</h3>
-                        <p>IGEE strengthens links between academia and industry.</p>
-                        <div class="news-card-footer"><a href="https://igee.univ-boumerdes.dz/" target="_blank" rel="noopener" class="news-link">Learn more <i class="fas fa-arrow-right"></i></a><span class="news-badge">Partnership</span></div>
                     </div>
                 </div>
             </div>
@@ -1776,7 +2723,7 @@
                 <div class="faq-item fade-in stagger-2"><button class="faq-question"><span>What are the teaching languages?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>All Bachelor's, Master's and Doctorate programs at IGEE are taught entirely in English.</p></div></div>
                 <div class="faq-item fade-in stagger-3"><button class="faq-question"><span>Are there international mobility opportunities?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Yes, IGEE offers exchange programs with foreign universities (Tassili and American programs).</p></div></div>
                 <div class="faq-item fade-in stagger-4"><button class="faq-question"><span>How do I access the E-Learning platform?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Go to the E-Learning section of this website, then click "Access Platform". Use your university credentials to log in. If you don't have an account, contact the administration.</p></div></div>
-                <div class="faq-item fade-in stagger-5"><button class="faq-question"><span>What are the career prospects after graduation?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Our graduates work in telecommunications, energy, industrial automation, or continue to a Doctorate.</p></div></div>
+                <div class="faq-item fade-in stagger-5"><button class="faq-question"><span>How do I view my timetable and assessment schedules?</span><i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>Go to the Timetable section for your weekly schedule, and the Assessments section for controls, exams and make-up schedules. Select your level or year to filter the results.</p></div></div>
             </div>
         </div>
     </section>
@@ -1840,7 +2787,7 @@
                     <form>
                         <div class="form-group"><label for="name">Full Name</label><input type="text" id="name" placeholder="Your name" required></div>
                         <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="your@email.com" required></div>
-                        <div class="form-group"><label for="subject">Subject</label><select id="subject"><option>General Inquiry</option><option>E-Learning Platform Support</option><option>Account Request</option><option>Teacher Training Request</option><option>Partnership</option></select></div>
+                        <div class="form-group"><label for="subject">Subject</label><select id="subject"><option>General Inquiry</option><option>E-Learning Platform Support</option><option>Timetable Question</option><option>Assessments Question</option><option>Account Request</option><option>Teacher Training Request</option><option>Partnership</option></select></div>
                         <div class="form-group"><label for="message">Message</label><textarea id="message" placeholder="Your message..." required></textarea></div>
                         <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i> Send</button>
                     </form>
@@ -1872,6 +2819,8 @@
                         <li><a href="#institut"><i class="fas fa-angle-right"></i> Institute</a></li>
                         <li><a href="#formations"><i class="fas fa-angle-right"></i> Programs</a></li>
                         <li><a href="#elearning"><i class="fas fa-angle-right"></i> E-Learning</a></li>
+                        <li><a href="#timetable"><i class="fas fa-angle-right"></i> Timetable</a></li>
+                        <li><a href="#assessments"><i class="fas fa-angle-right"></i> Assessments</a></li>
                         <li><a href="#infrastructures"><i class="fas fa-angle-right"></i> Facilities</a></li>
                     </ul>
                 </div>
@@ -1879,8 +2828,11 @@
                     <h4>Resources</h4>
                     <ul>
                         <li><a href="https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700" target="_blank" rel="noopener"><i class="fas fa-angle-right"></i> E-Learning Platform</a></li>
+                        <li><a href="https://ouramdaneali55-coder.github.io/timetable-igee/" target="_blank" rel="noopener"><i class="fas fa-angle-right"></i> Full Timetable</a></li>
+                        <li><a href="https://igee.univ-boumerdes.dz/Controls.html" target="_blank" rel="noopener"><i class="fas fa-angle-right"></i> Controls</a></li>
+                        <li><a href="https://igee.univ-boumerdes.dz/Exams.html" target="_blank" rel="noopener"><i class="fas fa-angle-right"></i> Exams</a></li>
+                        <li><a href="https://igee.univ-boumerdes.dz/MakeUp.html" target="_blank" rel="noopener"><i class="fas fa-angle-right"></i> Make-Up</a></li>
                         <li><a href="#graduation"><i class="fas fa-angle-right"></i> Graduation</a></li>
-                        <li><a href="#post-graduation"><i class="fas fa-angle-right"></i> Postgraduate</a></li>
                         <li><a href="#international"><i class="fas fa-angle-right"></i> International</a></li>
                         <li><a href="#recherche"><i class="fas fa-angle-right"></i> Research</a></li>
                         <li><a href="#bibliotheque"><i class="fas fa-angle-right"></i> Library</a></li>
@@ -1915,10 +2867,11 @@
 
     <script>
         // ============================================================
-        // ⚙️ CONFIGURATION — MODIFIEZ UNIQUEMENT CES 2 LIGNES
+        // ⚙️ CONFIGURATION
         // ============================================================
         const MOODLE_COURSE_URL = "https://elearning.univ-boumerdes.dz/course/index.php?categoryid=4700";
         const MOODLE_LOGIN_URL  = "https://elearning.univ-boumerdes.dz/login/index.php";
+        const GITHUB_TIMETABLE_URL = "https://ouramdaneali55-coder.github.io/timetable-igee/";
         // ============================================================
 
         // Scroll progress bar
@@ -1929,24 +2882,75 @@
             scrollProgress.style.width = (winScroll / height) * 100 + '%';
         });
 
-        // Dark mode
+        // ============================================================
+        // 🌙 DARK MODE — Synchronized between header and dock
+        // ============================================================
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
         const toggleText = themeToggle.querySelector('.toggle-text');
+        const dockThemeToggle = document.getElementById('dockThemeToggle');
+        const dockThemeIcon = document.getElementById('dockThemeIcon');
 
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-mode');
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-            toggleText.textContent = 'Light mode';
+        function setTheme(isDark) {
+            document.body.classList.toggle('dark-mode', isDark);
+            if (themeIcon) {
+                themeIcon.classList.toggle('fa-moon', !isDark);
+                themeIcon.classList.toggle('fa-sun', isDark);
+            }
+            if (toggleText) toggleText.textContent = isDark ? 'Light mode' : 'Dark mode';
+            if (dockThemeIcon) {
+                dockThemeIcon.classList.toggle('fa-moon', !isDark);
+                dockThemeIcon.classList.toggle('fa-sun', isDark);
+            }
+            if (dockThemeToggle) dockThemeToggle.classList.toggle('active', isDark);
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
         }
 
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            themeIcon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
-            toggleText.textContent = isDark ? 'Light mode' : 'Dark mode';
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        });
+        if (localStorage.getItem('theme') === 'dark') setTheme(true);
+
+        themeToggle.addEventListener('click', () => setTheme(!document.body.classList.contains('dark-mode')));
+        if (dockThemeToggle) {
+            dockThemeToggle.addEventListener('click', () => setTheme(!document.body.classList.contains('dark-mode')));
+        }
+
+        // ============================================================
+        // 🔤 FONT SIZE ADJUSTER
+        // ============================================================
+        let currentFontSize = parseInt(localStorage.getItem('fontSize') || '100');
+        function applyFontSize() {
+            document.documentElement.style.fontSize = currentFontSize + '%';
+            localStorage.setItem('fontSize', currentFontSize);
+        }
+        function increaseFontSize() {
+            if (currentFontSize < 130) { currentFontSize += 10; applyFontSize(); }
+        }
+        function decreaseFontSize() {
+            if (currentFontSize > 70) { currentFontSize -= 10; applyFontSize(); }
+        }
+        applyFontSize();
+
+        // ============================================================
+        // ◐ HIGH CONTRAST MODE
+        // ============================================================
+        function toggleHighContrast() {
+            document.body.classList.toggle('high-contrast');
+            const isHC = document.body.classList.contains('high-contrast');
+            localStorage.setItem('highContrast', isHC ? 'on' : 'off');
+            const btn = document.getElementById('dockContrastBtn');
+            if (btn) btn.classList.toggle('active', isHC);
+        }
+        if (localStorage.getItem('highContrast') === 'on') {
+            document.body.classList.add('high-contrast');
+            const btn = document.getElementById('dockContrastBtn');
+            if (btn) btn.classList.add('active');
+        }
+
+        // ============================================================
+        // ⬆ SCROLL TO TOP
+        // ============================================================
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
         // FAQ
         document.querySelectorAll('.faq-question').forEach(btn => {
@@ -1999,7 +3003,7 @@
             header.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Scroll top
+        // Scroll top button visibility
         const scrollTop = document.getElementById('scrollTop');
         window.addEventListener('scroll', () => {
             scrollTop.classList.toggle('visible', window.scrollY > 500);
@@ -2102,7 +3106,7 @@
             window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
         }
 
-        // ===== E-LEARNING FUNCTIONS =====
+        // E-Learning search
         function searchCourses() {
             const query = document.getElementById('elearnSearchInput').value.trim();
             const level = document.getElementById('elearnSearchLevel').value;
@@ -2113,18 +3117,13 @@
             if (params.length) url += '&' + params.join('&');
             window.open(url, '_blank', 'noopener,noreferrer');
         }
-
-        // Allow Enter key in search
         document.getElementById('elearnSearchInput').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') searchCourses();
         });
 
         function filterCourses(level, btn) {
-            // Update active button
             document.querySelectorAll('.elearn-filter').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-
-            // Filter course cards
             const cards = document.querySelectorAll('#elearnCoursesGrid .elearn-course');
             let visibleCount = 0;
             cards.forEach(card => {
@@ -2138,8 +3137,6 @@
                     card.style.display = 'none';
                 }
             });
-
-            // If no courses match, show a message
             const grid = document.getElementById('elearnCoursesGrid');
             let noResult = grid.querySelector('.no-results');
             if (visibleCount === 0) {
@@ -2154,6 +3151,273 @@
                 noResult.remove();
             }
         }
+
+        // ============================================================
+        // 📅 TIMETABLE CONFIGURATION
+        // ============================================================
+        const TT_DAYS = ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'];
+        const TT_TIME_SLOTS = [
+            '08:00 - 09:30', '09:30 - 11:00', '11:00 - 12:30',
+            '12:30 - 14:00', '14:00 - 15:30', '15:30 - 17:00'
+        ];
+
+        const TT_DATA = {
+            'L1': {
+                name: 'Licence 1 - Electrical Engineering',
+                courses: [
+                    { code: 'EE171', name: 'Maths I', type: 'lecture', teacher: 'T. BOUDJRIOU', room: 'AMPHI 1', days: [0, 1, 2, 3, 4, 5], time: 0 },
+                    { code: 'EE121', name: 'Algorithmic', type: 'lecture', teacher: 'Y. AZZOUGUI', room: 'AMPHI 1', days: [0, 1, 2, 3, 4, 5], time: 1 },
+                    { code: 'EE173', name: 'Physics I', type: 'lecture', teacher: 'Y. CHERGUI', room: 'AMPHI 2', days: [0, 1, 2, 3, 4, 5], time: 2 },
+                    { code: 'EE175', name: 'Chemistry I', type: 'lecture', teacher: 'E. BENLEFKI', room: 'AMPHI 1', days: [0, 1, 2, 3, 4, 5], time: 3 },
+                    { code: 'EE123', name: 'Free & Open-Source Software', type: 'lab', teacher: 'H. BOUYAHIAOUI', room: 'A408', days: [2], time: 0 },
+                    { code: 'EE173L', name: 'Physics I Lab', type: 'lab', teacher: 'A. SOUKHAL', room: 'B303', days: [4], time: 4 },
+                    { code: 'EL101', name: 'English I', type: 'lecture', teacher: 'V. VAC', room: 'AMPHI 3', days: [5], time: 0 },
+                    { code: 'EL103', name: 'Writing Methods, Ethics', type: 'lecture', teacher: 'V. VAC', room: 'AMPHI 3', days: [0, 1, 3], time: 0 }
+                ]
+            },
+            'L2': {
+                name: 'Licence 2 - Electrical Engineering',
+                courses: [
+                    { code: 'EE271', name: 'Maths IV', type: 'lecture', teacher: 'S. OUAGAGUI', room: 'AMPHI 2', days: [0, 1, 2, 3, 4, 5], time: 2 },
+                    { code: 'EE273', name: 'Physics III', type: 'lecture', teacher: 'A. SOUKHAL', room: 'B303', days: [0, 1, 2, 3, 4, 5], time: 1 },
+                    { code: 'EE241', name: 'Active Devices I', type: 'lecture', teacher: 'C. FIALA', room: 'B001', days: [1, 3], time: 3 },
+                    { code: 'EE221', name: 'Digital Systems I', type: 'lecture', teacher: 'W. TOUZOUT', room: 'AMPHI 3', days: [0, 2, 4], time: 4 },
+                    { code: 'EE201', name: 'Electrical Engineering II', type: 'lecture', teacher: 'A. RECIOUI', room: 'AMPHI 2', days: [1, 3, 5], time: 5 },
+                    { code: 'EE273L', name: 'Physics III Lab', type: 'lab', teacher: 'P. VAC', room: 'B101', days: [2], time: 4 },
+                    { code: 'EE241L', name: 'Active Devices I Lab', type: 'lab', teacher: 'L. SADOUKI', room: 'B301', days: [0], time: 3 },
+                    { code: 'EE221L', name: 'Digital Systems I Lab', type: 'lab', teacher: 'D. HERBADJI', room: 'A209', days: [5], time: 1 },
+                    { code: 'EE201L', name: 'Electrical Engineering II Lab', type: 'lab', teacher: 'N. SMAILI', room: 'A201', days: [1], time: 5 }
+                ]
+            },
+            'L3': {
+                name: 'Licence 3 - Electrical Engineering',
+                courses: [
+                    { code: 'EE351', name: 'Linear Systems II', type: 'lecture', teacher: 'A. DAAMOUCHE', room: 'AMPHI 3', days: [0, 1, 2, 3, 4, 5], time: 1 },
+                    { code: 'EE361', name: 'Electromagnetic Field Theory', type: 'lecture', teacher: 'M. HALIMI', room: 'B011', days: [2], time: 3 },
+                    { code: 'EE321', name: 'Computer Architecture', type: 'lecture', teacher: 'A. KHOUAS', room: 'AMPHI 4', days: [0, 1, 2, 3, 4, 5], time: 2 },
+                    { code: 'EE331', name: 'Power Electronics', type: 'lecture', teacher: 'N. SABEUR', room: 'AMPHI 4', days: [0, 1, 2, 3, 4, 5], time: 4 },
+                    { code: 'EE353', name: 'Process Control', type: 'lecture', teacher: 'R. GUERNANE', room: 'B005', days: [0, 1, 2, 3], time: 5 },
+                    { code: 'EE331L', name: 'Power Electronics Lab', type: 'lab', teacher: 'S. BOUTORA', room: 'A003', days: [0], time: 3 },
+                    { code: 'EE353L', name: 'Process Control Lab', type: 'lab', teacher: 'M. BENZAOUI', room: 'A411', days: [1], time: 3 },
+                    { code: 'EE341', name: 'Engineering Analysis', type: 'lecture', teacher: 'F. DEKHANDJI', room: 'B005', days: [3, 4, 5], time: 0 }
+                ]
+            },
+            'M1': {
+                name: 'Master 1 - Electrical Engineering',
+                courses: [
+                    { code: 'EE459', name: 'Advanced Control', type: 'lecture', teacher: 'R. NAMANE', room: 'B312', days: [0, 1, 2, 3], time: 0 },
+                    { code: 'EE479', name: 'Embedded Systems', type: 'lecture', teacher: 'K. HARICHE', room: 'B007', days: [0, 1, 2, 3], time: 1 },
+                    { code: 'EE413', name: 'Signal Processing', type: 'lecture', teacher: 'F. MOUHOUCHE', room: 'A407', days: [0, 1, 2, 3], time: 2 },
+                    { code: 'EE521', name: 'Renewable Energy', type: 'lecture', teacher: 'A. MAACHE', room: 'C104', days: [0, 1], time: 4 },
+                    { code: 'EE553', name: 'Power Systems', type: 'lecture', teacher: 'R. GUERNANE', room: 'B005', days: [2, 3, 4], time: 4 },
+                    { code: 'EE529', name: 'Digital Communications', type: 'lecture', teacher: 'B. METIDJI', room: 'C107', days: [0, 1, 2, 3], time: 5 },
+                    { code: 'EE515', name: 'Optimization', type: 'lecture', teacher: 'A. ZITOUNI', room: 'C117', days: [4], time: 5 },
+                    { code: 'EE419L', name: 'Advanced Control Lab', type: 'lab', teacher: 'D. VAC', room: 'A313', days: [0], time: 4 }
+                ]
+            },
+            'M2': {
+                name: 'Master 2 - Electrical Engineering',
+                courses: [
+                    { code: 'EE621', name: 'AI & Machine Learning', type: 'lecture', teacher: 'M. MAHDI', room: 'B211', days: [0, 1, 2, 3], time: 0 },
+                    { code: 'EE623', name: 'IoT Systems', type: 'lecture', teacher: 'H. BELAIDI', room: 'B007', days: [0, 1, 2, 3], time: 1 },
+                    { code: 'EE625', name: 'Advanced Microelectronics', type: 'lecture', teacher: 'M. CHALLAL', room: 'B305', days: [0, 1, 2, 3], time: 2 },
+                    { code: 'EE627', name: 'Robotics', type: 'lecture', teacher: 'A. BENZEKRI', room: 'A205', days: [0, 1], time: 3 },
+                    { code: 'EE629', name: 'Smart Grids', type: 'lecture', teacher: 'S. TOUIL', room: 'A002', days: [2, 3, 4], time: 3 },
+                    { code: 'EE631', name: 'Research Methodology', type: 'lecture', teacher: 'F. HADJ LARBI', room: 'B205', days: [4], time: 4 },
+                    { code: 'EE621L', name: 'AI Lab', type: 'lab', teacher: 'D. FARES', room: 'A404', days: [1], time: 4 },
+                    { code: 'EE623L', name: 'IoT Lab', type: 'lab', teacher: 'Y. HADDAD', room: 'B305', days: [3], time: 4 }
+                ]
+            }
+        };
+
+        let currentLevel = 'L1';
+        let currentView = 'week';
+
+        function initTimetable() {
+            renderWeekView(currentLevel);
+            renderListView(currentLevel);
+            initTimetableCounters();
+        }
+
+        function showTimetable(level, btn) {
+            currentLevel = level;
+            document.querySelectorAll('.tt-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            renderWeekView(level);
+            renderListView(level);
+        }
+
+        function switchView(view, btn) {
+            currentView = view;
+            document.querySelectorAll('.tt-view-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('timetableWeekView').classList.toggle('active', view === 'week');
+            document.getElementById('timetableListView').classList.toggle('active', view === 'list');
+        }
+
+        function renderWeekView(level) {
+            const data = TT_DATA[level];
+            if (!data) return;
+            const gridBody = document.getElementById('ttGridBody');
+            if (!gridBody) return;
+
+            let html = '';
+            TT_TIME_SLOTS.forEach((slot, timeIdx) => {
+                html += '<div class="tt-grid-row">';
+                html += '<div class="tt-time-cell">' + slot + '</div>';
+
+                TT_DAYS.forEach((day, dayIdx) => {
+                    const courses = data.courses.filter(c => c.time === timeIdx && c.days.includes(dayIdx));
+                    if (courses.length > 0) {
+                        html += '<div class="tt-slot has-class">';
+                        courses.forEach(c => {
+                            html += '<div class="tt-class-block ' + c.type + '" title="' + c.name + ' - ' + c.teacher + ' (' + c.room + ')">';
+                            html += '<span class="tt-class-code">' + c.code + '</span>';
+                            html += '<span class="tt-class-name">' + c.name + '</span>';
+                            html += '<div class="tt-class-meta"><span><i class="fas fa-user"></i> ' + c.teacher + '</span><span><i class="fas fa-map-marker-alt"></i> ' + c.room + '</span></div>';
+                            html += '</div>';
+                        });
+                        html += '</div>';
+                    } else {
+                        html += '<div class="tt-slot empty"></div>';
+                    }
+                });
+
+                html += '</div>';
+            });
+
+            gridBody.innerHTML = html;
+        }
+
+        function renderListView(level) {
+            const data = TT_DATA[level];
+            if (!data) return;
+            const listContent = document.getElementById('ttListContent');
+            if (!listContent) return;
+
+            let html = '';
+            TT_DAYS.forEach((day, dayIdx) => {
+                const courses = data.courses.filter(c => c.days.includes(dayIdx));
+                if (courses.length === 0) return;
+
+                html += '<div class="tt-list-day">';
+                html += '<h4><i class="fas fa-calendar-day"></i> ' + day + '</h4>';
+
+                courses.sort((a, b) => a.time - b.time).forEach(c => {
+                    html += '<div class="tt-list-item ' + c.type + '">';
+                    html += '<div class="tt-list-time">' + TT_TIME_SLOTS[c.time] + '</div>';
+                    html += '<div class="tt-list-info">';
+                    html += '<h5><strong>' + c.code + '</strong> — ' + c.name + '</h5>';
+                    html += '<p><i class="fas fa-user"></i> ' + c.teacher + ' · <i class="fas fa-map-marker-alt"></i> ' + c.room + '</p>';
+                    html += '</div></div>';
+                });
+
+                html += '</div>';
+            });
+
+            listContent.innerHTML = html || '<p style="text-align:center;color:var(--text-light);padding:40px;">No courses scheduled for this level.</p>';
+        }
+
+        function initTimetableCounters() {
+            document.querySelectorAll('.tt-stat .counter').forEach(counter => {
+                const obs = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateCounter(entry.target);
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                obs.observe(counter);
+            });
+        }
+
+        function printTimetable() {
+            window.print();
+        }
+
+        function downloadTimetable() {
+            const originalTitle = document.title;
+            document.title = 'IGEE_Timetable_' + currentLevel + '_2026-2027';
+            window.print();
+            setTimeout(() => { document.title = originalTitle; }, 1000);
+        }
+
+        // ============================================================
+        // 📋 ASSESSMENTS FUNCTIONS
+        // ============================================================
+        function showAssessmentTab(tabName, btn, event) {
+            if (event) event.preventDefault();
+
+            const tabs = document.querySelectorAll('.assess-tab');
+            const tabMap = { 'controls': 0, 'exams': 1, 'makeup': 2 };
+
+            tabs.forEach(t => t.classList.remove('active'));
+            if (btn) {
+                btn.classList.add('active');
+            } else if (tabs[tabMap[tabName]]) {
+                tabs[tabMap[tabName]].classList.add('active');
+            }
+
+            document.querySelectorAll('.assess-content').forEach(c => c.classList.remove('active'));
+            const contentMap = {
+                'controls': 'assessControls',
+                'exams': 'assessExams',
+                'makeup': 'assessMakeup'
+            };
+            const target = document.getElementById(contentMap[tabName]);
+            if (target) target.classList.add('active');
+
+            const section = document.getElementById('assessments');
+            if (section) {
+                const yOffset = -80;
+                const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        }
+
+        function filterAssessYear(year, btn) {
+            const parent = btn.closest('.assess-content');
+            parent.querySelectorAll('.assess-year').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const cards = parent.querySelectorAll('.assess-card');
+            cards.forEach(card => {
+                const cardYear = card.getAttribute('data-year');
+                if (year === 'all' || cardYear === year) {
+                    card.style.display = 'flex';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(15px)';
+                    setTimeout(() => {
+                        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 30);
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function initAssessCounters() {
+            document.querySelectorAll('.assess-stat .counter').forEach(counter => {
+                const obs = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateCounter(entry.target);
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                obs.observe(counter);
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            initTimetable();
+            initAssessCounters();
+        });
     </script>
 </body>
 </html>
